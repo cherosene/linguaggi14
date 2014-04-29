@@ -1,0 +1,364 @@
+%% Progetto di linguaggi di programmazione - Gianluca Grilletti e Giovanni Barbarino
+%% Semantica Fully Abstract per PCF
+
+
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+
+\newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
+
+
+
+\usetheme{Darmstadt}
+
+\begin{document}
+
+\small
+
+
+\section{Il linguaggio PCF}
+\subsection{La sintassi}
+
+\begin{frame}
+	\frametitle{Il linguaggio PCF}
+	
+	PCF (\emph{Programming Computable Functions}) è un linguaggio di programmazione basato sul $\lambda$ calcolo tipato con in aggiunta un operatore $Y$ di punto fisso
+	
+
+
+	
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{I tipi di PCF}
+	
+	I tipi di PCF sono definiti ricorsivamente a partire dalle seguenti clausole:
+	\begin{itemize}
+		\item $Nat$ e $Bool$ sono tipi (\emph{i tipi base})
+		\item Se $S$ e $T$ sono tipi, $S\times T$ è un tipo
+		\item Se $S$ e $T$ sono tipi, $S\rightarrow T$ è un tipo
+	\end{itemize}
+	
+	\begin{example}
+		\begin{itemize}
+			\item $Nat\times Nat$
+			\item $(Nat\times Bool) \rightarrow Bool$
+			\item $Nat\rightarrow Nat\rightarrow Nat$ (da intendere $Nat\rightarrow (Nat\rightarrow Nat)$  )
+			\item $(Nat \rightarrow Nat) \rightarrow Nat \rightarrow Nat$
+		\end{itemize}
+
+	\end{example}
+
+	
+\end{frame}
+
+% 
+% \begin{frame}
+% 	\frametitle{I termini di PCF}
+% 	
+% 	Per definire i termini di PCF dobbiamo dare:
+% 	\begin{itemize}
+% 		\item I termini dei tipi base (\emph{ground terms})
+% 		\item Delle regole per costruire termini più complessi
+% 	\end{itemize}
+% 	
+% 	Indichiamo con $t:T$ che il termine $t$ è di tipo $T$
+% 	
+% 	\begin{block}{I termini di $Nat$}
+% 		\begin{itemize}
+% 			\item Per ogni $n\in \mathbb{N}$ esiste una constante $\underline{n}$
+% 			\item Dati $M,N:Nat$, allora $N+M:Nat$
+% 		\end{itemize}
+% 		
+% 
+% 	\end{block}
+% 
+% 	
+% 	\begin{example}
+% 		\begin{itemize}
+% 			\item $\underline{n}+\underline{m}:Nat$
+% 			\item $(\underline{n}+\underline{m})+\underline{n}:Nat$
+% 		\end{itemize}
+% 
+% 	\end{example}
+% 
+% 	
+% \end{frame}
+% 
+% 
+% \begin{frame}
+% 	
+% 	\begin{block}{I termini di $Bool$}
+% 		\begin{itemize}
+% 			\item $true$ e $false$ sono termini di $Bool$
+% 			\item Dati $M,N:Nat$, allora $Eq? (M) (N) :Bool$
+% 		\end{itemize}
+% 		
+% 
+% 	\end{block}
+% 
+% 	
+% 	\begin{example}
+% 		\begin{itemize}
+% 			\item $Eq?(\underline{m}) (\underline{n}):Bool$
+% 		\end{itemize}
+% 
+% 	\end{example}
+% 	
+% \end{frame}
+% 
+
+
+\begin{frame}
+	
+	\begin{block}{Grammatica per generare i termini di PCF}
+	
+	\begin{align*}
+		<nat \_exp> &::= \underline{0} | \underline{1} | \underline{2} | \dots | <nat \_exp> + <nat \_exp> \\
+		<bool \_exp> &::= true | false | Eq? <nat \_exp> <nat \_exp> \\
+		\quad \\
+		<\sigma \rightarrow \tau \_ exp> &::= \lambda (x:\sigma) . <\tau \_exp> \\
+		<\sigma \times \tau \_exp> &::= <<\sigma \_exp>, <\tau \_ exp>> \\
+		\quad \\
+		<\sigma \_exp> &::= <\sigma \_var> |\\
+		& if <bool \_exp> then <\sigma \_exp> else <\sigma \_exp> | \\
+		<\sigma \_ap&plication> | <\sigma \_ projection> | <\sigma \_ fixed\_point> \\
+		<\sigma \_application> &::= <\tau \rightarrow \sigma \_exp><\tau \_exp> \\
+		<\sigma \_projection> &::= Proj_1<\sigma \times \tau \_exp> | Proj_2<\tau \times \sigma \_exp> \\
+		<\sigma \_fixed \_ point> &::= Y_{\sigma} <\sigma \rightarrow \sigma \_exp>
+	\end{align*}
+	
+	\end{block}
+	
+	
+	
+\end{frame}
+
+
+
+\begin{frame}
+	
+	Con $t:T$ indichiamo che il termine $t$ è di tipo $T$
+	
+	\begin{example}
+		\begin{itemize}
+			\item $(\underline{n} + \underline{m})+ \underline{n} :Nat$
+			\item $Eq?(\underline{n})(\underline{m}):Bool$
+			\item $<true,\underline{n}>:Bool \times Nat$
+			\item $Proj_1 <true,\underline{n}>:Bool$
+			\item $\lambda (x:Nat) . x+1 : Nat\rightarrow Nat$ (indichiamolo con $Succ$)
+			\item $Succ(\underline{n}):Nat$
+			\item \textcolor{red}{$if[Eq?(\underline{n})(\underline{m})]\quad then [\underline{n}]
+			\quad else[Succ]$} non è ben formato
+			\item $if[Eq?(\underline{n})(\underline{m})]\quad then [\underline{n}]
+			\quad else[ Succ(\underline{n}) ] :Nat$
+			\item $\lambda(x:Nat).if[Eq?(\underline{0})(x)]\quad then [true]
+			\quad else [false]: Nat \rightarrow Bool$ (Indichiamolo con $IsZero$)
+			\item $Y [Succ]:Nat$
+			\item \textcolor{red}{$Y[IsZero]$} non è ben formato
+		\end{itemize}
+
+	\end{example}
+
+	
+\end{frame}
+
+
+\begin{frame}
+
+	\frametitle{TODO}
+	Regole di riduzione e Semantica operazionale
+	\begin{itemize}
+		\item cos'è un programma di PCF [Done]
+		\item Riduzione non deterministica (e relativa semantica) [Done]
+		\item Proprietà di Church-Rosser [Done]
+		\item Riduzione left-most [Ma potremmo farne a meno]
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Programmi}
+	
+	Un programma di PCF è un termine:
+	\begin{itemize}
+		\item ben formato
+		\item chiuso
+		\item di tipo $Nat$ o $Bool$ (tipi \emph{osservabili})
+	\end{itemize}
+
+	
+	\begin{example}
+		\begin{itemize}
+			\item $Eq?(\underline{n})(\underline{m}):Bool\quad$ è un programma
+			\item $Y [Succ]:Nat\quad$ è un programma
+			\item $Succ:Nat\rightarrow Nat\quad$ \emph{non} è un programma (tipo non osservabile)
+			\item $x+\underline{n}:Nat\quad$ \emph{non} è un programma (non è chiuso)
+		\end{itemize}
+
+	\end{example}
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Semantica operazionale}
+	
+	Diamo le seguenti regole di riduzione:
+	\begin{description}
+		\item[add] $\underline{n}+\underline{m} \rightarrow \underline{n+m}$
+		\item[Eq?] $Eq?(\underline{n})(\underline{n})\rightarrow true$
+		\item $Eq?(\underline{n})(\underline{m})\rightarrow false$ (per $n$ ed $m$ distinti)
+		\item[cond] $if[true]\quad then[M]\quad else[N] \rightarrow M$
+		\item $if[false]\quad then[M]\quad else[N] \rightarrow N$
+		\item[proj] $Proj_1<M,N> \rightarrow M$
+		\item $Proj_2<M,N> \rightarrow N$
+		\item[$\alpha$] $\lambda (x:\sigma).M \rightarrow \lambda (y:\sigma).[y/x]M$ (con $y$ non libera in $M$)
+		\item[$\beta$] $[\lambda(x:\sigma).M](N) \rightarrow [N/x]M$
+		\item[$Y$] $Y_{\sigma} \rightarrow \lambda (f:\sigma \rightarrow \sigma).f(Y_{\sigma}f)$
+	\end{description}
+	
+\end{frame}
+
+
+\begin{frame}
+	\begin{itemize}
+		\item Indichiamo con $\twoheadrightarrow$ la chiusura transitiva della relazione $\rightarrow$
+		\item Diciamo che un termine $N$ è in forma normale se non può essere ridotto tramite le regole sopra introdotte
+		\item Dato un termine $M$, diciamo che la sua valutazione rispetto alla semantica operazionale è $N$ se
+		\begin{itemize}
+			\item $N$ è in forma normale
+			\item $M \twoheadrightarrow N$
+		\end{itemize}
+		E lo indichiamo con $Eval(M)=N$
+	\end{itemize}
+	
+	\begin{theorem}[Proprietà di Church-Rosser]
+		Se $M \twoheadrightarrow N_1$ e $M \twoheadrightarrow N_2$, allora esiste $P$ tale che $N_1 \twoheadrightarrow P$ e $N_2 \twoheadrightarrow P$
+	\end{theorem}
+	
+	Questo risultato assicura l'unicità della valutazione
+	Non sempre però un termine ha una forma normale, in questo caso scriviamo $Eval(M)=\perp$
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Equivalenza osservazionale}
+	
+	Definiamo un \emph{contesto} come un termine in cui compare un "buco" indicato con $[\;]$
+	
+	\begin{example}
+		$C[\;] \equiv \lambda (x:Nat).x+[\;]$
+		
+		Porre il termine $\underline{n}$ nel contesto $C[\;]$ significa considerare il termine
+		$C[\underline{n}] \equiv \lambda (x:Nat).x+\underline{n}$
+	\end{example}
+	
+	Diciamo che due termini $M$ ed $N$ sono osservazionalmente equivalenti se per ogni contesto $C[\;]$ si ha $Eval(C[M])=Eval(C[N])$
+	e lo indichiamo con $M\eqobs N$
+	
+\end{frame}
+
+
+
+
+\subsection{Proprietà di PCF}
+
+\begin{frame}
+	
+	\frametitle{Espressività di PCF}
+	
+	Diciamo che una funzione parziale $f:\mathbb{N}\rightarrow \mathbb{N}$ è \emph{calcolabile} se esiste un programma per computer* $P$ tale che:
+	\begin{itemize}
+		\item Se $f(n)=m$, allora il programma $P$ con input $n$ termina con output $m$
+		\item Se $f(n)$ non è definita, allora il programma $P$ con input $n$ non termina
+	\end{itemize}
+	
+	* Con computer si intende una macchina a registri (URM); idealmente, un computer con infinita memoria
+	
+	\begin{block}{fatto}
+		Non esiste un algoritmo per capire se un generico programma termini o meno
+	\end{block}
+
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\begin{block}{Fatto}
+		Data una funzione parziale calcolabile $f$, esiste un termine di PCF $t$ tale che
+		\begin{itemize}
+			\item Se $f(n)=m$, allora $Eval(t(\underline{n}))=\underline{m}$
+			\item Se $f(n)$ non è definito, allora $Eval(t(\underline{n}))=undef$
+		\end{itemize}
+
+	\end{block}
+	
+	\begin{block}{Fatto}
+		Non esiste un algoritmo per capire se, dato un generico termine di PCF questo ammetta una forma normale
+	\end{block}
+	
+	\begin{block}{Fatto}
+		Non esiste un algoritmo per capire se due termini di PCF siano osservazionalmente equivalenti
+	\end{block}
+
+	
+\end{frame}
+
+
+
+\subsection{Il problema di un modello fully abstract}
+
+\begin{frame}
+	
+	\frametitle{Full Abstraction}
+	
+	Diciamo che un modello per PCF è Fully Abstract se e solo se per ogni coppia di termini $M$ e $N$:
+	\begin{gather*}
+		M \eqobs N \Leftrightarrow \llbracket M \rrbracket = \llbracket N \rrbracket
+	\end{gather*}
+	
+	A questo punto vorremmo un modello per PCF tale che:
+	\begin{enumerate}
+		\item Considerando il sottomodello relativo al solo tipo base $Bool$ (FinitaryPCF)
+		questo sia decidibile
+		\item Sia fully abstract
+		\item Il modello sia "minimale" (esista una "immersione" in ogni altro modello fully abstract)
+	\end{enumerate}
+	
+	\begin{block}{Loader}
+		Non esistono modelli che abbiano sia la proprietà $1$ che la proprietà $2$
+	\end{block}
+	
+	Ci contreremo sulla ricerca di un modello che abbia le proprietà $2$ e $3$
+
+
+	
+\end{frame}
+
+
+
+
+\section{Il modello di Abramsky}
+\subsection{La categoria dei giochi}
+\subsection{Il modello e l'order-enrichement}
+\subsection{Proprietà del modello intensionale}
+\subsection{Il modello estensionale e proprietà}
+\subsection{Universalità}
+
+
+
+
+\end{document}
