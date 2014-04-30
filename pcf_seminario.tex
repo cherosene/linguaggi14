@@ -325,29 +325,43 @@
 	
 	\frametitle{Full Abstraction}
 	
+	\begin{block}{}
 	Diciamo che un modello per PCF è Fully Abstract se e solo se per ogni coppia di termini $M$ e $N$:
 	\begin{gather*}
 		M \eqobs N \Leftrightarrow \llbracket M \rrbracket = \llbracket N \rrbracket
 	\end{gather*}
+	\end{block}
+	
+	\begin{block}{}
+	Diciamo che un modello per PCF è intensionally fully abstract se:
+	\begin{itemize}
+		\item È algebrico
+		\item Gli elementi compatti sono definibili in PCF
+	\end{itemize}
+	\end{block}
+	
+	\begin{block}{Teorema}
+		Dato un modello $\mathcal{I}$ intensionally fully abstract, esiste una relazione di equivalenza $\approx$ tale che $\mathcal{E}=\mathcal{I}/ \approx$ sia un modello fully abstract
+	\end{block}
+	
+
+\end{frame}
+
+
+\begin{frame}
 	
 	A questo punto vorremmo un modello per PCF tale che:
 	\begin{enumerate}
-		\item Considerando il sottomodello relativo al solo tipo base $Bool$ (FinitaryPCF)
-		questo sia decidibile
 		\item Sia fully abstract
-		\item Il modello sia "minimale" (esista una "immersione" in ogni altro modello fully abstract)
+		\item Il modello sia \emph{definibile} (cioè ogni elemento del modello sia interpretazione di un termine di PCF)
+		\item Il modello sia \emph{minimale} (cioè esista una "immersione" in ogni altro modello fully abstract)
 	\end{enumerate}
 	
-	\begin{block}{Loader}
-		Non esistono modelli che abbiano sia la proprietà $1$ che la proprietà $2$
+	\begin{block}{Si può chiedere di piu? da sistemare}
+		Si potrebbe richiedere che la denotazione fornisca algoritmi per decidere se due termini siano osservazionalmente equivalenti, almeno per i termini di FinitaryPCF (PCF costruito partendo dal solo tipo base $Bool$); un risultato di Loader ci dice che questo NON è possibile
 	\end{block}
-	
-	Ci contreremo sulla ricerca di un modello che abbia le proprietà $2$ e $3$
 
-
-	
 \end{frame}
-
 
 
 
