@@ -357,17 +357,116 @@
 		\item Il modello sia \emph{minimale} (cioè esista una "immersione" in ogni altro modello fully abstract)
 	\end{enumerate}
 	
-	\begin{block}{Si può chiedere di piu? da sistemare}
+	\begin{block}{Si può chiedere di più? da sistemare}
 		Si potrebbe richiedere che la denotazione fornisca algoritmi per decidere se due termini siano osservazionalmente equivalenti, almeno per i termini di FinitaryPCF (PCF costruito partendo dal solo tipo base $Bool$); un risultato di Loader ci dice che questo NON è possibile
 	\end{block}
+	
+	%% Se non sbaglio FinitaryCSS era decidibile; ha senso aggiungere questa cosa perché ne avevamo parlato a lezione
 
 \end{frame}
 
 
 
+
+
 \section{Il modello di Abramsky}
+
 \subsection{La categoria dei giochi}
+
+\begin{frame}
+	Piano malefico:
+	\begin{itemize}
+	\item Definire un gioco e una strategia
+	\item Definire i giochi che interessano
+		\begin{itemize}
+		\item Gioco prodotto tensore
+		\item Gioco implicazione lineare
+		\item Gioco prodotto
+		\item Gioco "of course"
+		\end{itemize}
+	\item Definire la categoria dei giochi (ergo parlare un po' di TdC)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{I giochi}
+	
+	Il modello che andremo a considerare si basa sulla \emph{teoria dei giochi}
+	
+	
+	Un gioco è una 4-upla $A=( M_A , \lambda_A , P_A , \approx_A )$ dove:
+	\begin{itemize}
+	\item $M_A$ è l'insieme delle mosse
+	\item $\lambda_A$ è una funzione da $M_A$ all'insieme $\{ O,P\} \times \{Q,A\}$; in particolare:
+		\begin{itemize}
+		\item $O$ indica il giocatore "opponent" e $P$ il giocatore "player"
+		\item $Q$ indica una domanda e $A$ una risposta
+		\end{itemize}
+	\item Una partita è una stringa di mosse tale che:
+		\begin{enumerate}
+		\item La prima mossa è di $O$
+		\item $P$ e $O$ si alternano
+		\item In ogni momento della partita, il numero di risposte deve essere al più uguale al numero di domande (\emph{bracketing condition})
+		\end{enumerate}
+	\item $P_A$ è un sottoinsieme prefix-closed di partite; chiameremo $P_A$ l'insieme delle partite valide
+	\end{itemize}
+	
+	
+\end{frame}
+
+\begin{frame}
+	
+	\begin{itemize}
+	\item $\approx_A$ è una relazione di equivalenza sulle partite valide tale che:
+		\begin{itemize}
+		\item $s\approx_A t \Rightarrow \lambda^\star _A (s) = \lambda^\star _A (t) $
+		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s| = |t| \Rightarrow s' \approx_A t'$
+		\item $s\approx_A t , sa\in P_A \Rightarrow \exists b . tb \in P_A \wedge sa \approx_A tb$
+		\end{itemize}
+	DA DIRE IN MANIERA PIÙ UMANA
+	\end{itemize}
+	
+	\begin{example}
+		I giochi $Nat$ e $Bool$
+	\end{example}	
+	
+\end{frame}
+
+\begin{frame}
+
+	\frametitle{Strategie}
+	
+	Una strategia $\sigma$ è un insieme di partite di lunghezza pari (l'ultima mossa è di $P$) tali che:
+	\begin{itemize}
+	\item $\sigma$ è prefix-closed (da aggiustare)
+	\item $sab , tac \in \sigma \Rightarrow b=c$ (history free)
+	\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$ (history free 2)
+	\end{itemize}
+	
+	Estendiamo la relazione $\approx_A$ alle strategie
+	Poniamo:
+	\begin{itemize}
+	\item $\sigma \preccurlyeq \tau \; \text{iif} \; sab\in \sigma , s' \in \tau , sa \approx_A s'a' \Rightarrow \exists b' . s'a'b' \in \tau \wedge sab \approx_A s'a'b'$
+	\item $\sigma \approx \tau \; \text{iif} \; \sigma \preccurlyeq \tau \wedge \tau \preccurlyeq \sigma$
+	\end{itemize}
+
+\end{frame}
+
+
 \subsection{Il modello e l'order-enrichement}
+
+\begin{frame}
+	Piano malefico:
+	\begin{itemize}
+	\item	Mettere un po' di basi di TdC
+	\item Sparare i CANNONI di TdC
+	\item Definire $K_! (\mathcal{G})$
+	\item Definire l'order enrichement su $K_! (\mathcal{G})$ e sparare un po' di proprietà (modello razionale)
+	\item Dire perché è un modello (ergo interpretare i termini)
+	\end{itemize}
+\end{frame}
+
+
 \subsection{Proprietà del modello intensionale}
 \subsection{Il modello estensionale e proprietà}
 \subsection{Universalità}
