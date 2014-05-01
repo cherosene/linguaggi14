@@ -1,6 +1,7 @@
 ## Aggiunti
 *~
 *.bak
+*.backup
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
