@@ -287,7 +287,7 @@
 	
 	* Con computer si intende una macchina a registri (URM); idealmente, un computer con infinita memoria
 	
-	\begin{block}{fatto}
+	\begin{block}{Teorema della Fermata}
 		Non esiste un algoritmo per capire se un generico programma termini o meno
 	\end{block}
 
@@ -348,6 +348,8 @@
 \end{frame}
 
 
+
+
 \begin{frame}
 	
 	A questo punto vorremmo un modello per PCF tale che:
@@ -357,9 +359,9 @@
 		\item Il modello sia \emph{minimale} (cioè esista una "immersione" in ogni altro modello fully abstract)
 	\end{enumerate}
 	
-	\begin{block}{Si può chiedere di più? da sistemare}
-		Si potrebbe richiedere che la denotazione fornisca algoritmi per decidere se due termini siano osservazionalmente equivalenti, almeno per i termini di FinitaryPCF (PCF costruito partendo dal solo tipo base $Bool$); un risultato di Loader ci dice che questo NON è possibile
-	\end{block}
+	%\begin{block}{Si può chiedere di più? da sistemare}
+	%	Si potrebbe richiedere che la denotazione fornisca algoritmi per decidere se due termini siano osservazionalmente equivalenti, almeno per i termini di FinitaryPCF (PCF costruito partendo dal solo tipo base $Bool$); un risultato di Loader ci dice che questo NON è possibile
+	%\end{block}
 	
 	%% Se non sbaglio FinitaryCSS era decidibile; ha senso aggiungere questa cosa perché ne avevamo parlato a lezione
 
@@ -420,7 +422,7 @@
 	\item $\approx_A$ è una relazione di equivalenza sulle partite valide tale che:
 		\begin{itemize}
 		\item $s\approx_A t \Rightarrow \lambda^\star _A (s) = \lambda^\star _A (t) $
-		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s| = |t| \Rightarrow s' \approx_A t'$
+		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s'| = |t'| \Rightarrow s' \approx_A t'$
 		\item $s\approx_A t , sa\in P_A \Rightarrow \exists b . tb \in P_A \wedge sa \approx_A tb$
 		\end{itemize}
 	DA DIRE IN MANIERA PIÙ UMANA
