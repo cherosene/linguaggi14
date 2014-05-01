@@ -10,7 +10,7 @@
 \usepackage{stmaryrd}
 
 \newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
-
+\newcommand{\limp}{\mathbin{{-}\mkern-3.5mu{\circ}}}
 
 
 \usetheme{Darmstadt}
@@ -476,11 +476,80 @@
 	
 	\begin{itemize}
 		\item $M_{A\otimes B}=M_A \coprod M_B$
-		\item $\lambda_{A\otimes B}$
+		\item $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
+		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che:
+		\begin{itemize}
+			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
+		\end{itemize}
+		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
-
+	
+	Disegnino
 	
 \end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Il gioco $A \limp B$}
+	
+	\begin{itemize}
+		\item $M_{A\limp B}=M_A \coprod M_B$
+		\item $\lambda^{QA}_{A\limp B}=\lambda^{QA}_A \coprod \lambda^{QA}_B$
+		
+		$\lambda^{OP}_{A\limp B}=\overline{\lambda^{OP}_A} \coprod \lambda^{OP}_B$
+		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che:
+		\begin{itemize}
+			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
+		\end{itemize}
+		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
+	\end{itemize}
+	
+	Disegnino
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Il gioco $A \& B$}
+	
+	\begin{itemize}
+		\item $M_{A\& B}=M_A \coprod M_B$
+		\item $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
+		\item $P_{A\& B}=P_A \coprod P_B$
+		\item $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
+	\end{itemize}
+	
+	Disegnino
+	
+\end{frame}
+
+\begin{frame}
+	
+	\frametitle{Il gioco $!A$}
+	
+	\begin{itemize}
+		\item $M_{!A}=\omega \times M_A$
+		\item $\lambda_{!A}(i,a)=\lambda_A(a)$
+		\item $s$ è una partita di $P_{!A}$ se e solo se:
+		\begin{itemize}
+			\item $\forall i\in \omega , s|_i \in P_A$
+			\item Se una domanda è nella componente $i$, la sua risposta deve essere nella componente $i$ (\emph{indexed bracketing condition})
+		\end{itemize}
+
+		\item $s\approx_{!A} t$ sse esiste $\pi:\omega \rightarrow \omega$ permutazione tale che $s|_i \approx_A t|_{\pi(i)} \wedge (\pi \circ fst)(s)=fst(t)$
+	\end{itemize}
+	
+	Disegnino
+	
+\end{frame}
+
+
+
+
 
 
 
