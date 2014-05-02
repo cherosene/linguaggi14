@@ -487,7 +487,7 @@
 		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
 	
-	C'è da dire che esiste l'elemento neutro
+	C'è da dire che esiste l'elemento neutro	
 	
 	Disegnino
 	
@@ -512,6 +512,13 @@
 	\end{itemize}
 	
 	Disegnino
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	Il gioco duale $1 \limp A$
 	
 \end{frame}
 
@@ -554,7 +561,7 @@
 
 \begin{frame}
 	
-	\frametitle{La categoria dei giochi}
+	\frametitle{La categoria dei giochi $\mathcal{G}$}
 	
 	Una categoria $\mathcal{C}$ è:
 	\begin{itemize}
@@ -584,47 +591,75 @@
 
 
 \begin{frame}
-
-	\frametitle{Oggetti finale}
 	
-	Diciamo che un oggetto $1$ della categoria $\mathcal{C}$ è un oggetto \emph{finale} o \emph{terminale} se per ogni $A\in \mathcal{C}_0$ esiste unico morfismo di $1 \rightarrow \mathcal{C}$
+	Definizione di $\sigma ; \tau$ in maniera sensata
 	
+	Definiamo $\mathcal{G}$ la categoria tale che:
 	\begin{itemize}
-		\item L'oggetto terminale è unico a meno di isomorfismo
+		\item $\mathcal{G}_0$ sono i giochi
+		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B | \sigma \approx \sigma \} / \approx$
+		\item Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
 	\end{itemize}
 	
-	esempio (per Set è un singoletto)
-
-\end{frame}
-
-
-\begin{frame}
-	
-	\frametitle{Prodotti}
-	
-	Dati due oggetti $A$ e $B$, diciamo che $A\& B$ è il loro prodotto se esistono $\pi_1$ e $\pi_2$ tali che per ogni $X\in C_0$ e morfismi $f: X \rightarrow A$ e $g: X \rightarrow B$ il seguente diagramma commuti
-	
-	Che vuol dire commutare?
-	
-	Fare il disegnino
-	
-	Dare esempio in Set
+	In particolare $\mathcal{G}$ è dotata di:
+	\begin{itemize}
+		\item un oggetto finale ($1$)
+		\item è una categoria monoidale (è definito $\otimes$ bifuntore associativo e con elemento neutro)
+		\item è una categoria autonoma (per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
+	\end{itemize}
 	
 \end{frame}
 
 
 \begin{frame}
-	
-	\frametitle{Categoria cartesiana chiusa}
-	
-	Una categoria si dice cartesiana chiusa se:
-	\begin{itemize}
-		\item esiste un oggetto terminale
-		\item dati due oggetti $A,B$, questi ammettono prodotto
-		\item dati due oggetti $B,C$ esiste un oggetto $C^B$ tale che per ogni $A$ $Mor(A\&B,C)\cong Mor(A,C^B)$
-	\end{itemize}
-	
+
+	Definizione di $K_! (\mathcal{G})$ e proprietà
+
 \end{frame}
+
+
+%\begin{frame}
+%
+%	\frametitle{Oggetti finale}
+%	
+%	Diciamo che un oggetto $1$ della categoria $\mathcal{C}$ è un oggetto \emph{finale} o \emph{terminale} se per ogni $A\in \mathcal{C}_0$ esiste unico morfismo di $1 \rightarrow \mathcal{C}$
+%	
+%	\begin{itemize}
+%		\item L'oggetto terminale è unico a meno di isomorfismo
+%	\end{itemize}
+%	
+%	esempio (per Set è un singoletto)
+%
+%\end{frame}
+%
+%
+%\begin{frame}
+%	
+%	\frametitle{Prodotti}
+%	
+%	Dati due oggetti $A$ e $B$, diciamo che $A\& B$ è il loro prodotto se esistono $\pi_1$ e $\pi_2$ tali che per ogni $X\in C_0$ e morfismi $f: X \rightarrow A$ e $g: X \rightarrow B$ il seguente diagramma commuti
+%	
+%	Che vuol dire commutare?
+%	
+%	Fare il disegnino
+%	
+%	Dare esempio in Set
+%	
+%\end{frame}
+%
+%
+%\begin{frame}
+%	
+%	\frametitle{Categoria cartesiana chiusa}
+%	
+%	Una categoria si dice cartesiana chiusa se:
+%	\begin{itemize}
+%		\item esiste un oggetto terminale
+%		\item dati due oggetti $A,B$, questi ammettono prodotto
+%		\item dati due oggetti $B,C$ esiste un oggetto $C^B$ tale che per ogni $A$ $Mor(A\&B,C)\cong Mor(A,C^B)$
+%	\end{itemize}
+%	
+%\end{frame}
 
 
 
