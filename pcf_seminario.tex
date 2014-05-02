@@ -378,15 +378,17 @@
 \begin{frame}
 	Piano malefico:
 	\begin{itemize}
-	\item Definire un gioco e una strategia
-	\item Definire i giochi che interessano
+	\item Definire un gioco e una strategia [done]
+	\item Definire i giochi che interessano [done]
 		\begin{itemize}
-		\item Gioco prodotto tensore
-		\item Gioco implicazione lineare
-		\item Gioco prodotto
-		\item Gioco "of course"
+		\item Gioco prodotto tensore [done]
+		\item Gioco implicazione lineare [done]
+		\item Gioco prodotto [done]
+		\item Gioco "of course" [done]
 		\end{itemize}
-	\item Definire la categoria dei giochi (ergo parlare un po' di TdC)
+	\item Definire la categoria dei giochi (ergo parlare un po' di TdC) [done]
+	\item Definire $K_! (\mathcal{G})$ [done]
+	\item Definire l'order enrichement su $K_! (\mathcal{G})$ e sparare un po' di proprietà (modello razionale)
 	\end{itemize}
 \end{frame}
 
@@ -554,6 +556,8 @@
 		\item $s\approx_{!A} t$ sse esiste $\pi:\omega \rightarrow \omega$ permutazione tale che $s|_i \approx_A t|_{\pi(i)} \wedge (\pi \circ fst)(s)=fst(t)$
 	\end{itemize}
 	
+	Da definire $\bullet ^\dag$ e $der_A$
+	
 	Disegnino
 	
 \end{frame}
@@ -613,9 +617,104 @@
 
 \begin{frame}
 
-	Definizione di $K_! (\mathcal{G})$ e proprietà
+	Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$; in particolare:
+	\begin{itemize}
+		\item $K_!(\mathcal{G})_0 = \mathcal{G}_0$
+		\item Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
+		\item Date due strategie $\sigma$ e $\tau$, $\tau \circ \sigma = \sigma \fatsemi \tau = \sigma ^\dag ; \tau$
+		\item Dato un gioco $A$, il morfismo identico è $der_A$
+	\end{itemize}
+
+	In particolare $K_!(\mathcal{G})$ è una \emph{categoria cartesiana chiusa}, cioè:
+	\begin{itemize}
+		\item Dati due oggetti esiste il \emph{prodotto} ($A\& B$)
+		\item Esiste un oggetto \emph{finale} ($1$)
+		\item Dati due oggetti, esiste l'oggetto esponente ($A \Rightarrow B$ definito come $!A \limp B$; cioé $Mor(A\& B,C) \cong Mor(A,B\Rightarrow C)$)
+	\end{itemize}
+
 
 \end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{order enrichement}
+	
+	Definiamo un \emph{pointed poset} come un poset con un minimo (generalmente indicato con $\perp$)
+	
+	Definiamo una categoria cartesiana chiusa $C$ \emph{pointed poset enriched} se:
+	\begin{itemize}
+		\item Dati due oggetti $A,B$, $(Mor(A,B),\sqsubseteq _{A,B},\perp _{A,B})$ è un pointed poset
+		\item Composizione, prodotto e currying sono monotoni
+		\item Per ogni $f: A\rightarrow B$, per ogni gioco $C$, $\perp_{B,C} \circ f = \perp _{A,B}$
+	\end{itemize}
+	
+	Definiamo unca categoria cartesiana chiusa $C$ \emph{razionale} se:
+	\begin{itemize}
+		\item è ppo-enriched
+		\item per ogni $f: A\& B \rightarrow B$ si ha:
+		\begin{itemize}
+			\item La catena $(f^{(k)} | k\in \omega)$ definita da $f^{(0)}=\perp _{A,B}$ e $f^{k+1} = f \circ <id_A , f^{(k)}>$ ammette \emph{lub} $f^{\triangledown}$
+			\item Dati $g:C\rightarrow A$ e $h:B\rightarrow D$, $g\circ f^\triangledown \circ h = \bigsqcup_{k\in \omega} g \circ f^{(k)} \circ h$
+		\end{itemize}
+
+	\end{itemize}
+	
+\end{frame}
+
+
+
+
+\subsection{Il modello}
+
+\begin{frame}
+	Piano malefico:
+	\begin{itemize}
+	\item Dire perché è un modello (ergo interpretare i termini)
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	
+	Dato $A$ gioco, date $[\sigma],[\tau]$ classi di strategie di $A$, definiamo
+	$[\sigma] \sqsubseteq_A [\tau] \Leftrightarrow \sigma \preccurlyeq_A \tau$
+	
+	\begin{block}{Teorema}
+		$K_! (\mathcal{G})$ con l'ordine $\sqsubseteq$ è razionale
+	\end{block}
+	
+	\begin{block}{Teorema}
+		Sia $C$ una categoria cartesiana chiusa razionale. Allora:
+		\begin{itemize}
+			\item Fissata la denotazione dei tipi base di PCF in $C$
+			\item Fissata la denotazione delle costanti di PCF in $C$
+		\end{itemize}
+		$C$ è un modello per PCF
+		
+		Da scrivere meglio
+
+	\end{block}
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	Tutta la parte di interpretazione
+	
+\end{frame}
+
+
+
+\subsection{Proprietà del modello intensionale}
+\subsection{Il modello estensionale e proprietà}
+\subsection{Universalità}
+
+
+
+\end{document}
+
 
 
 %\begin{frame}
@@ -666,31 +765,3 @@
 
 
 
-
-
-
-
-
-
-\subsection{Il modello e l'order-enrichement}
-
-\begin{frame}
-	Piano malefico:
-	\begin{itemize}
-	\item	Mettere un po' di basi di TdC
-	\item Sparare i CANNONI di TdC
-	\item Definire $K_! (\mathcal{G})$
-	\item Definire l'order enrichement su $K_! (\mathcal{G})$ e sparare un po' di proprietà (modello razionale)
-	\item Dire perché è un modello (ergo interpretare i termini)
-	\end{itemize}
-\end{frame}
-
-
-\subsection{Proprietà del modello intensionale}
-\subsection{Il modello estensionale e proprietà}
-\subsection{Universalità}
-
-
-
-
-\end{document}
