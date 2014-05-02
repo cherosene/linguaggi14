@@ -10,7 +10,7 @@
 \usepackage{stmaryrd}
 
 \newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
-
+\newcommand{\limp}{\mathbin{{-}\mkern-3.5mu{\circ}}}
 
 
 \usetheme{Darmstadt}
@@ -287,7 +287,7 @@
 	
 	* Con computer si intende una macchina a registri (URM); idealmente, un computer con infinita memoria
 	
-	\begin{block}{fatto}
+	\begin{block}{Teorema della Fermata}
 		Non esiste un algoritmo per capire se un generico programma termini o meno
 	\end{block}
 
@@ -348,6 +348,8 @@
 \end{frame}
 
 
+
+
 \begin{frame}
 	
 	A questo punto vorremmo un modello per PCF tale che:
@@ -357,9 +359,9 @@
 		\item Il modello sia \emph{minimale} (cioè esista una "immersione" in ogni altro modello fully abstract)
 	\end{enumerate}
 	
-	\begin{block}{Si può chiedere di più? da sistemare}
-		Si potrebbe richiedere che la denotazione fornisca algoritmi per decidere se due termini siano osservazionalmente equivalenti, almeno per i termini di FinitaryPCF (PCF costruito partendo dal solo tipo base $Bool$); un risultato di Loader ci dice che questo NON è possibile
-	\end{block}
+	%\begin{block}{Si può chiedere di più? da sistemare}
+	%	Si potrebbe richiedere che la denotazione fornisca algoritmi per decidere se due termini siano osservazionalmente equivalenti, almeno per i termini di FinitaryPCF (PCF costruito partendo dal solo tipo base $Bool$); un risultato di Loader ci dice che questo NON è possibile
+	%\end{block}
 	
 	%% Se non sbaglio FinitaryCSS era decidibile; ha senso aggiungere questa cosa perché ne avevamo parlato a lezione
 
@@ -420,7 +422,7 @@
 	\item $\approx_A$ è una relazione di equivalenza sulle partite valide tale che:
 		\begin{itemize}
 		\item $s\approx_A t \Rightarrow \lambda^\star _A (s) = \lambda^\star _A (t) $
-		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s| = |t| \Rightarrow s' \approx_A t'$
+		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s'| = |t'| \Rightarrow s' \approx_A t'$
 		\item $s\approx_A t , sa\in P_A \Rightarrow \exists b . tb \in P_A \wedge sa \approx_A tb$
 		\end{itemize}
 	DA DIRE IN MANIERA PIÙ UMANA
@@ -450,7 +452,189 @@
 	\item $\sigma \approx \tau \; \text{iif} \; \sigma \preccurlyeq \tau \wedge \tau \preccurlyeq \sigma$
 	\end{itemize}
 
+	\begin{block}{Fatto}
+		$\preccurlyeq$ è un preordine sulle strategie; di conseguenza $\approx_A$ è una relazione di equivalenza parziale
+	\end{block}
+	
 \end{frame}
+
+\begin{frame}
+	
+	\begin{example}
+		le strategie di $Nat$ e $Bool$
+	\end{example}
+	
+\end{frame}
+
+\begin{frame}
+	
+	Come rappresentiamo i giochi (il tavolo insomma)
+	
+\end{frame}
+
+\begin{frame}
+	
+	\frametitle{Il gioco $A \otimes B$}
+	
+	\begin{itemize}
+		\item $M_{A\otimes B}=M_A \coprod M_B$
+		\item $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
+		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che:
+		\begin{itemize}
+			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
+		\end{itemize}
+		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
+	\end{itemize}
+	
+	C'è da dire che esiste l'elemento neutro
+	
+	Disegnino
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Il gioco $A \limp B$}
+	
+	\begin{itemize}
+		\item $M_{A\limp B}=M_A \coprod M_B$
+		\item $\lambda^{QA}_{A\limp B}=\lambda^{QA}_A \coprod \lambda^{QA}_B$
+		
+		$\lambda^{OP}_{A\limp B}=\overline{\lambda^{OP}_A} \coprod \lambda^{OP}_B$
+		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che:
+		\begin{itemize}
+			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
+		\end{itemize}
+		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
+	\end{itemize}
+	
+	Disegnino
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Il gioco $A \& B$}
+	
+	\begin{itemize}
+		\item $M_{A\& B}=M_A \coprod M_B$
+		\item $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
+		\item $P_{A\& B}=P_A \coprod P_B$
+		\item $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
+	\end{itemize}
+	
+	Disegnino
+	
+\end{frame}
+
+\begin{frame}
+	
+	\frametitle{Il gioco $!A$}
+	
+	\begin{itemize}
+		\item $M_{!A}=\omega \times M_A$
+		\item $\lambda_{!A}(i,a)=\lambda_A(a)$
+		\item $s$ è una partita di $P_{!A}$ se e solo se:
+		\begin{itemize}
+			\item $\forall i\in \omega , s|_i \in P_A$
+			\item Se una domanda è nella componente $i$, la sua risposta deve essere nella componente $i$ (\emph{indexed bracketing condition})
+		\end{itemize}
+
+		\item $s\approx_{!A} t$ sse esiste $\pi:\omega \rightarrow \omega$ permutazione tale che $s|_i \approx_A t|_{\pi(i)} \wedge (\pi \circ fst)(s)=fst(t)$
+	\end{itemize}
+	
+	Disegnino
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{La categoria dei giochi}
+	
+	Una categoria $\mathcal{C}$ è:
+	\begin{itemize}
+		\item una collezione di \emph{oggetti} $C_0$
+		\item dati due oggetti $A,B$, una collezione di \emph{morfismi} (o \emph{frecce}) $A \rightarrow B$
+		\item dati tre oggetti $A,B,C$, una \emph{legge di composizione $\circ$} tale che:
+		\begin{itemize}
+			\item $f: A \rightarrow B \wedge g: B \rightarrow C \Rightarrow g\circ f : A \rightarrow C$
+			\item $f: A \rightarrow B \wedge g: B \rightarrow C \wedge h: C \rightarrow D \Rightarrow (h\circ g) \circ f = h \circ (g \circ f)$
+		\end{itemize}
+		\item dato un oggetto $A$, un morfismo $id_A: A\rightarrow A$ tale che:
+		\begin{itemize}
+			\item $f: A \rightarrow B \Rightarrow f \circ id_A = f$
+			\item $g: B \rightarrow A \Rightarrow id_A \circ g = g$
+		\end{itemize}
+
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	Esempio di categoria (set?)
+	
+\end{frame}
+
+
+\begin{frame}
+
+	\frametitle{Oggetti finale}
+	
+	Diciamo che un oggetto $1$ della categoria $\mathcal{C}$ è un oggetto \emph{finale} o \emph{terminale} se per ogni $A\in \mathcal{C}_0$ esiste unico morfismo di $1 \rightarrow \mathcal{C}$
+	
+	\begin{itemize}
+		\item L'oggetto terminale è unico a meno di isomorfismo
+	\end{itemize}
+	
+	esempio (per Set è un singoletto)
+
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Prodotti}
+	
+	Dati due oggetti $A$ e $B$, diciamo che $A\& B$ è il loro prodotto se esistono $\pi_1$ e $\pi_2$ tali che per ogni $X\in C_0$ e morfismi $f: X \rightarrow A$ e $g: X \rightarrow B$ il seguente diagramma commuti
+	
+	Che vuol dire commutare?
+	
+	Fare il disegnino
+	
+	Dare esempio in Set
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\frametitle{Categoria cartesiana chiusa}
+	
+	Una categoria si dice cartesiana chiusa se:
+	\begin{itemize}
+		\item esiste un oggetto terminale
+		\item dati due oggetti $A,B$, questi ammettono prodotto
+		\item dati due oggetti $B,C$ esiste un oggetto $C^B$ tale che per ogni $A$ $Mor(A\&B,C)\cong Mor(A,C^B)$
+	\end{itemize}
+	
+\end{frame}
+
+
+
+
+
+
+
+
+
+
 
 
 \subsection{Il modello e l'order-enrichement}
