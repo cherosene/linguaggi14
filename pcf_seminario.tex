@@ -26,10 +26,8 @@
 \begin{frame}
 	\frametitle{Il linguaggio PCF}
 	
-	PCF (\emph{Programming Computable Functions}) è un linguaggio di programmazione basato sul $\lambda$ calcolo tipato con in aggiunta un operatore $Y$ di punto fisso
+	DA METTERE UN TITOLO
 	
-
-
 	
 \end{frame}
 
@@ -170,18 +168,18 @@
 \end{frame}
 
 
-\begin{frame}
-
-	\frametitle{TODO}
-	Regole di riduzione e Semantica operazionale
-	\begin{itemize}
-		\item cos'è un programma di PCF [Done]
-		\item Riduzione non deterministica (e relativa semantica) [Done]
-		\item Proprietà di Church-Rosser [Done]
-		\item Riduzione left-most [Ma potremmo farne a meno]
-	\end{itemize}
-	
-\end{frame}
+% \begin{frame}
+% 
+% 	\frametitle{TODO}
+% 	Regole di riduzione e Semantica operazionale
+% 	\begin{itemize}
+% 		\item cos'è un programma di PCF [Done]
+% 		\item Riduzione non deterministica (e relativa semantica) [Done]
+% 		\item Proprietà di Church-Rosser [Done]
+% 		\item Riduzione left-most [Ma potremmo farne a meno]
+% 	\end{itemize}
+% 	
+% \end{frame}
 
 
 \begin{frame}
@@ -247,7 +245,7 @@
 	\end{theorem}
 	
 	Questo risultato assicura l'unicità della valutazione
-	Non sempre però un termine ha una forma normale, in questo caso scriviamo $Eval(M)=\perp$
+	Non sempre però un termine ha una forma normale, in questo caso scriviamo $Eval(M)=undef$
 	
 \end{frame}
 
@@ -307,7 +305,7 @@
 	\end{block}
 	
 	\begin{block}{Fatto}
-		Non esiste un algoritmo per capire se, dato un generico termine di PCF questo ammetta una forma normale
+		Non esiste un algoritmo per capire se dato un generico termine di PCF questo ammetta una forma normale
 	\end{block}
 	
 	\begin{block}{Fatto}
@@ -352,6 +350,8 @@
 
 \begin{frame}
 	
+	IL CONTENUTO DI QUESTA SLIDE DIPENDE DA QUANTO VOGLIAMO DIRE ALLA FINE
+	
 	A questo punto vorremmo un modello per PCF tale che:
 	\begin{enumerate}
 		\item Sia fully abstract
@@ -375,22 +375,22 @@
 
 \subsection{La categoria dei giochi}
 
-\begin{frame}
-	Piano malefico:
-	\begin{itemize}
-	\item Definire un gioco e una strategia [done]
-	\item Definire i giochi che interessano [done]
-		\begin{itemize}
-		\item Gioco prodotto tensore [done]
-		\item Gioco implicazione lineare [done]
-		\item Gioco prodotto [done]
-		\item Gioco "of course" [done]
-		\end{itemize}
-	\item Definire la categoria dei giochi (ergo parlare un po' di TdC) [done]
-	\item Definire $K_! (\mathcal{G})$ [done]
-	\item Definire l'order enrichement su $K_! (\mathcal{G})$ e sparare un po' di proprietà (modello razionale)
-	\end{itemize}
-\end{frame}
+% \begin{frame}
+% 	Piano malefico:
+% 	\begin{itemize}
+% 	\item Definire un gioco e una strategia [done]
+% 	\item Definire i giochi che interessano [done]
+% 		\begin{itemize}
+% 		\item Gioco prodotto tensore [done]
+% 		\item Gioco implicazione lineare [done]
+% 		\item Gioco prodotto [done]
+% 		\item Gioco "of course" [done]
+% 		\end{itemize}
+% 	\item Definire la categoria dei giochi (ergo parlare un po' di TdC) [done]
+% 	\item Definire $K_! (\mathcal{G})$ [done]
+% 	\item Definire l'order enrichement su $K_! (\mathcal{G})$ e sparare un po' di proprietà (modello razionale)
+% 	\end{itemize}
+% \end{frame}
 
 \begin{frame}
 	\frametitle{I giochi}
@@ -423,7 +423,7 @@
 	\begin{itemize}
 	\item $\approx_A$ è una relazione di equivalenza sulle partite valide tale che:
 		\begin{itemize}
-		\item $s\approx_A t \Rightarrow \lambda^\star _A (s) = \lambda^\star _A (t) $
+		\item $s\approx_A t \Rightarrow \lambda _A (s) = \lambda _A (t) $
 		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s'| = |t'| \Rightarrow s' \approx_A t'$
 		\item $s\approx_A t , sa\in P_A \Rightarrow \exists b . tb \in P_A \wedge sa \approx_A tb$
 		\end{itemize}
@@ -431,7 +431,22 @@
 	\end{itemize}
 	
 	\begin{example}
-		I giochi $Nat$ e $Bool$
+		\begin{description}
+			\item[$Bool$] \begin{itemize}
+			              	\item $M_{Bool}=\{*,t,f\}$
+			              	\item $\lambda_{Bool}= \{ (*,OQ) ; (t,PA) ; (f,PA) \}$
+			              	\item $P_{Bool}= \{ \epsilon , * ,*t, *f \}$
+			              	\item $\approx_{Bool} = id_{Bool}$
+			              \end{itemize}
+
+			\item[$Nat$] \begin{itemize}
+			              	\item $M_{Nat}=\{ * , \underline{0} , \underline{1} , \dots \}$
+			              	\item $\lambda_{Nat}= \{ (*,OQ) , (\underline{0},PA) , (\underline{1},PA) , \dots \}$
+			              	\item $P_{Nat}= \{ \epsilon , * , *\underline{0} , *\underline{1} , \dots \}$
+											\item $\approx_{Nat} = id_{Nat}$
+			              \end{itemize}
+		\end{description}
+
 	\end{example}	
 	
 \end{frame}
@@ -442,10 +457,11 @@
 	
 	Una strategia $\sigma$ è un insieme di partite di lunghezza pari (l'ultima mossa è di $P$) tali che:
 	\begin{itemize}
-	\item $\sigma$ è prefix-closed (da aggiustare)
+	\item $\sigma$ è prefix-closed
 	\item $sab , tac \in \sigma \Rightarrow b=c$ (history free)
-	\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$ (history free 2)
+	\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
 	\end{itemize}
+	
 	
 	Estendiamo la relazione $\approx_A$ alle strategie
 	Poniamo:
@@ -462,9 +478,7 @@
 
 \begin{frame}
 	
-	\begin{example}
-		le strategie di $Nat$ e $Bool$
-	\end{example}
+	IL BARBA-ALBERO; LE STRATEGIE DI $Nat$ E $Bool$
 	
 \end{frame}
 
@@ -489,7 +503,14 @@
 		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
 	
-	C'è da dire che esiste l'elemento neutro	
+	\begin{block}{Proprietà}
+		\begin{itemize}
+			\item Il prodotto tensore è associativo
+			\item Esiste un elemento neutro $I$
+		\end{itemize}
+		
+	\end{block}
+
 	
 	Disegnino
 	
