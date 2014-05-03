@@ -505,14 +505,13 @@
 	
 	\begin{block}{Proprietà}
 		\begin{itemize}
+			\item Solamente il giocatore $O$ può cambiare componente di gioco
 			\item Il prodotto tensore è associativo
 			\item Esiste un elemento neutro $I$
 		\end{itemize}
 		
 	\end{block}
 
-	
-	Disegnino
 	
 \end{frame}
 
@@ -534,16 +533,22 @@
 		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
 	
-	Disegnino
+	\begin{block}{Proprietà}
+		
+		\begin{itemize}
+			\item Solamente il giocatore $P$ può cambiare componente di gioco
+		\end{itemize}
+	
+	\end{block}
 	
 \end{frame}
 
 
-\begin{frame}
-	
-	Il gioco duale $1 \limp A$
-	
-\end{frame}
+%\begin{frame}
+%	
+%	Il gioco duale $1 \limp A$
+%	
+%\end{frame}
 
 
 \begin{frame}
@@ -557,7 +562,13 @@
 		\item $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
 	\end{itemize}
 	
-	Disegnino
+	\begin{block}{Proprietà}
+		\begin{itemize}
+			\item Una partita di $A\& B$ è giocata su una sola delle due componenti
+			\item Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$
+		\end{itemize}
+		
+	\end{block}
 	
 \end{frame}
 
@@ -577,10 +588,29 @@
 		\item $s\approx_{!A} t$ sse esiste $\pi:\omega \rightarrow \omega$ permutazione tale che $s|_i \approx_A t|_{\pi(i)} \wedge (\pi \circ fst)(s)=fst(t)$
 	\end{itemize}
 	
-	Da definire $\bullet ^\dag$ e $der_A$
+	\begin{block}{Proprietà}
+		\begin{itemize}
+			\item Solamente il giocatore $O$ può cambiare componente di gioco
+		\end{itemize}
+		
+	\end{block}
 	
-	Disegnino
+	DA DEFINIRE $\bullet ^\dag$ E $der_A$?
 	
+\end{frame}
+
+
+\begin{frame}
+
+	\frametitle{Alcune strategie}
+	
+	DOBBIAMO DECIDERE COME SPIEGARE LE STRATEGIE; QUESTE ANDREBBERO DETTE:
+	\begin{itemize}
+		\item $\sigma ; \tau$
+		\item $id_{A\limp A}$ (la copy-cat)
+		\item $Lapp:(A \limp B)\otimes A \limp B$
+	\end{itemize}
+
 \end{frame}
 
 
@@ -605,19 +635,19 @@
 
 	\end{itemize}
 	
-\end{frame}
-
-
-\begin{frame}
-	
-	Esempio di categoria (set?)
+	MA QUESTA SLIDE VA MESSA DAVVERO?	
 	
 \end{frame}
 
 
+%\begin{frame}
+%	
+%	Esempio di categoria (set?)
+%	
+%\end{frame}
+
+
 \begin{frame}
-	
-	Definizione di $\sigma ; \tau$ in maniera sensata
 	
 	Definiamo $\mathcal{G}$ la categoria tale che:
 	\begin{itemize}
@@ -653,6 +683,7 @@
 		\item Dati due oggetti, esiste l'oggetto esponente ($A \Rightarrow B$ definito come $!A \limp B$; cioé $Mor(A\& B,C) \cong Mor(A,B\Rightarrow C)$)
 	\end{itemize}
 
+	SI PUO TAGLIARE UN PO QUESTA?
 
 \end{frame}
 
@@ -688,12 +719,12 @@
 
 \subsection{Il modello}
 
-\begin{frame}
-	Piano malefico:
-	\begin{itemize}
-	\item Dire perché è un modello (ergo interpretare i termini)
-	\end{itemize}
-\end{frame}
+%\begin{frame}
+%	Piano malefico:
+%	\begin{itemize}
+%	\item Dire perché è un modello (ergo interpretare i termini)
+%	\end{itemize}
+%\end{frame}
 
 
 \begin{frame}
@@ -713,7 +744,7 @@
 		\end{itemize}
 		$C$ è un modello per PCF
 		
-		Da scrivere meglio
+		DA SCRIVERE MEGLIO
 
 	\end{block}
 	
@@ -722,7 +753,7 @@
 
 \begin{frame}
 	
-	Tutta la parte di interpretazione
+	DOBBIAMO METTERE UN PAIO DI INTERPRETAZIONI
 	
 \end{frame}
 
@@ -738,14 +769,14 @@
 	\begin{block}{Teorema}
 		
 		Per ogni tipo $\tau$ di PCF, posto $T= \llbracket \tau \rrbracket$, si ha che $1 \rightarrow T$ è un dI-domain;
-		in particolare $K_! (\mathcal{G})$ è un \emph{cpo-based model} algebrico
+		in particolare $\mathcal{M}(K_! (\mathcal{G}) )$ è un \emph{cpo-based model} algebrico
 		
 	\end{block}
 	
 	
 	\begin{block}{Teorema}
 		
-		$K_! (\mathcal{G})$ è un modello intensionally fully abstract di PCF
+		$\mathcal{M}(K_! (\mathcal{G}) )$ è un modello intensionally fully abstract di PCF
 		
 	\end{block}
 	
@@ -781,6 +812,8 @@
 		$\mathcal{E}$ è un modello fully abstract per PCF
 		
 	\end{block}
+	
+	DA SCRIVERE MEGLIO
 	
 \end{frame}
 
