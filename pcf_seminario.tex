@@ -708,8 +708,118 @@
 
 
 \subsection{Proprietà del modello intensionale}
+
+\begin{frame}
+	
+	\frametitle{Intensional full abstraction}
+	
+	
+	\begin{block}{Teorema}
+		
+		Per ogni tipo $\tau$ di PCF, posto $T= \llbracket \tau \rrbracket$, si ha che $1 \rightarrow T$ è un dI-domain;
+		in particolare $K_! (\mathcal{G})$ è un \emph{cpo-based model} algebrico
+		
+	\end{block}
+	
+	
+	\begin{block}{Teorema}
+		
+		$K_! (\mathcal{G})$ è un modello intensionally fully abstract di PCF
+		
+	\end{block}
+	
+	
+\end{frame}
+
+
+
+
 \subsection{Il modello estensionale e proprietà}
+
+\begin{frame}
+	
+	\frametitle{Full abstraction}
+	
+	Definiamo il gioco di \emph{Sierpinsky} $\Sigma$ tale che:
+	\begin{itemize}
+		\item $M_\Sigma = \{ q,a \}$ dove $\lambda_\Sigma (q)=OQ$ e $\lambda_\Sigma (a)=PA$
+		\item $P_\Sigma = \{ \epsilon , q , qa \}$ e $\approx_\Sigma = id_{P_\Sigma}$
+	\end{itemize}
+	
+	Definiamo il preordine $\lesssim_A$ sulle strategie del gioco $A$: $x \lesssim_A y \; \Leftrightarrow \; \forall \alpha \rightarrow \Sigma . x;\alpha \preccurlyeq_\Sigma y;\alpha$
+	
+	Definiamo $\mathcal{E} = K_!(\mathcal{G}) / \lesssim$, cioè la categoria tale che:
+	\begin{itemize}
+		\item $\mathcal{E}_0 = K_!(\mathcal{G})_0$
+		\item $Mor_{\mathcal{E}}(A,B) = Mor_{K_!(\mathcal{G})}(A,B) / \lesssim_{A\Rightarrow B}$
+	\end{itemize}
+
+	
+	\begin{block}{Teorema}
+		
+		$\mathcal{E}$ è un modello fully abstract per PCF
+		
+	\end{block}
+	
+\end{frame}
+
+
+
+
+
 \subsection{Universalità}
+
+\begin{frame}
+	
+	\frametitle{Universalità}
+	
+	Definiamo un gioco $A$ \emph{effettivamente dato} se:
+	\begin{itemize}
+		\item Esiste una mappa $e_A : \omega \rightarrow M_A$ suriettiva; chiamiamo questa funzione codifica
+		\item Rispetto alla codifica le seguenti funzioni sono calcolabili:
+		\begin{itemize}
+			\item $\lambda_A$ (rispetto a qualche codifica di $\{ P,O,Q,A \}$ )
+			\item la funzione caratteristica di $P_A$
+			\item la funzione caratteristica di $\approx_A$
+		\end{itemize}
+		
+	\end{itemize}
+	
+	Definiamo una strategia \emph{ricorsiva} se la sua funzione parziale associata è calcolabile
+	
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	Definiamo $\mathcal{G}_{rec}$ la categoria dei giochi ricorsivi con morfismi le strategie ricorsive
+	
+	\begin{block}{Fatti}
+		
+		\begin{itemize}
+			\item Possono essere definite le categorie $K_!(\mathcal{G}_{rec})$ ed $\mathcal{E}_{rec}$ con ragionamenti analoghi ai precedenti
+			\item $\mathcal{E}_{rec}$ è un modello fully abstract per PCF
+		\end{itemize}
+		
+	\end{block}
+	
+	
+	\begin{block}{Universalità}
+		
+		Ogni strategia di $\mathcal{M}(\mathcal{E}_{rec})$ è definibile in PCF, cioè
+		è interpretazione di un termine di PCF
+		
+	\end{block}
+	
+	
+\end{frame}
+
+
+
+
+
+
 
 
 
