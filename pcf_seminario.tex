@@ -15,6 +15,9 @@
 
 \usetheme{Darmstadt}
 
+% ho aggiunto riassuntini alle slide, e note a piè diapositiva
+
+
 \begin{document}
 
 \small
@@ -23,6 +26,7 @@
 \section{Il linguaggio PCF}
 \subsection{La sintassi}
 
+%titolo
 \begin{frame}
 	\frametitle{Il linguaggio PCF}
 	
@@ -32,7 +36,7 @@
 \end{frame}
 
 
-
+% tipi di PCF
 \begin{frame}
 	\frametitle{I tipi di PCF}
 	
@@ -112,7 +116,7 @@
 % \end{frame}
 % 
 
-
+% termini di PCF
 \begin{frame}
 	
 	\begin{block}{Grammatica per generare i termini di PCF}
@@ -139,7 +143,7 @@
 \end{frame}
 
 
-
+% operazioni ben tipate (formate)
 \begin{frame}
 	
 	Con $t:T$ indichiamo che il termine $t$ è di tipo $T$
@@ -181,7 +185,7 @@
 % 	
 % \end{frame}
 
-
+% i programmi sono solo di tipo Nat o Bool
 \begin{frame}
 	
 	\frametitle{Programmi}
@@ -206,7 +210,7 @@
 	
 \end{frame}
 
-
+% riduzioni ed astrazioni
 \begin{frame}
 	
 	\frametitle{Semantica operazionale}
@@ -227,7 +231,7 @@
 	
 \end{frame}
 
-
+% Forma Normale
 \begin{frame}
 	\begin{itemize}
 		\item Indichiamo con $\twoheadrightarrow$ la chiusura transitiva della relazione $\rightarrow$
@@ -249,7 +253,7 @@
 	
 \end{frame}
 
-
+% Contesto e Equivalenza oss
 \begin{frame}
 	
 	\frametitle{Equivalenza osservazionale}
@@ -272,18 +276,18 @@
 
 
 \subsection{Proprietà di PCF}
-
+% calcolabilità
 \begin{frame}
 	
 	\frametitle{Espressività di PCF}
 	
-	Diciamo che una funzione parziale $f:\mathbb{N}\rightarrow \mathbb{N}$ è \emph{calcolabile} se esiste un programma per computer* $P$ tale che:
+	Diciamo che una funzione parziale $f:\mathbb{N}\rightarrow \mathbb{N}$ è \emph{calcolabile} se esiste un programma per computer\footnote{Con computer si intende una macchina a registri (URM); idealmente, un computer con infinita memoria} $P$ tale che:
 	\begin{itemize}
 		\item Se $f(n)=m$, allora il programma $P$ con input $n$ termina con output $m$
 		\item Se $f(n)$ non è definita, allora il programma $P$ con input $n$ non termina
 	\end{itemize}
 	
-	* Con computer si intende una macchina a registri (URM); idealmente, un computer con infinita memoria
+	
 	
 	\begin{block}{Teorema della Fermata}
 		Non esiste un algoritmo per capire se un generico programma termini o meno
@@ -292,7 +296,7 @@
 	
 \end{frame}
 
-
+% indecidibilità della forma normale
 \begin{frame}
 	
 	\begin{block}{Fatto}
@@ -305,7 +309,7 @@
 	\end{block}
 	
 	\begin{block}{Fatto}
-		Non esiste un algoritmo per capire se dato un generico termine di PCF questo ammetta una forma normale
+		Non esiste un algoritmo per capire se un generico termine di PCF ammetta una forma normale
 	\end{block}
 	
 	\begin{block}{Fatto}
