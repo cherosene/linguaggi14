@@ -487,7 +487,7 @@
 % game tree
 \begin{frame}
 	
-	IL BARBA-ALBERO; LE STRATEGIE DI $Nat$ E $Bool$
+	IL BARBA-ALBERO; LE STRATEGIE DI $Nat$ E $Bool$\\
 	Nota: nel file Game Semantics di Martin Hyland (quello in cui c'era la strategia di pt fisso) c'è l'esatta descrizione di questo albero
 	
 \end{frame}
@@ -612,7 +612,7 @@
 	
 \end{frame}
 
-
+% esempi di strategie
 \begin{frame}
 
 	\frametitle{Alcune strategie}
@@ -626,7 +626,7 @@
 
 \end{frame}
 
-
+% definizione di categoria
 \begin{frame}
 	
 	\frametitle{La categoria dei giochi $\mathcal{G}$}
@@ -648,7 +648,8 @@
 
 	\end{itemize}
 	
-	MA QUESTA SLIDE VA MESSA DAVVERO?	
+	MA QUESTA SLIDE VA MESSA DAVVERO? \\
+	(Exodd) NO! Non dobbiamo addentrarci nelle categorie, nemmeno di striscio! Citarle neitoremi basta e avanza!
 	
 \end{frame}
 
@@ -659,7 +660,7 @@
 %	
 %\end{frame}
 
-
+% categoria dei giochi
 \begin{frame}
 	
 	Definiamo $\mathcal{G}$ la categoria tale che:
@@ -678,7 +679,7 @@
 	
 \end{frame}
 
-
+% categoria di co-Kleisli
 \begin{frame}
 
 	Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$; in particolare:
@@ -700,7 +701,7 @@
 
 \end{frame}
 
-
+% ppo e ccc razionale
 \begin{frame}
 	
 	\frametitle{order enrichement}
@@ -714,7 +715,7 @@
 		\item Per ogni $f: A\rightarrow B$, per ogni gioco $C$, $\perp_{B,C} \circ f = \perp _{A,B}$
 	\end{itemize}
 	
-	Definiamo unca categoria cartesiana chiusa $C$ \emph{razionale} se:
+	Definiamo una categoria cartesiana chiusa $C$ \emph{razionale} se:
 	\begin{itemize}
 		\item è ppo-enriched
 		\item per ogni $f: A\& B \rightarrow B$ si ha:
@@ -739,12 +740,12 @@
 %	\end{itemize}
 %\end{frame}
 
-
+% I giochi sono un modello di PCF
 \begin{frame}
 	
 	Dato $A$ gioco, date $[\sigma],[\tau]$ classi di strategie di $A$, definiamo
-	$[\sigma] \sqsubseteq_A [\tau] \Leftrightarrow \sigma \preccurlyeq_A \tau$
-	
+	$[\sigma] \sqsubseteq_A [\tau] \Leftrightarrow \sigma \preccurlyeq_A \tau$ \\
+	NOTA: con l'equinvalenza banale, non c'è bisogno di parlare di classi
 	\begin{block}{Teorema}
 		$K_! (\mathcal{G})$ con l'ordine $\sqsubseteq$ è razionale
 	\end{block}
@@ -763,10 +764,11 @@
 	
 \end{frame}
 
-
+% interpretazioni di tipi
 \begin{frame}
 	
-	DOBBIAMO METTERE UN PAIO DI INTERPRETAZIONI
+	DOBBIAMO METTERE UN PAIO DI INTERPRETAZIONI\\
+	(Exodd) un paio? Sta tutto qui il difficile!
 	
 \end{frame}
 
@@ -774,6 +776,7 @@
 
 \subsection{Proprietà del modello intensionale}
 
+% intensional fully abstract
 \begin{frame}
 	
 	\frametitle{Intensional full abstraction}
@@ -801,6 +804,7 @@
 
 \subsection{Il modello estensionale e proprietà}
 
+% Modello Fully Abstract (qui finisce la mia comprensione)
 \begin{frame}
 	
 	\frametitle{Full abstraction}
@@ -836,6 +840,7 @@
 
 \subsection{Universalità}
 
+% eh??
 \begin{frame}
 	
 	\frametitle{Universalità}
@@ -857,7 +862,7 @@
 	
 \end{frame}
 
-
+% e l'universalità?
 \begin{frame}
 	
 	Definiamo $\mathcal{G}_{rec}$ la categoria dei giochi ricorsivi con morfismi le strategie ricorsive
@@ -878,6 +883,9 @@
 		è interpretazione di un termine di PCF
 		
 	\end{block}
+	
+	
+	(Exodd) Dov'è finita la proprietà di universalità?
 	
 	
 \end{frame}
