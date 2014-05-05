@@ -322,7 +322,7 @@
 
 
 \subsection{Il problema di un modello fully abstract}
-
+% fully abstract
 \begin{frame}
 	
 	\frametitle{Full Abstraction}
@@ -351,7 +351,7 @@
 
 
 
-
+% intenzioni di suicidio
 \begin{frame}
 	
 	IL CONTENUTO DI QUESTA SLIDE DIPENDE DA QUANTO VOGLIAMO DIRE ALLA FINE
@@ -396,6 +396,7 @@
 % 	\end{itemize}
 % \end{frame}
 
+% i giochi
 \begin{frame}
 	\frametitle{I giochi}
 	
@@ -422,6 +423,7 @@
 	
 \end{frame}
 
+% equivalenza nei giochi, giochi Nat e Bool
 \begin{frame}
 	
 	\begin{itemize}
@@ -431,7 +433,8 @@
 		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s'| = |t'| \Rightarrow s' \approx_A t'$
 		\item $s\approx_A t , sa\in P_A \Rightarrow \exists b . tb \in P_A \wedge sa \approx_A tb$
 		\end{itemize}
-	DA DIRE IN MANIERA PIÙ UMANA
+	DA DIRE IN MANIERA PIÙ UMANA\\
+	(Exodd) DA NON DIRE PROPRIO, tanto usiamo solo quella banale
 	\end{itemize}
 	
 	\begin{example}
@@ -455,6 +458,7 @@
 	
 \end{frame}
 
+% strategie
 \begin{frame}
 
 	\frametitle{Strategie}
@@ -473,25 +477,29 @@
 	\item $\sigma \preccurlyeq \tau \; \text{iif} \; sab\in \sigma , s' \in \tau , sa \approx_A s'a' \Rightarrow \exists b' . s'a'b' \in \tau \wedge sab \approx_A s'a'b'$
 	\item $\sigma \approx \tau \; \text{iif} \; \sigma \preccurlyeq \tau \wedge \tau \preccurlyeq \sigma$
 	\end{itemize}
-
+	
 	\begin{block}{Fatto}
 		$\preccurlyeq$ è un preordine sulle strategie; di conseguenza $\approx_A$ è una relazione di equivalenza parziale
 	\end{block}
-	
+	Questa è importante, ma se non diciamo l'altra, si semplifica di molto: diventa l'inclusione di insiemi
 \end{frame}
 
+% game tree
 \begin{frame}
 	
 	IL BARBA-ALBERO; LE STRATEGIE DI $Nat$ E $Bool$
+	Nota: nel file Game Semantics di Martin Hyland (quello in cui c'era la strategia di pt fisso) c'è l'esatta descrizione di questo albero
 	
 \end{frame}
 
+% tavolo e carte
 \begin{frame}
 	
 	Come rappresentiamo i giochi (il tavolo insomma)
 	
 \end{frame}
 
+% prodotto tensore
 \begin{frame}
 	
 	\frametitle{Il gioco $A \otimes B$}
@@ -519,7 +527,7 @@
 	
 \end{frame}
 
-
+% gioco implicazione lineare
 \begin{frame}
 	
 	\frametitle{Il gioco $A \limp B$}
@@ -554,7 +562,7 @@
 %	
 %\end{frame}
 
-
+% gioco unione
 \begin{frame}
 	
 	\frametitle{Il gioco $A \& B$}
@@ -576,6 +584,7 @@
 	
 \end{frame}
 
+% gioco prodotto tensore infinito
 \begin{frame}
 	
 	\frametitle{Il gioco $!A$}
@@ -687,7 +696,7 @@
 		\item Dati due oggetti, esiste l'oggetto esponente ($A \Rightarrow B$ definito come $!A \limp B$; cioé $Mor(A\& B,C) \cong Mor(A,B\Rightarrow C)$)
 	\end{itemize}
 
-	SI PUO TAGLIARE UN PO QUESTA?
+	SI PUÒ TAGLIARE UN PO' QUESTA?
 
 \end{frame}
 
