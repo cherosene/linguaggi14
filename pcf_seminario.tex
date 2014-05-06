@@ -60,61 +60,6 @@
 	
 \end{frame}
 
-% 
-% \begin{frame}
-% 	\frametitle{I termini di PCF}
-% 	
-% 	Per definire i termini di PCF dobbiamo dare:
-% 	\begin{itemize}
-% 		\item I termini dei tipi base (\emph{ground terms})
-% 		\item Delle regole per costruire termini più complessi
-% 	\end{itemize}
-% 	
-% 	Indichiamo con $t:T$ che il termine $t$ è di tipo $T$
-% 	
-% 	\begin{block}{I termini di $Nat$}
-% 		\begin{itemize}
-% 			\item Per ogni $n\in \mathbb{N}$ esiste una constante $\underline{n}$
-% 			\item Dati $M,N:Nat$, allora $N+M:Nat$
-% 		\end{itemize}
-% 		
-% 
-% 	\end{block}
-% 
-% 	
-% 	\begin{example}
-% 		\begin{itemize}
-% 			\item $\underline{n}+\underline{m}:Nat$
-% 			\item $(\underline{n}+\underline{m})+\underline{n}:Nat$
-% 		\end{itemize}
-% 
-% 	\end{example}
-% 
-% 	
-% \end{frame}
-% 
-% 
-% \begin{frame}
-% 	
-% 	\begin{block}{I termini di $Bool$}
-% 		\begin{itemize}
-% 			\item $true$ e $false$ sono termini di $Bool$
-% 			\item Dati $M,N:Nat$, allora $Eq? (M) (N) :Bool$
-% 		\end{itemize}
-% 		
-% 
-% 	\end{block}
-% 
-% 	
-% 	\begin{example}
-% 		\begin{itemize}
-% 			\item $Eq?(\underline{m}) (\underline{n}):Bool$
-% 		\end{itemize}
-% 
-% 	\end{example}
-% 	
-% \end{frame}
-% 
 
 % termini di PCF
 \begin{frame}
@@ -172,18 +117,7 @@
 \end{frame}
 
 
-% \begin{frame}
-% 
-% 	\frametitle{TODO}
-% 	Regole di riduzione e Semantica operazionale
-% 	\begin{itemize}
-% 		\item cos'è un programma di PCF [Done]
-% 		\item Riduzione non deterministica (e relativa semantica) [Done]
-% 		\item Proprietà di Church-Rosser [Done]
-% 		\item Riduzione left-most [Ma potremmo farne a meno]
-% 	\end{itemize}
-% 	
-% \end{frame}
+
 
 % i programmi sono solo di tipo Nat o Bool
 \begin{frame}
@@ -378,22 +312,6 @@
 
 \section{La categoria dei giochi}
 
-% \begin{frame}
-% 	Piano malefico:
-% 	\begin{itemize}
-% 	\item Definire un gioco e una strategia [done]
-% 	\item Definire i giochi che interessano [done]
-% 		\begin{itemize}
-% 		\item Gioco prodotto tensore [done]
-% 		\item Gioco implicazione lineare [done]
-% 		\item Gioco prodotto [done]
-% 		\item Gioco "of course" [done]
-% 		\end{itemize}
-% 	\item Definire la categoria dei giochi (ergo parlare un po' di TdC) [done]
-% 	\item Definire $K_! (\mathcal{G})$ [done]
-% 	\item Definire l'order enrichement su $K_! (\mathcal{G})$ e sparare un po' di proprietà (modello razionale)
-% 	\end{itemize}
-% \end{frame}
 
 \subsection{giochi e strategie}
 
@@ -557,11 +475,6 @@
 \end{frame}
 
 
-%\begin{frame}
-%	
-%	Il gioco duale $1 \limp A$
-%	
-%\end{frame}
 
 % gioco unione
 \begin{frame}
@@ -654,13 +567,6 @@
 	
 \end{frame}
 
-
-%\begin{frame}
-%	
-%	Esempio di categoria (set?)
-%	
-%\end{frame}
-
 % categoria dei giochi
 \begin{frame}
 	
@@ -734,13 +640,6 @@
 
 \section{Il modello di Abramsky}
 
-
-%\begin{frame}
-%	Piano malefico:
-%	\begin{itemize}
-%	\item Dire perché è un modello (ergo interpretare i termini)
-%	\end{itemize}
-%\end{frame}
 
 % I giochi sono un modello di PCF
 \begin{frame}
@@ -901,54 +800,3 @@
 
 
 \end{document}
-
-
-
-%\begin{frame}
-%
-%	\frametitle{Oggetti finale}
-%	
-%	Diciamo che un oggetto $1$ della categoria $\mathcal{C}$ è un oggetto \emph{finale} o \emph{terminale} se per ogni $A\in \mathcal{C}_0$ esiste unico morfismo di $1 \rightarrow \mathcal{C}$
-%	
-%	\begin{itemize}
-%		\item L'oggetto terminale è unico a meno di isomorfismo
-%	\end{itemize}
-%	
-%	esempio (per Set è un singoletto)
-%
-%\end{frame}
-%
-%
-%\begin{frame}
-%	
-%	\frametitle{Prodotti}
-%	
-%	Dati due oggetti $A$ e $B$, diciamo che $A\& B$ è il loro prodotto se esistono $\pi_1$ e $\pi_2$ tali che per ogni $X\in C_0$ e morfismi $f: X \rightarrow A$ e $g: X \rightarrow B$ il seguente diagramma commuti
-%	
-%	Che vuol dire commutare?
-%	
-%	Fare il disegnino
-%	
-%	Dare esempio in Set
-%	
-%\end{frame}
-%
-%
-%\begin{frame}
-%	
-%	\frametitle{Categoria cartesiana chiusa}
-%	
-%	Una categoria si dice cartesiana chiusa se:
-%	\begin{itemize}
-%		\item esiste un oggetto terminale
-%		\item dati due oggetti $A,B$, questi ammettono prodotto
-%		\item dati due oggetti $B,C$ esiste un oggetto $C^B$ tale che per ogni $A$ $Mor(A\&B,C)\cong Mor(A,C^B)$
-%	\end{itemize}
-%	
-%\end{frame}
-
-
-
-
-
-
