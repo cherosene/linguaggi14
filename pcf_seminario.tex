@@ -8,14 +8,18 @@
 \usepackage{default}
 \usepackage{amssymb}
 \usepackage{stmaryrd}
-
+%\usepackage{graphs}
+%\usepackage{tree-dvips}
 \newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
 \newcommand{\limp}{\mathbin{{-}\mkern-3.5mu{\circ}}}
 
 
 \usetheme{Darmstadt}
 
-% ho aggiunto riassuntini alle slide, e note a piè diapositiva
+\title{Un modello fully abstract del PCF}
+\subtitle{Vuoi fare un gioco con me?}
+\author{Grilletti Gianluca \and Barbarino Giovanni}
+\institute[Unipi]{Università di Pisa}
 
 
 \begin{document}
@@ -28,10 +32,8 @@
 
 %titolo
 \begin{frame}
-	\frametitle{Il linguaggio PCF}
-	
-	DA METTERE UN TITOLO
-	
+	%\frametitle{Il linguaggio PCF}
+	\maketitle
 	
 \end{frame}
 
@@ -416,9 +418,21 @@
 % game tree
 \begin{frame}
 	
-	IL BARBA-ALBERO; LE STRATEGIE DI $Nat$ E $Bool$\\
-	Nota: nel file Game Semantics di Martin Hyland (quello in cui c'era la strategia di pt fisso) c'è l'esatta descrizione di questo albero
 	
+	%\begin{graph}(4,6)
+	%\textnode{Ep}(0,3){$\epsilon$}
+	%\textnode{Aa}(2,5){$a$}
+	%\roundnode{Bb}(2,2)
+	%\textnode{c}(2,1){$c$}
+	%\loopedge{Aa}{15}
+	%\edge{Ep}{c}
+	%\dirbow{Bb}{c}{-.2}
+	%\textnode{ad}(0,3){$\epsilon$}
+	%\textnode{bc}(0,3){$\epsilon$}
+	%\end{graph}
+
+	IL BARBA-ALBERO; LE STRATEGIE DI $Nat$ E $Bool$\\
+
 \end{frame}
 
 % tavolo e carte
