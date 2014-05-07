@@ -10,14 +10,21 @@
 \usepackage{stmaryrd}
 %\usepackage{graphs}
 %\usepackage{tree-dvips}
+
 \newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
 \newcommand{\limp}{\mathbin{{-}\mkern-3.5mu{\circ}}}
+
+
+% immagini
+\graphicspath{{immagini/}}
+
+
 
 
 \usetheme{Darmstadt}
 
 \title{Un modello fully abstract del PCF}
-\subtitle{Vuoi fare un gioco con me?}
+% \subtitle{Vuoi fare un gioco con me?}
 \author{Grilletti Gianluca \and Barbarino Giovanni}
 \institute[Unipi]{Università di Pisa}
 
@@ -490,6 +497,13 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
 	
 	Come rappresentiamo i giochi (il tavolo insomma)
 	
+	\begin{figure}
+		\Huge
+		\centering
+		\def\svgwidth{0.32\columnwidth}
+		\input{immagini/tavolo_a.pdf_tex}
+	\end{figure}
+	
 \end{frame}
 
 % prodotto tensore
@@ -516,9 +530,23 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
 		\end{itemize}
 		
 	\end{block}
-
+	
 	
 \end{frame}
+
+
+\begin{frame}
+	
+	\begin{figure}
+		\large
+% 		\centering
+		\def\svgwidth{0.5\columnwidth}
+		\input{immagini/tavolo_tensore.pdf_tex}
+	\end{figure}
+	
+\end{frame}
+
+
 
 % gioco implicazione lineare
 \begin{frame}
