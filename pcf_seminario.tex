@@ -10,6 +10,9 @@
 \usepackage{stmaryrd}
 %\usepackage{graphs}
 %\usepackage{tree-dvips}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
 \newcommand{\limp}{\mathbin{{-}\mkern-3.5mu{\circ}}}
@@ -535,14 +538,35 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[t]
 	
-	\begin{figure}
-		\large
-% 		\centering
-		\def\svgwidth{0.5\columnwidth}
-		\input{immagini/tavolo_tensore.pdf_tex}
-	\end{figure}
+	\begin{tabular}{c c}
+		aaaa & bbbbb \\
+		\begin{minipage}{0.48\textwidth}
+			\begin{figure}[t]
+				\Large
+				\centering
+				\def\svgwidth{0.6\textwidth}
+				\input{immagini/tavolo_a.pdf_tex}
+			\end{figure}
+		\end{minipage} &  \begin{minipage}{0.48\textwidth}
+			\begin{figure}[t]
+				\Large
+				\centering
+				\def\svgwidth{0.6\textwidth}
+				\input{immagini/tavolo_b.pdf_tex}
+			\end{figure}
+		\end{minipage} \\
+		
+		cccc & ddddd
+	\end{tabular}
+	
+	\only<1>{
+	questa è la descrizione del gioco
+	}
+	\only<2>{
+	in realtà mentivo
+	}
 	
 \end{frame}
 
