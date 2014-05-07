@@ -339,48 +339,49 @@
 		\item In ogni momento della partita, il numero di risposte deve essere al più uguale al numero di domande (\emph{bracketing condition})
 		\end{enumerate}
 	\item $P_A$ è un sottoinsieme prefix-closed di partite; chiameremo $P_A$ l'insieme delle partite valide
+	\item  $\approx_A$ è una relazione di equivalenza sulle partite valide
 	\end{itemize}
 	
 	
 \end{frame}
 
 % equivalenza nei giochi, giochi Nat e Bool
-\begin{frame}
-	
-	\begin{itemize}
-	\item $\approx_A$ è una relazione di equivalenza sulle partite valide tale che se $s\approx_A t$, allora:
-		\begin{itemize}
-			\item $s$ e $t$ hanno la stessa etichettatura
-			\item per ogni $s'$ e $t'$ sottostringhe iniziali di $s$ e $t$ tali che $|s'|=|t'|$, si ha $s' \approx t'$
-			\item se $sa$ è una partita valida, allora esiste $b$ tale che $tb\approx_A sa$
-% 		\item $s\approx_A t \Rightarrow \lambda _A (s) = \lambda _A (t) $
-% 		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s'| = |t'| \Rightarrow s' \approx_A t'$
-% 		\item $s\approx_A t , sa\in P_A \Rightarrow \exists b . tb \in P_A \wedge sa \approx_A tb$
-		\end{itemize}
-	DA DIRE IN MANIERA PIÙ UMANA\\
-	(Exodd) DA NON DIRE PROPRIO, tanto usiamo solo quella banale
-	\end{itemize}
-	
-	\begin{example}
-		\begin{description}
-			\item[$Bool$] \begin{itemize}
-			              	\item $M_{Bool}=\{*,t,f\}$
-			              	\item $\lambda_{Bool}= \{ (*,OQ) ; (t,PA) ; (f,PA) \}$
-			              	\item $P_{Bool}= \{ \epsilon , * ,*t, *f \}$
-			              	\item $\approx_{Bool} = id_{Bool}$
-			              \end{itemize}
-
-			\item[$Nat$] \begin{itemize}
-			              	\item $M_{Nat}=\{ * , \underline{0} , \underline{1} , \dots \}$
-			              	\item $\lambda_{Nat}= \{ (*,OQ) , (\underline{0},PA) , (\underline{1},PA) , \dots \}$
-			              	\item $P_{Nat}= \{ \epsilon , * , *\underline{0} , *\underline{1} , \dots \}$
-											\item $\approx_{Nat} = id_{Nat}$
-			              \end{itemize}
-		\end{description}
-
-	\end{example}	
-	
-\end{frame}
+% \begin{frame}
+% 	
+% 	\begin{itemize}
+% 	\item $\approx_A$ è una relazione di equivalenza sulle partite valide tale che se $s\approx_A t$, allora:
+% 		\begin{itemize}
+% 			\item $s$ e $t$ hanno la stessa etichettatura
+% 			\item per ogni $s'$ e $t'$ sottostringhe iniziali di $s$ e $t$ tali che $|s'|=|t'|$, si ha $s' \approx t'$
+% 			\item se $sa$ è una partita valida, allora esiste $b$ tale che $tb\approx_A sa$
+% % 		\item $s\approx_A t \Rightarrow \lambda _A (s) = \lambda _A (t) $
+% % 		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s'| = |t'| \Rightarrow s' \approx_A t'$
+% % 		\item $s\approx_A t , sa\in P_A \Rightarrow \exists b . tb \in P_A \wedge sa \approx_A tb$
+% 		\end{itemize}
+% 	DA DIRE IN MANIERA PIÙ UMANA\\
+% 	(Exodd) DA NON DIRE PROPRIO, tanto usiamo solo quella banale
+% 	\end{itemize}
+% 	
+% % 	\begin{example}
+% % 		\begin{description}
+% % 			\item[$Bool$] \begin{itemize}
+% % 			              	\item $M_{Bool}=\{*,t,f\}$
+% % 			              	\item $\lambda_{Bool}= \{ (*,OQ) ; (t,PA) ; (f,PA) \}$
+% % 			              	\item $P_{Bool}= \{ \epsilon , * ,*t, *f \}$
+% % 			              	\item $\approx_{Bool} = id_{Bool}$
+% % 			              \end{itemize}
+% % 
+% % 			\item[$Nat$] \begin{itemize}
+% % 			              	\item $M_{Nat}=\{ * , \underline{0} , \underline{1} , \dots \}$
+% % 			              	\item $\lambda_{Nat}= \{ (*,OQ) , (\underline{0},PA) , (\underline{1},PA) , \dots \}$
+% % 			              	\item $P_{Nat}= \{ \epsilon , * , *\underline{0} , *\underline{1} , \dots \}$
+% % 											\item $\approx_{Nat} = id_{Nat}$
+% % 			              \end{itemize}
+% % 		\end{description}
+% % 
+% % 	\end{example}	
+% 	
+% \end{frame}
 
 % strategie
 \begin{frame}
@@ -401,37 +402,86 @@
 % 	\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
 	\end{itemize}
 	
+	\begin{exampleblock}{Albero di Gioco}
+ 
+	Prendiamo un gioco, il cui set di mosse $M$ è suddiviso dalla funzione di labelling $\lambda$ in
+	  \begin{gather*}
+	      M_{QO}=\{a,b,c\}, \quad  M_{AO}=\{g,i\} \\
+	      M_{QP}=\{h\},    \quad  M_{AP}=\{d,e,f\}
+          \end{gather*}  
+	Il set di partite valide $P$, la relazione di equivalenza $\approx$, e le strategie del gioco si possono rappresentare in maniera semplice tramite il \emph{Game Tree}
+	\end{exampleblock}
 	
-	Estendiamo la relazione $\approx_A$ alle strategie; poniamo:
-	\begin{itemize}
-		\item $\underline{ \sigma \preccurlyeq_A \tau }$ se per ogni $sab \in \sigma$ e $s' \in \tau$, se $sa\approx_A s'a'$ allora esiste $b'$ tale che $s'a'b' \in \tau$ e $sab\approx_A s'a'b'$
-% 	\item $\sigma \preccurlyeq \tau \; \text{iif} \; sab\in \sigma , s' \in \tau , sa \approx_A s'a' \Rightarrow \exists b' . s'a'b' \in \tau \wedge sab \approx_A s'a'b'$
-	\item $\underline{ \sigma \approx_A \tau \ }; \text{iif} \; \sigma \preccurlyeq \tau \wedge \tau \preccurlyeq \sigma$
-	\end{itemize}
-	
-	\begin{block}{Fatto}
-		$\preccurlyeq_A$ è un preordine sulle strategie; di conseguenza $\approx_A$ è una relazione di equivalenza parziale
-	\end{block}
 	
 \end{frame}
 
 % game tree
-\begin{frame}
-	
-	
-	%\begin{graph}(4,6)
-	%\textnode{Ep}(0,3){$\epsilon$}
-	%\textnode{Aa}(2,5){$a$}
-	%\roundnode{Bb}(2,2)
-	%\textnode{c}(2,1){$c$}
-	%\loopedge{Aa}{15}
-	%\edge{Ep}{c}
-	%\dirbow{Bb}{c}{-.2}
-	%\textnode{ad}(0,3){$\epsilon$}
-	%\textnode{bc}(0,3){$\epsilon$}
-	%\end{graph}
 
-	IL BARBA-ALBERO; LE STRATEGIE DI $Nat$ E $Bool$\\
+\begin{frame}
+
+\only<1>{\begin{gather*}
+	      M_{QO}=\{a,b,c\}, \quad  M_{AO}=\{g,i\} \\
+	      M_{QP}=\{h\},    \quad  M_{AP}=\{d,e,f\}
+          \end{gather*}  }
+
+\only<2>{         $s\approx t$ se:
+		\begin{itemize}
+			\item $s$ e $t$ hanno la stessa etichettatura
+			\item per ogni $s'$ e $t'$ sottostringhe iniziali di $s$ e $t$ tali che $|s'|=|t'|$, si ha $s' \approx t'$
+			\item se $sa$ è una partita valida, allora esiste $b$ tale che $tb\approx sa$
+		\end{itemize}
+         } 
+\only<3>{
+
+Una strategia $\sigma$ è un insieme di partite di lunghezza pari tali che:
+	\begin{itemize}
+		\item $\sigma$ è prefix-closed
+		\item $sab , tac \in \sigma \Rightarrow b=c$
+		\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
+	\end{itemize}
+	}
+	
+\only<4>{
+	\[
+	f_\sigma(x)=
+	\begin{cases}
+	 d \text{  se } x=a\\
+	 / \text{  se } x=b\\
+	 h \text{  se } x=c\\
+	 d \text{  se } x=g
+	\end{cases}
+	\qquad
+	f_\tau(x)=
+	\begin{cases}
+	 d \text{  se } x=a\\
+	 e \text{  se } x=b\\
+	 h \text{  se } x=c\\
+	 d \text{  se } x=g
+	\end{cases}
+	\]
+	}
+	
+\only<5>{	
+Estendiamo la relazione $\approx$ alle strategie; poniamo:
+	\begin{itemize}
+	\item $\underline{ \sigma \preccurlyeq \tau }$ se per ogni $sab \in \sigma$ e $s' \in \tau$, se $sa\approx s'a'$ allora esiste $b'$ tale che $s'a'b' \in \tau$ e $sab\approx s'a'b'$
+	\item $\underline{ \sigma \approx \tau \ }; \text{iif} \; \sigma \preccurlyeq \tau \wedge \tau \preccurlyeq \sigma$
+	\end{itemize}
+	In questo caso, avremo $\sigma \preccurlyeq \tau, \sigma \not\approx \sigma, \tau \approx \tau $  
+	}
+	
+\only<6>{
+	\begin{itemize}
+		\item $\preccurlyeq$ è un preordine sulle strategie; di conseguenza $\approx$ è una relazione di equivalenza parziale
+		\item Nel caso l'equivalenza $\approx$ del gioco sia l'identità, il game tree diventa un albero semplice, e l'ordine tra strategie si può vedere come inclusione di insiemi o tra le funzioni parziali
+	\end{itemize}
+	}
+	
+	
+	\includegraphics<1>[width=1.5\textwidth, height=0.7\textheight]{Drawing}
+	\includegraphics<2>[width=\textwidth, height=0.7\textheight]{classi}
+	%\includegraphics<3>[width=1.3\textwidth, height=0.6\textheight]{sigma}
+	\includegraphics<3-6>[width=\textwidth, height=0.65\textheight]{sigmatau}
 
 \end{frame}
 
