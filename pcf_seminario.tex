@@ -102,9 +102,7 @@
 
 % operazioni ben tipate (formate)
 \begin{frame}
-	
 	Con $t:T$ indichiamo che il termine $t$ è di tipo $T$
-	
 	\begin{example}
 		\begin{itemize}
 			\item $(\underline{n} + \underline{m})+ \underline{n} :Nat$
@@ -355,44 +353,6 @@
 	
 \end{frame}
 
-% equivalenza nei giochi, giochi Nat e Bool
-% \begin{frame}
-% 	
-% 	\begin{itemize}
-% 	\item $\approx_A$ è una relazione di equivalenza sulle partite valide tale che se $s\approx_A t$, allora:
-% 		\begin{itemize}
-% 			\item $s$ e $t$ hanno la stessa etichettatura
-% 			\item per ogni $s'$ e $t'$ sottostringhe iniziali di $s$ e $t$ tali che $|s'|=|t'|$, si ha $s' \approx t'$
-% 			\item se $sa$ è una partita valida, allora esiste $b$ tale che $tb\approx_A sa$
-% % 		\item $s\approx_A t \Rightarrow \lambda _A (s) = \lambda _A (t) $
-% % 		\item $s\approx_A t , s' \sqsubseteq s , t' \sqsubseteq t, |s'| = |t'| \Rightarrow s' \approx_A t'$
-% % 		\item $s\approx_A t , sa\in P_A \Rightarrow \exists b . tb \in P_A \wedge sa \approx_A tb$
-% 		\end{itemize}
-% 	DA DIRE IN MANIERA PIÙ UMANA\\
-% 	(Exodd) DA NON DIRE PROPRIO, tanto usiamo solo quella banale
-% 	\end{itemize}
-% 	
-% % 	\begin{example}
-% % 		\begin{description}
-% % 			\item[$Bool$] \begin{itemize}
-% % 			              	\item $M_{Bool}=\{*,t,f\}$
-% % 			              	\item $\lambda_{Bool}= \{ (*,OQ) ; (t,PA) ; (f,PA) \}$
-% % 			              	\item $P_{Bool}= \{ \epsilon , * ,*t, *f \}$
-% % 			              	\item $\approx_{Bool} = id_{Bool}$
-% % 			              \end{itemize}
-% % 
-% % 			\item[$Nat$] \begin{itemize}
-% % 			              	\item $M_{Nat}=\{ * , \underline{0} , \underline{1} , \dots \}$
-% % 			              	\item $\lambda_{Nat}= \{ (*,OQ) , (\underline{0},PA) , (\underline{1},PA) , \dots \}$
-% % 			              	\item $P_{Nat}= \{ \epsilon , * , *\underline{0} , *\underline{1} , \dots \}$
-% % 											\item $\approx_{Nat} = id_{Nat}$
-% % 			              \end{itemize}
-% % 		\end{description}
-% % 
-% % 	\end{example}	
-% 	
-% \end{frame}
-
 % strategie
 \begin{frame}
 
@@ -561,12 +521,7 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
 		cccc & ddddd
 	\end{tabular}
 	
-	\only<1>{
-	questa è la descrizione del gioco
-	}
-	\only<2>{
-	in realtà mentivo
-	}
+
 	
 \end{frame}
 
@@ -768,7 +723,7 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
 
 \section{Il modello di Abramsky}
 
-
+\subsection{Denotazione di PCF}
 % I giochi sono un modello di PCF
 \begin{frame}
 	
@@ -794,6 +749,25 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
 % interpretazioni di tipi
 \begin{frame}
 	
+		
+	\begin{example}
+		\begin{description}
+			\item[$Bool$] \begin{itemize}
+			              	\item $M_{Bool}=\{*,t,f\}$
+			              	\item $\lambda_{Bool}= \{ (*,OQ) ; (t,PA) ; (f,PA) \}$
+			              	\item $P_{Bool}= \{ \epsilon , * ,*t, *f \}$
+			              	\item $\approx_{Bool} = id_{Bool}$
+			              \end{itemize}
+
+			\item[$Nat$] \begin{itemize}
+			              	\item $M_{Nat}=\{ * , \underline{0} , \underline{1} , \dots \}$
+			              	\item $\lambda_{Nat}= \{ (*,OQ) , (\underline{0},PA) , (\underline{1},PA) , \dots \}$
+			              	\item $P_{Nat}= \{ \epsilon , * , *\underline{0} , *\underline{1} , \dots \}$
+											\item $\approx_{Nat} = id_{Nat}$
+			              \end{itemize}
+		\end{description}
+
+	\end{example}	
 	DOBBIAMO METTERE UN PAIO DI INTERPRETAZIONI\\
 	(Exodd) un paio? Sta tutto qui il difficile!
 	
@@ -860,10 +834,6 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
 	DA SCRIVERE MEGLIO
 	
 \end{frame}
-
-
-
-
 
 \subsection{Universalità}
 
