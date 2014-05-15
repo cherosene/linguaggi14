@@ -51,7 +51,7 @@
   \begin{picture}(1,0.80275842)%
     \put(0,0){\includegraphics[width=\unitlength]{tavolo_a.pdf}}%
     \put(0.5,0.29685756){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{A}}}%
-    \put(0.12304268,0.05095021){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{O}}}%
-    \put(0.09320375,0.59237713){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{P}}}%
+    \put(0.10116909,0.6133328){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{O}}}%
+    \put(0.10116909,0.02389607){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{P}}}%
   \end{picture}%
 \endgroup%
