@@ -8,14 +8,17 @@
 \usepackage{default}
 \usepackage{amssymb}
 \usepackage{stmaryrd}
-%\usepackage{graphs}
-%\usepackage{tree-dvips}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
 
 \newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
 \newcommand{\limp}{\mathbin{{-}\mkern-3.5mu{\circ}}}
+\newcommand{\tnode}[4]{\node (#1_u) at (#2,#3+0.1) [minimum size=2pt, opacity=0] 		       {#4};
+		       \node (#1_d) at (#2,#3-0.1) [minimum size=2pt, opacity=0] {#4};
+		       \node (#1) at (#2,#3) [minimum size=2pt] {#4};}
 
 
 % immagini
@@ -448,10 +451,203 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
 	}
 	
 	
-	\includegraphics<1>[width=1.5\textwidth, height=0.7\textheight]{immagini/Drawing}
-	\includegraphics<2>[width=\textwidth, height=0.7\textheight]{immagini/classi}
-	%\includegraphics<3>[width=1.3\textwidth, height=0.6\textheight]{sigma}
-	\includegraphics<3-6>[width=\textwidth, height=0.65\textheight]{immagini/sigmatau}
+	\only<1>{
+	\begin{tikzpicture}
+  
+  \node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
+   
+   \node (a) at (2.5,2) [minimum size=2pt] {a};
+    \node (b) at (2.5,1) [minimum size=2pt] {b};
+   \node (c) at (2.5,-1.5) [minimum size=2pt] {c};
+   
+   \node (ad) at (5,2.5) [minimum size=2pt] {ad};
+    \node (be) at (5,2) [minimum size=2pt] {be};
+   \node (ae) at (5,1) [minimum size=2pt] {ae};
+    \node (bf) at (5,0.5) [minimum size=2pt] {bf};
+   \node (bd) at (5,0) [minimum size=2pt] {bd};
+    \node (ch) at (5,-1) [minimum size=2pt] {ch};
+   \node (ce) at (5,-2) [minimum size=2pt] {ce};
+    \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
+   
+   \node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
+    \node (bea) at (7.5,2) [minimum size=2pt] {bea};
+   \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
+   \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
+   
+   \node (adad) at (10,2.5) [minimum size=2pt] {adad};
+    \node (bead) at (10,2) [minimum size=2pt] {bead};
+  
+  
+    
+     \draw[->] (em) -- (a);
+     \draw[->] (em) -- (b);
+     \draw[->] (em) -- (c);
+     
+     \draw[->] (a) -- (ad);
+     \draw[->] (b) -- (be);
+     \draw[->] (a) -- (ae);
+     \draw[->] (b) -- (bf);
+     \draw[->] (b) -- (bd);
+     \draw[->] (c) -- (ch);
+     \draw[->] (c) -- (ce);
+     \draw[->] (c) -- (cf);
+     
+     \draw[->] (ad) -- (ada);
+     \draw[->] (be) -- (bea);
+     \draw[->] (ch) -- (chi);
+     \draw[->] (ch) -- (chg);
+     
+     \draw[->] (ada) -- (adad);
+     \draw[->] (bea) -- (bead);
+     
+     
+     \end{tikzpicture}
+	}
+
+	\only<2>{
+	\begin{tikzpicture}
+  
+  \draw [fill=pink] (0,0) ellipse (0.3 and 0.3);  
+  \draw [fill=pink] (2.5,1.5) ellipse (0.4 and 1);
+\draw [fill=pink] (2.5,-1.5) ellipse (0.3 and 0.3);  
+  \draw [fill=pink] (5,2.25) ellipse (0.4 and 0.7);
+\draw [fill=pink] (5,0.5) ellipse (0.4 and 1);
+  \draw [fill=pink] (5,-1) ellipse (0.3 and 0.3);  
+  \draw [fill=pink] (5,-2.25) ellipse (0.4 and 0.7);
+\draw [fill=pink] (7.5,2.25) ellipse (0.5 and 0.7);  
+  \draw [fill=pink] (7.5,-0.75) ellipse (0.5 and 0.7);
+\draw [fill=pink] (10,2.25) ellipse (0.5 and 0.7);  
+  
+  
+  
+  \node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
+   
+   \node (a) at (2.5,2) [minimum size=2pt] {a};
+    \node (b) at (2.5,1) [minimum size=2pt] {b};
+   \node (c) at (2.5,-1.5) [minimum size=2pt] {c};
+   
+   \node (ad) at (5,2.5) [minimum size=2pt] {ad};
+    \node (be) at (5,2) [minimum size=2pt] {be};
+   \node (ae) at (5,1) [minimum size=2pt] {ae};
+    \node (bf) at (5,0.5) [minimum size=2pt] {bf};
+   \node (bd) at (5,0) [minimum size=2pt] {bd};
+    \node (ch) at (5,-1) [minimum size=2pt] {ch};
+   \node (ce) at (5,-2) [minimum size=2pt] {ce};
+    \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
+   
+   \node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
+    \node (bea) at (7.5,2) [minimum size=2pt] {bea};
+   \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
+   \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
+   
+   \node (adad) at (10,2.5) [minimum size=2pt] {adad};
+    \node (bead) at (10,2) [minimum size=2pt] {bead};
+  
+  
+    
+     \draw[->] (em) -- (a);
+     \draw[->] (em) -- (b);
+     \draw[->] (em) -- (c);
+     
+     \draw[->] (a) -- (ad);
+     \draw[->] (b) -- (be);
+     \draw[->] (a) -- (ae);
+     \draw[->] (b) -- (bf);
+     \draw[->] (b) -- (bd);
+     \draw[->] (c) -- (ch);
+     \draw[->] (c) -- (ce);
+     \draw[->] (c) -- (cf);
+     
+     \draw[->] (ad) -- (ada);
+     \draw[->] (be) -- (bea);
+     \draw[->] (ch) -- (chi);
+     \draw[->] (ch) -- (chg);
+     
+     \draw[->] (ada) -- (adad);
+     \draw[->] (bea) -- (bead);
+     
+     
+     \end{tikzpicture}
+	}
+	%\includegraphics<2>[width=\textwidth, height=0.7\textheight]{immagini/classi}
+	\includegraphics<6>[width=1.3\textwidth, height=0.6\textheight]{sigmatau}
+	\only<3-5>{
+	\begin{tikzpicture}
+  
+  \draw [fill=pink] (0,0) ellipse (0.3 and 0.3);  
+  \draw [fill=pink] (2.5,1.5) ellipse (0.4 and 1);
+\draw [fill=pink] (2.5,-1.5) ellipse (0.3 and 0.3);  
+  \draw [fill=pink] (5,2.25) ellipse (0.4 and 0.7);
+\draw [fill=pink] (5,0.5) ellipse (0.4 and 1);
+  \draw [fill=pink] (5,-1) ellipse (0.3 and 0.3);  
+  \draw [fill=pink] (5,-2.25) ellipse (0.4 and 0.7);
+\draw [fill=pink] (7.5,2.25) ellipse (0.5 and 0.7);  
+  \draw [fill=pink] (7.5,-0.75) ellipse (0.5 and 0.7);
+\draw [fill=pink] (10,2.25) ellipse (0.5 and 0.7);  
+  
+  
+  \tnode{em}{0}{0}{$\epsilon$}
+  %\node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
+   
+   \tnode{a}{2.5}{2}{a}
+   %\node (a) at (2.5,2) [minimum size=2pt] {a};
+    \node (b) at (2.5,1) [minimum size=2pt] {b};
+   \tnode{c}{2.5}{-1.5}{c}
+   %\node (c) at (2.5,-1.5) [minimum size=2pt] {c};
+   
+   \tnode{ad}{5}{2.5}{ad}
+   %\node (ad) at (5,2.5) [minimum size=2pt] {ad};
+    \node (be) at (5,2) [minimum size=2pt] {be};
+   \node (ae) at (5,1) [minimum size=2pt] {ae};
+    \node (bf) at (5,0.5) [minimum size=2pt] {bf};
+   \node (bd) at (5,0) [minimum size=2pt] {bd};
+    \tnode{ch}{5}{-1}{ch}
+    %\node (ch) at (5,-1) [minimum size=2pt] {ch};
+   \node (ce) at (5,-2) [minimum size=2pt] {ce};
+    \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
+   
+   \tnode{ada}{7.5}{2.5}{ada}
+   %\node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
+    \node (bea) at (7.5,2) [minimum size=2pt] {bea};
+   \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
+   \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
+   
+   \tnode{adad}{10}{2.5}{adad}
+   %\node (adad) at (10,2.5) [minimum size=2pt] {adad};
+    \node (bead) at (10,2) [minimum size=2pt] {bead};
+  
+  
+    
+     \draw[->,color=red] (em_u) -- (a_u);
+     \draw[->,color=blue] (em_d) -- (a_d);
+     \draw[->,color=blue] (em) -- (b);
+     \draw[->,color=red] (em_u) -- (c_u);
+     \draw[->,color=blue] (em_d) -- (c_d);
+     
+     \draw[->,color=red] (a_u) -- (ad_u);
+     \draw[->,color=blue] (a_d) -- (ad_d);
+     \draw[->,color=blue] (b) -- (be);
+     \draw[->] (a) -- (ae);
+     \draw[->] (b) -- (bf);
+     \draw[->] (b) -- (bd);
+     \draw[->,color=red] (c_u) -- (ch_u);
+     \draw[->,color=blue] (c_d) -- (ch_d);
+     \draw[->] (c) -- (ce);
+     \draw[->] (c) -- (cf);
+     
+     \draw[->,color=red] (ad_u) -- (ada_u);
+     \draw[->,color=blue] (ad_d) -- (ada_d);
+     \draw[->,color=blue] (be) -- (bea);
+     \draw[->] (ch) -- (chi);
+     \draw[->] (ch) -- (chg);
+     
+     \draw[->,color=red] (ada_u) -- (adad_u);
+     \draw[->,color=blue] (ada_d) -- (adad_d);
+     \draw[->,color=blue] (bea) -- (bead);
+     
+     
+     \end{tikzpicture}
+	}
 
 \end{frame}
 
