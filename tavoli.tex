@@ -105,13 +105,17 @@
 	 
 	 \only<2->{\node (st_1) at (10,-0.5) [minimum size=2pt, scale=1.5] {$*_1$};}
  	 \only<3->{\node (st_2) at (7,-0.5) [minimum size=2pt, scale=1.5] {$*_2$};}
-% 	 \only<3->{\node (ri_1) at (4.5,-5.5) [minimum size=2pt, scale=1.5] {$n_1$};}
-% 	 \only<4->{\node (ri_2) at (4.5,-0.5) [minimum size=2pt, scale=1.5] {$n_2$};}
-% 	 
-% 	  \only<2->{\draw[->] [out=80,in=280] (st_1) to (st_2);}
-% 	  \only<3->{\draw[->] [out=250,in=30] (st_2) to (ri_1);}
-% 	  \only<4->{\draw[->] [out=80,in=280] (ri_1) to (ri_2);}
-	\end{tikzpicture}
+	 \only<4->{\node (ri_2) at (7,-3.5) [minimum size=2pt, scale=1.5] {$n_2$};}
+ 	 \only<5->{\node (st_3) at (4,-0.5) [minimum size=2pt, scale=1.5] {$*_3$};}
+	 \only<6->{\node (ri_3) at (4,-3.5) [minimum size=2pt, scale=1.5] {$n_3$};}
+ 	 \only<7->{\node (ri_1) at (10,-3.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+ 	 
+	  \only<3->{\draw[->] [out=250,in=280] (st_1) to (st_2);}
+	  \only<4->{\draw[->] [out=250,in=30] (st_2) to (ri_2);}
+	  \only<5->{\draw[->] [out=80,in=280] (ri_2) to (st_3);}
+	  \only<6->{\draw[->] [out=250,in=110] (st_3) to (ri_3);}
+	  \only<7->{\draw[->] [out=30,in=150] (ri_3) to (ri_1);}
+	  \end{tikzpicture}
 
 	
 	
