@@ -545,7 +545,7 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
   
   
     
-     \draw[->] (em) -- (a);
+     \draw[->] (em) -- (a) ;
      \draw[->] (em) -- (b);
      \draw[->] (em) -- (c);
      
@@ -618,32 +618,32 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
   
   
     
-     \draw[->,color=red] (em_u) -- (a_u);
-     \draw[->,color=blue] (em_d) -- (a_d);
-     \draw[->,color=blue] (em) -- (b);
-     \draw[->,color=red] (em_u) -- (c_u);
-     \draw[->,color=blue] (em_d) -- (c_d);
+     \draw[->,color=red] (em_u) -- (a_u) node [above, midway] {$\sigma$};
+     \draw[->,color=blue] (em_d) -- (a_d) node [below, midway] {$\tau$};
+     \draw[->,color=blue] (em_d) -- (b) node [below, midway] {$\tau$};
+     \draw[->,color=red] (em_u) -- (c_u) node [above, midway] {$\sigma$};
+     \draw[->,color=blue] (em_d) -- (c_d) node [below, midway] {$\tau$};
      
-     \draw[->,color=red] (a_u) -- (ad_u);
-     \draw[->,color=blue] (a_d) -- (ad_d);
-     \draw[->,color=blue] (b) -- (be);
+     \draw[->,color=red] (a_u) -- (ad_u) node [above, midway] {$\sigma$};
+     \draw[->,color=blue] (a_d) -- (ad_d) node [below, midway] {$\tau$};
+     \draw[->,color=blue] (b) -- (be) node [below, midway] {$\tau$};
      \draw[->] (a) -- (ae);
      \draw[->] (b) -- (bf);
      \draw[->] (b) -- (bd);
-     \draw[->,color=red] (c_u) -- (ch_u);
-     \draw[->,color=blue] (c_d) -- (ch_d);
+     \draw[->,color=red] (c_u) -- (ch_u) node [above, midway] {$\sigma$};
+     \draw[->,color=blue] (c_d) -- (ch_d) node [below, midway] {$\tau$};
      \draw[->] (c) -- (ce);
      \draw[->] (c) -- (cf);
      
-     \draw[->,color=red] (ad_u) -- (ada_u);
-     \draw[->,color=blue] (ad_d) -- (ada_d);
-     \draw[->,color=blue] (be) -- (bea);
+     \draw[->,color=red] (ad_u) -- (ada_u) node [above, midway] {$\sigma$};
+     \draw[->,color=blue] (ad_d) -- (ada_d) node [below, midway] {$\tau$};
+     \draw[->,color=blue] (be) -- (bea) node [below, midway] {$\tau$};
      \draw[->] (ch) -- (chi);
      \draw[->] (ch) -- (chg);
      
-     \draw[->,color=red] (ada_u) -- (adad_u);
-     \draw[->,color=blue] (ada_d) -- (adad_d);
-     \draw[->,color=blue] (bea) -- (bead);
+     \draw[->,color=red] (ada_u) -- (adad_u) node [above, midway] {$\sigma$};
+     \draw[->,color=blue] (ada_d) -- (adad_d) node [below, midway] {$\tau$};
+     \draw[->,color=blue] (bea) -- (bead) node [below, midway] {$\tau$};
      
      
      \end{tikzpicture}
