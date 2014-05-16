@@ -656,12 +656,24 @@ Estendiamo la relazione $\approx$ alle strategie; poniamo:
 	
 	Come rappresentiamo i giochi (il tavolo insomma)
 	
-	\begin{figure}
-		\Huge
-		\centering
-		\def\svgwidth{0.32\columnwidth}
-		\input{immagini/tavolo_a.pdf_tex}
-	\end{figure}
+	\begin{tikzpicture}
+	 \node (inv) at (0,0) [minimum size=2pt] {};
+	 \draw [fill=blue, opacity=.5] (7,-5) rectangle (3,-1);
+	 \node (A) at (5,-3) [minimum size=2pt, scale=4] {A};
+	 \node (P) at (3.5,-4.5) [minimum size=2pt, scale=2] {P};
+	 \node (O) at (3.5,-1.5) [minimum size=2pt, scale=2] {O};
+	\end{tikzpicture}
+
+	
+	
+	
+	
+% 	\begin{figure}
+% 		\Huge
+% 		\centering
+% 		\def\svgwidth{0.32\columnwidth}
+% 		\input{immagini/tavolo_a.pdf_tex}
+% 	\end{figure}
 	
 \end{frame}
 
