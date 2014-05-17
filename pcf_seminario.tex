@@ -22,11 +22,8 @@
 \newcommand{\tnode}[4]{\node (#1_u) at (#2,#3+0.1) [minimum size=2pt, opacity=0]{#4};
 		       \node (#1_d) at (#2,#3-0.1) [minimum size=2pt, opacity=0] {#4};
 		       \node (#1) at (#2,#3) [minimum size=2pt] {#4};}
-\newcommand{\table}[]{\draw [fill=, opacity=.5] (\x+2,-3) rectangle (\x,-1);
-											\node (A\x) at (\x+1,-2) [minimum size=2pt, scale=2] {A};
-											\node (P\x) at (\x+0.3,-1.3) [minimum size=2pt, scale=1.5] {P};
-											\node (O\x) at (\x+0.3,-2.7) [minimum size=2pt, scale=1.5] {O};
-}
+		
+		
 
 % immagini
 \graphicspath{{immagini/}}
@@ -857,7 +854,7 @@
 	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_B}$}\only<3->{$*^O_B$}}
 	\onslide<3->{\only<-3>{$\textcolor{red}{*^P_A}$}\only<4->{$*^P_A$}}
 	\onslide<4->{\only<-4>{$\textcolor{red}{n^O_A}$}\only<5->{$n^O_A$}}
-	\onslide<5->{\only<-5->{$\textcolor{red}{m^P_B}$}}
+	\onslide<5->{\only<-5>{$\textcolor{red}{m^P_B}$}}
 	
 	
 	
@@ -1275,6 +1272,51 @@
 	(Exodd) un paio? Sta tutto qui il difficile!
 	
 \end{frame}
+
+
+
+\begin{frame}
+	
+	\frametitle{Interpretazione dei termini}
+	
+	Per poter usare il teorema prima dobbiamo fissare la denotazione dei giochi e delle costanti
+	Indichiamo con $\llbracket \cdot \rrbracket$ la denotazione
+	
+	\begin{block}{Tipi}
+		
+		La denotazione di un tipo è un gioco
+		
+		\begin{itemize}
+			\item $\llbracket Bool \rrbracket = Bool$
+			\item $\llbracket Nat \rrbracket = Nat$
+			\item $\llbracket S \times T \rrbracket = \llbracket S \rrbracket \& \llbracket T \rrbracket$
+			\item $\llbracket S \rightarrow T \rrbracket = \llbracket S \rrbracket \Rightarrow \llbracket T \rrbracket$
+		\end{itemize}
+	\end{block}
+	
+	
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	\begin{block}{Termini}
+		
+		La denotazione di un termine di tipo $T$ è una strategia di $1\rightarrow T$
+		
+		\begin{itemize}
+			\item $\llbracket true : Bool \rrbracket = \sigma_{tt} : Bool$
+			\item $\llbracket false : Bool \rrbracket = \sigma_{ff} : Bool$
+			\item $\llbracket n : Nat \rrbracket = \sigma_n : Nat$
+		\end{itemize}
+
+	\end{block}
+
+	
+\end{frame}
+
+
 
 
 
