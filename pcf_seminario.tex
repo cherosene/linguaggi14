@@ -660,26 +660,26 @@
 
 % tavolo e carte
 \begin{frame}
-	
-	Come rappresentiamo i giochi (il tavolo insomma)
-	
-	\begin{tikzpicture}
-	 \node (inv) at (0,0) [minimum size=2pt] {};
-	 \node (inv2) at (6,-6) [minimum size=2pt, scale=1.5] {};
-	 \draw [fill=blue, opacity=.5] (7,-5) rectangle (3,-1);
-	 \node (A) at (5,-3) [minimum size=2pt, scale=4] {A};
-	 \node (P) at (3.5,-4.5) [minimum size=2pt, scale=2.5] {P};
-	 \node (O) at (3.5,-1.5) [minimum size=2pt, scale=2.5] {O};
-	 
-	 \only<2-> {\node (st_1) at (6,-0.5) [minimum size=2pt, scale=1.5] {$*_1$};}
-	 \only<3-> {\node (st_2) at (6,-5.5) [minimum size=2pt, scale=1.5] {$*_2$};}
-	 \only<4->{\node (ri_1) at (4.5,-0.5) [minimum size=2pt, scale=1.5] {$n_2$};}
-	 \only<5->{\node (ri_2) at (4.5,-5.5) [minimum size=2pt, scale=1.5] {$n_1$};}
-	 
-	  \only<3->{\draw[->] [out=280,in=80] (st_1) to (st_2);}
-	  \only<4->{\draw[->] [out=110,in=300] (st_2) to (ri_1);}
-	  \only<5->{\draw[->] [out=280,in=80] (ri_1) to (ri_2);}
-	\end{tikzpicture}
+% 	
+% 	Come rappresentiamo i giochi (il tavolo insomma)
+% 	
+% 	\begin{tikzpicture}
+% 	 \node (inv) at (0,0) [minimum size=2pt] {};
+% 	 \node (inv2) at (6,-6) [minimum size=2pt, scale=1.5] {};
+% 	 \draw [fill=blue, opacity=.5] (7,-5) rectangle (3,-1);
+% 	 \node (A) at (5,-3) [minimum size=2pt, scale=4] {A};
+% 	 \node (P) at (3.5,-4.5) [minimum size=2pt, scale=2.5] {P};
+% 	 \node (O) at (3.5,-1.5) [minimum size=2pt, scale=2.5] {O};
+% 	 
+% 	 \only<2-> {\node (st_1) at (6,-0.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+% 	 \only<3-> {\node (st_2) at (6,-5.5) [minimum size=2pt, scale=1.5] {$*_2$};}
+% 	 \only<4->{\node (ri_1) at (4.5,-0.5) [minimum size=2pt, scale=1.5] {$n_2$};}
+% 	 \only<5->{\node (ri_2) at (4.5,-5.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+% 	 
+% 	  \only<3->{\draw[->] [out=280,in=80] (st_1) to (st_2);}
+% 	  \only<4->{\draw[->] [out=110,in=300] (st_2) to (ri_1);}
+% 	  \only<5->{\draw[->] [out=280,in=80] (ri_1) to (ri_2);}
+% 	\end{tikzpicture}
 
 \end{frame}
 
