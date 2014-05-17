@@ -16,10 +16,17 @@
 
 \newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
 \newcommand{\limp}{\mathbin{{-}\mkern-3.5mu{\circ}}}
-\newcommand{\tnode}[4]{\node (#1_u) at (#2,#3+0.1) [minimum size=2pt, opacity=0] 		       {#4};
+
+
+%%%% comandi tikz
+\newcommand{\tnode}[4]{\node (#1_u) at (#2,#3+0.1) [minimum size=2pt, opacity=0]{#4};
 		       \node (#1_d) at (#2,#3-0.1) [minimum size=2pt, opacity=0] {#4};
 		       \node (#1) at (#2,#3) [minimum size=2pt] {#4};}
-
+\newcommand{\table}[]{\draw [fill=, opacity=.5] (\x+2,-3) rectangle (\x,-1);
+											\node (A\x) at (\x+1,-2) [minimum size=2pt, scale=2] {A};
+											\node (P\x) at (\x+0.3,-1.3) [minimum size=2pt, scale=1.5] {P};
+											\node (O\x) at (\x+0.3,-2.7) [minimum size=2pt, scale=1.5] {O};
+}
 
 % immagini
 \graphicspath{{immagini/}}
@@ -761,10 +768,12 @@
 	\centering
 	\huge
 	
-	\only<2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}
-	\only<3>{$\textcolor{red}{n^P_A}$}\only<4->{$n^P_A$}
-	\only<4>{$\textcolor{red}{*^O_B}$}\only<5->{$*^O_B$}
-	\only<5>{$\textcolor{red}{m^P_B}$}
+	
+	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}}
+	\onslide<3->{\only<-3>{$\textcolor{red}{n^P_A}$}\only<4->{$n^P_A$}}
+	\onslide<4->{\only<-4>{$\textcolor{red}{*^O_B}$}\only<5->{$*^O_B$}}
+	\onslide<5->{\only<-5>{$\textcolor{red}{m^P_B}$}}
+
 	
 	
 	}
@@ -844,10 +853,12 @@
 	\centering
 	\huge
 	
-	\only<2>{$\textcolor{red}{*^O_B}$}\only<3->{$*^O_B$}
-	\only<3>{$\textcolor{red}{*^P_A}$}\only<4->{$*^P_A$}
-	\only<4>{$\textcolor{red}{n^O_A}$}\only<5->{$n^O_A$}
-	\only<5->{$\textcolor{red}{m^P_B}$}
+	
+	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_B}$}\only<3->{$*^O_B$}}
+	\onslide<3->{\only<-3>{$\textcolor{red}{*^P_A}$}\only<4->{$*^P_A$}}
+	\onslide<4->{\only<-4>{$\textcolor{red}{n^O_A}$}\only<5->{$n^O_A$}}
+	\onslide<5->{\only<-5->{$\textcolor{red}{m^P_B}$}}
+	
 	
 	
 	}
@@ -924,8 +935,10 @@
 	\centering
 	\huge
 	
-	\only<2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}
-	\only<3>{$\textcolor{red}{n^P_A}$}
+
+	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}}
+	\onslide<3->{\only<-3>{$\textcolor{red}{n^P_A}$}}
+
 	
 	
 	}
@@ -975,12 +988,13 @@
 		
 		&
 		%%%%%%% TAVOLO 2
-		
+		\only<8>{$\textcolor{red}{*^O_3}$}\only<9->{$*^O_3$}
 		&
 		%%%%%%% TAVOLO 3
-		
+		\only<4>{$\textcolor{red}{*^O_2}$}\only<5->{$*^O_2$}
 		&
 		%%%%%%% TAVOLO 4
+		\only<2>{$\textcolor{red}{*^O_1}$}\only<3->{$*^O_1$}\onslide<6->{\only<-6>{$\textcolor{red}{*^O_1}$}\only<7->{$*^O_1$}}
 		
 		\\
 		
@@ -1018,17 +1032,32 @@
 		
 		&
 		%%%%%%% TAVOLO 2
-		
+		\only<9>{$\textcolor{red}{n^P_3}$}
 		&
 		%%%%%%% TAVOLO 3
-		
+		\only<5>{$\textcolor{red}{n^P_2}$}\only<6->{$n^P_2$}
 		&
 		%%%%%%% TAVOLO 4
-		
+		\only<3>{$\textcolor{red}{n^P_1}$}\only<4->{$n^P_1$}\onslide<7->{\only<-7>{$\textcolor{red}{n^P_1}$}\only<8->{$n^P_1$}}
 		
 	\end{tabular}
 	
-
+	
+	{
+	\centering
+	\huge
+	
+	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_1}$}\only<3->{$*^O_1$}}
+	\onslide<3->{\only<-3>{$\textcolor{red}{n^P_1}$}\only<4->{$n^P_1$}}
+	\onslide<4->{\only<-4>{$\textcolor{red}{*^O_2}$}\only<5->{$*^O_2$}}
+	\onslide<5->{\only<-5>{$\textcolor{red}{n^P_2}$}\only<6->{$n^P_2$}}
+	\onslide<6->{\only<-6>{$\textcolor{red}{*^O_1}$}\only<7->{$*^O_1$}}
+	\onslide<7->{\only<-7>{$\textcolor{red}{n^P_1}$}\only<8->{$n^P_1$}}
+	\onslide<8->{\only<-8>{$\textcolor{red}{*^O_3}$}\only<9->{$*^O_3$}}
+	\onslide<9->{\only<-9>{$\textcolor{red}{n^P_3}$}}
+	
+	}
+	
 	
 \end{frame}
 

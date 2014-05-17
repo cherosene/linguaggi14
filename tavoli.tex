@@ -13,6 +13,7 @@
 \usepackage{subcaption}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
+\usepackage[usenames,dvipsnames]{color}
 
 \newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
 \newcommand{\limp}{\mathbin{{-}\mkern-3.5mu{\circ}}}
@@ -94,7 +95,7 @@
 	 \node (inv) at (0,0) [minimum size=2pt] {};
 	 \node (inv2) at (11,-4) [minimum size=2pt] {};
 	 \foreach \x in {0,3,6} { 
-	  \draw [fill=blue, opacity=.5] (\x+2,-3) rectangle (\x,-1);
+	  \draw [fill=SkyBlue] (\x+2,-3) rectangle (\x,-1);
 	  \node (A\x) at (\x+1,-2) [minimum size=2pt, scale=2] {A};
 	  \node (P\x) at (\x+0.3,-1.3) [minimum size=2pt, scale=1.5] {P};
  	  \node (O\x) at (\x+0.3,-2.7) [minimum size=2pt, scale=1.5] {O};
