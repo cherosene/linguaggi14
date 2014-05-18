@@ -393,7 +393,6 @@
 \end{frame}
 
 % game tree
-% 
  \begin{frame}
 % 
 % 	
@@ -694,19 +693,19 @@
 	\begin{itemize}
 		\item $M_{A\otimes B}=M_A \coprod M_B$
 		\item $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
-		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che:
-		\begin{itemize}
-			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
-			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
-		\end{itemize}
+		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+		%\begin{itemize}
+			
+		%	\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
+		%\end{itemize}
 		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
 	
 	\begin{block}{Proprietà}
 		\begin{itemize}
-			\item Solamente il giocatore $O$ può cambiare componente di gioco
 			\item Il prodotto tensore è associativo
-			\item Esiste un elemento neutro $I$
+			\item Esiste un elemento neutro $I$, ossia il gioco vuoto
+			\item Solamente il giocatore $O$ può cambiare componente di gioco
 		\end{itemize}
 		
 	\end{block}
@@ -770,7 +769,6 @@
 \end{frame}
 
 
-
 % gioco implicazione lineare
 \begin{frame}
 	
@@ -798,7 +796,6 @@
 	\end{block}
 	
 \end{frame}
-
 
 
 \begin{frame}[t]
@@ -1101,34 +1098,37 @@
 
 
 % categoria dei giochi
-\begin{frame}
-	
-	\frametitle{La categoria dei giochi $\mathcal{G}$}
-	
-	Definiamo $\mathcal{G}$ la categoria tale che:
-	\begin{itemize}
-		\item $\mathcal{G}_0$ sono i giochi
-		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B | \sigma \approx \sigma \} / \approx$
-		\item Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
-	\end{itemize}
-	
-	In particolare $\mathcal{G}$ è dotata di:
-	\begin{itemize}
-		\item un oggetto finale ($1$)
-		\item è una categoria monoidale (è definito $\otimes$ bifuntore associativo e con elemento neutro)
-		\item è una categoria autonoma (per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
-		\item NON è una categoria cartesiana chiusa (mancano i prodotti)
-	\end{itemize}
-	
-\end{frame}
+% \begin{frame}
+% 	
+% 	\frametitle{La categoria dei giochi $\mathcal{G}$}
+% 	
+% 	Definiamo $\mathcal{G}$ la categoria tale che:
+% 	\begin{itemize}
+% 		\item $\mathcal{G}_0$ sono i giochi
+% 		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B | \sigma \approx \sigma \} / \approx$
+% 		\item Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
+% 	\end{itemize}
+% 	
+% 	In particolare $\mathcal{G}$ è dotata di:
+% 	\begin{itemize}
+% 		\item un oggetto finale ($1$)
+% 		\item è una categoria monoidale (è definito $\otimes$ bifuntore associativo e con elemento neutro)
+% 		\item è una categoria autonoma (per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
+% 		\item NON è una categoria cartesiana chiusa (mancano i prodotti)
+% 	\end{itemize}
+% 	
+% \end{frame}
 
 % categoria di co-Kleisli
 \begin{frame}
 
-	Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ rispetto a $!$; in particolare:
+	%Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ rispetto a $!$; in particolare:
+	Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} dei giochi rispetto a $!$; in particolare:
 	\begin{itemize}
-		\item $K_!(\mathcal{G})_0 = \mathcal{G}_0$
-		\item Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
+		%\item $K_!(\mathcal{G})_0 = \mathcal{G}_0$
+		\item $K_!(\mathcal{G})_0$ sono i giochi
+		%\item Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
+		\item Dati due giochi $A,B$, i morfismi $Mor_{K_!(\mathcal{G})}(A,B)$ sono $\{ \sigma \text{ strategia di } A \Rightarrow B \; \equiv \; !A\limp B \; | \; \sigma \approx \sigma \} / \approx$
 		\item Date due strategie $\sigma$ e $\tau$, $\tau \circ \sigma = \sigma \fatsemi \tau = \sigma ^\dag ; \tau$
 		\item Dato un gioco $A$, il morfismo identico è $der_A$
 	\end{itemize}

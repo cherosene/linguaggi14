@@ -15,7 +15,7 @@
 \usetikzlibrary{arrows,automata}
 \newcommand{\eqobs}{\stackrel{\text{obs}}{=}}
 \newcommand{\limp}{\mathbin{{-}\mkern-3.5mu{\circ}}}
-\newcommand{\tnode}[4]{\node (#1_u) at (#2,#3+0.1) [minimum size=2pt, opacity=0] 		       {#4};
+\newcommand{\tnode}[4]{\node (#1_u) at (#2,#3+0.1) [minimum size=2pt, opacity=0] {#4};
 		       \node (#1_d) at (#2,#3-0.1) [minimum size=2pt, opacity=0] {#4};
 		       \node (#1) at (#2,#3) [minimum size=2pt] {#4};}
 
@@ -53,8 +53,10 @@
 
 % tavolo e carte
 \begin{frame}
+
+\frametitle{Tavolo di Gioco}
 	
-	Come rappresentiamo i giochi (il tavolo insomma)
+	Possiamo rappresentare partite accettabili tramite il \emph{Tavolo di Gioco}
 	
 	\begin{tikzpicture}
 	 \node (inv) at (0,0) [minimum size=2pt] {};
@@ -77,8 +79,7 @@
 	  \only<5->{\draw[->] [out=280,in=80] (ri_1) to (ri_2);}
 	\end{tikzpicture}
 
-	
-	
+	\only<6> {La rappresentazione con i tavoli è utile per comprendere le operazioni tra giochi}
 	
 \end{frame}
 
