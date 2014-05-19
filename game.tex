@@ -10,6 +10,7 @@
 \usepackage{stmaryrd}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{xcolor}
 %\usepackage{subcaption}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
@@ -72,7 +73,7 @@
 		\item $O$ indica il giocatore "opponent" e $P$ il giocatore "player"
 		\item $Q$ indica una domanda e $A$ una risposta
 		\end{itemize}
-	\item<4-> Una \textit{partita} è una stringa di mosse tale che:
+	\item<4-> Una \textit{partita} è una stringa finita di mosse tale che:
 		\begin{enumerate}
 		\item La prima mossa è di $O$
 		\item $P$ e $O$ si alternano
@@ -98,7 +99,13 @@
 		\begin{itemize}
 		         	\item $M_{A}=\{*_1,*_2,n_1,n_2\}$
 		           	\item $\lambda_{A}= \{ (*_1,OQ) ;$ $ (*_2,PQ) ; (n_1,PA) ; (n_2,OA) \}$
-					\item $P_{A}= \{ \epsilon ,$ $ *_1 ,\; *_1n_1, $ $ *_1*_2,\; *_1*_2n_2, \; *_1*_2n_2n_1 \}$
+					\item $P_{A}= \{ 
+					\only<3>{\textcolor{red}}{\epsilon} ,$
+					$ \only<4>{\textcolor{red}}{*_1} ,
+					\; *_1n_1, $ 
+					$ \only<5>{\textcolor{red}}{*_1*_2},
+					\; \only<6>{\textcolor{red}}{*_1*_2n_2}, 
+					\; \only<7>{\textcolor{red}}{*_1*_2n_2n_1} \}$
 					\item $\approx_{A} = id_{A}$        
 		\end{itemize}}
 	\end{column}
@@ -128,7 +135,8 @@
 	\end{column}
 	\end{columns}
 
-	%\only<8> {La rappresentazione con i tavoli è utile per comprendere le operazioni tra giochi}
+	\only<8> {\centering
+	Solo $P$ può rispondere alle domande di $O$, e viceversa}
 	
 \end{frame}
 
@@ -139,292 +147,300 @@
 
 	\frametitle{Strategie}
 	
-	Una strategia $\sigma$ è un insieme di partite di lunghezza pari (l'ultima mossa è di $P$) tali che:
+	Una \textbf{strategia} $\sigma$ è un insieme di partite di lunghezza pari (l'ultima mossa è di $P$) tali che:
 	\begin{itemize}
-		\item $\sigma$ è prefix-closed
-		\item le strategie sono history free, cioè
+		\item<2-> $\sigma$ sia prefix-closed sulle partite di lunghezza pari
+		\item<3-> $\sigma$ sia \textit{history free}, cioè
 		\begin{itemize}
 			\item $sab , tac \in \sigma \Rightarrow b=c$
 			\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
 		\end{itemize}
-
-% 	\item $\sigma$ è prefix-closed
-% 	\item $sab , tac \in \sigma \Rightarrow b=c$ (history free)
-% 	\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
 	\end{itemize}
 	
-	\begin{exampleblock}{Albero di Gioco}
- 
-	Prendiamo un gioco, il cui set di mosse $M$ è suddiviso dalla funzione di labelling $\lambda$ in
-	  \begin{gather*}
-	      M_{QO}=\{a,b,c\}, \quad  M_{AO}=\{g,i\} \\
-	      M_{QP}=\{h\},    \quad  M_{AP}=\{d,e,f\}
-          \end{gather*}  
-	Il set di partite valide $P$, la relazione di equivalenza $\approx$, e le strategie del gioco si possono rappresentare in maniera semplice tramite il \emph{Game Tree}
-	\end{exampleblock}
+	
+	\onslide<4> 
+	La condizione di history free, rende le strategie esprimibili tramite una \textit{funzione parziale} a loro associata:
+	\begin{gather*}
+		    f_\sigma : M^O \rightharpoonup M^P\\
+	            sab \in \sigma \Rightarrow f_\sigma(a)=b
+	\end{gather*}
+
+
+	
+	
+	
+% 	\begin{exampleblock}{Albero di Gioco}
+%  
+% 	Prendiamo un gioco, il cui set di mosse $M$ è suddiviso dalla funzione di labelling $\lambda$ in
+% 	  \begin{gather*}
+% 	      M_{QO}=\{a,b,c\}, \quad  M_{AO}=\{g,i\} \\
+% 	      M_{QP}=\{h\},    \quad  M_{AP}=\{d,e,f\}
+%           \end{gather*}  
+% 	Il set di partite valide $P$, la relazione di equivalenza $\approx$, e le strategie del gioco si possono rappresentare in maniera semplice tramite il \emph{Game Tree}
+% 	\end{exampleblock}
 	
 	
 \end{frame}
-
-% game tree
-\begin{frame}
- 
- 	
- 	
- 	\only<1>{	\begin{tikzpicture}
-   
-   \node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
-    
-    \node (a) at (2.5,2) [minimum size=2pt] {a};
-     \node (b) at (2.5,1) [minimum size=2pt] {b};
-    \node (c) at (2.5,-1.5) [minimum size=2pt] {c};
-    
-    \node (ad) at (5,2.5) [minimum size=2pt] {ad};
-     \node (be) at (5,2) [minimum size=2pt] {be};
-    \node (ae) at (5,1) [minimum size=2pt] {ae};
-     \node (bf) at (5,0.5) [minimum size=2pt] {bf};
-    \node (bd) at (5,0) [minimum size=2pt] {bd};
-     \node (ch) at (5,-1) [minimum size=2pt] {ch};
-    \node (ce) at (5,-2) [minimum size=2pt] {ce};
-     \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
-    
-    \node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
-     \node (bea) at (7.5,2) [minimum size=2pt] {bea};
-    \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
-    \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
-    
-    \node (adad) at (10,2.5) [minimum size=2pt] {adad};
-     \node (bead) at (10,2) [minimum size=2pt] {bead};
-   
-   
-     
-      \draw[->] (em) -- (a);
-      \draw[->] (em) -- (b);
-      \draw[->] (em) -- (c);
-      
-      \draw[->] (a) -- (ad);
-      \draw[->] (b) -- (be);
-      \draw[->] (a) -- (ae);
-      \draw[->] (b) -- (bf);
-      \draw[->] (b) -- (bd);
-      \draw[->] (c) -- (ch);
-      \draw[->] (c) -- (ce);
-      \draw[->] (c) -- (cf);
-      
-      \draw[->] (ad) -- (ada);
-      \draw[->] (be) -- (bea);
-      \draw[->] (ch) -- (chi);
-      \draw[->] (ch) -- (chg);
-      
-      \draw[->] (ada) -- (adad);
-      \draw[->] (bea) -- (bead);
-      
-      
-      \end{tikzpicture}	}
- 
- 	\only<2>{\begin{tikzpicture}
-   
-   \draw [fill=pink] (0,0) ellipse (0.3 and 0.3);  
-   \draw [fill=pink] (2.5,1.5) ellipse (0.4 and 1);
- \draw [fill=pink] (2.5,-1.5) ellipse (0.3 and 0.3);  
-   \draw [fill=pink] (5,2.25) ellipse (0.4 and 0.7);
- \draw [fill=pink] (5,0.5) ellipse (0.4 and 1);
-   \draw [fill=pink] (5,-1) ellipse (0.3 and 0.3);  
-   \draw [fill=pink] (5,-2.25) ellipse (0.4 and 0.7);
- \draw [fill=pink] (7.5,2.25) ellipse (0.5 and 0.7);  
-   \draw [fill=pink] (7.5,-0.75) ellipse (0.5 and 0.7);
- \draw [fill=pink] (10,2.25) ellipse (0.5 and 0.7);  
-   
-   
-   
-   \node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
-    
-    \node (a) at (2.5,2) [minimum size=2pt] {a};
-     \node (b) at (2.5,1) [minimum size=2pt] {b};
-    \node (c) at (2.5,-1.5) [minimum size=2pt] {c};
-    
-    \node (ad) at (5,2.5) [minimum size=2pt] {ad};
-     \node (be) at (5,2) [minimum size=2pt] {be};
-    \node (ae) at (5,1) [minimum size=2pt] {ae};
-     \node (bf) at (5,0.5) [minimum size=2pt] {bf};
-    \node (bd) at (5,0) [minimum size=2pt] {bd};
-     \node (ch) at (5,-1) [minimum size=2pt] {ch};
-    \node (ce) at (5,-2) [minimum size=2pt] {ce};
-     \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
-    
-    \node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
-     \node (bea) at (7.5,2) [minimum size=2pt] {bea};
-    \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
-    \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
-    
-    \node (adad) at (10,2.5) [minimum size=2pt] {adad};
-     \node (bead) at (10,2) [minimum size=2pt] {bead};
-   
-   
-     
-      \draw[->] (em) -- (a) ;
-      \draw[->] (em) -- (b);
-      \draw[->] (em) -- (c);
-      
-      \draw[->] (a) -- (ad);
-      \draw[->] (b) -- (be);
-      \draw[->] (a) -- (ae);
-      \draw[->] (b) -- (bf);
-      \draw[->] (b) -- (bd);
-      \draw[->] (c) -- (ch);
-      \draw[->] (c) -- (ce);
-      \draw[->] (c) -- (cf);
-      
-      \draw[->] (ad) -- (ada);
-      \draw[->] (be) -- (bea);
-      \draw[->] (ch) -- (chi);
-      \draw[->] (ch) -- (chg);
-      
-      \draw[->] (ada) -- (adad);
-      \draw[->] (bea) -- (bead);
-      
-      
-      \end{tikzpicture}}
- 	%\includegraphics<2>[width=\textwidth, height=0.7\textheight]{immagini/classi}
- 	%\includegraphics<6>[width=1.3\textwidth, height=0.6\textheight]{sigmatau}
- 	\only<3-6>{\begin{tikzpicture}
-   
-   \draw [fill=pink] (0,0) ellipse (0.3 and 0.3);  
-   \draw [fill=pink] (2.5,1.5) ellipse (0.4 and 1);
- \draw [fill=pink] (2.5,-1.5) ellipse (0.3 and 0.3);  
-   \draw [fill=pink] (5,2.25) ellipse (0.4 and 0.7);
- \draw [fill=pink] (5,0.5) ellipse (0.4 and 1);
-   \draw [fill=pink] (5,-1) ellipse (0.3 and 0.3);  
-   \draw [fill=pink] (5,-2.25) ellipse (0.4 and 0.7);
- \draw [fill=pink] (7.5,2.25) ellipse (0.5 and 0.7);  
-   \draw [fill=pink] (7.5,-0.75) ellipse (0.5 and 0.7);
- \draw [fill=pink] (10,2.25) ellipse (0.5 and 0.7);  
-   
-   
-   \tnode{em}{0}{0}{$\epsilon$}
-   %\node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
-    
-    \tnode{a}{2.5}{2}{a}
-    %\node (a) at (2.5,2) [minimum size=2pt] {a};
-     \node (b) at (2.5,1) [minimum size=2pt] {b};
-    \tnode{c}{2.5}{-1.5}{c}
-    %\node (c) at (2.5,-1.5) [minimum size=2pt] {c};
-    
-    \tnode{ad}{5}{2.5}{ad}
-    %\node (ad) at (5,2.5) [minimum size=2pt] {ad};
-     \node (be) at (5,2) [minimum size=2pt] {be};
-    \node (ae) at (5,1) [minimum size=2pt] {ae};
-     \node (bf) at (5,0.5) [minimum size=2pt] {bf};
-    \node (bd) at (5,0) [minimum size=2pt] {bd};
-     \tnode{ch}{5}{-1}{ch}
-     %\node (ch) at (5,-1) [minimum size=2pt] {ch};
-    \node (ce) at (5,-2) [minimum size=2pt] {ce};
-     \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
-    
-    \tnode{ada}{7.5}{2.5}{ada}
-    %\node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
-     \node (bea) at (7.5,2) [minimum size=2pt] {bea};
-    \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
-    \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
-    
-    \tnode{adad}{10}{2.5}{adad}
-    %\node (adad) at (10,2.5) [minimum size=2pt] {adad};
-     \node (bead) at (10,2) [minimum size=2pt] {bead};
-   
-   
-     
-      \draw[->,color=red] (em_u) -- (a_u) node [above, midway] {$\sigma$};
-      \draw[->,color=blue] (em_d) -- (a_d) node [below, midway] {$\tau$};
-      \draw[->,color=blue] (em_d) -- (b) node [below, midway] {$\tau$};
-      \draw[->,color=red] (em_u) -- (c_u) node [above, midway] {$\sigma$};
-      \draw[->,color=blue] (em_d) -- (c_d) node [below, midway] {$\tau$};
-      
-      \draw[->,color=red] (a_u) -- (ad_u) node [above, midway] {$\sigma$};
-      \draw[->,color=blue] (a_d) -- (ad_d) node [below, midway] {$\tau$};
-      \draw[->,color=blue] (b) -- (be) node [below, midway] {$\tau$};
-      \draw[->] (a) -- (ae);
-      \draw[->] (b) -- (bf);
-      \draw[->] (b) -- (bd);
-      \draw[->,color=red] (c_u) -- (ch_u) node [above, midway] {$\sigma$};
-      \draw[->,color=blue] (c_d) -- (ch_d) node [below, midway] {$\tau$};
-      \draw[->] (c_d) -- (ce);
-      \draw[->] (c_d) -- (cf);
-      
-      \draw[->,color=red] (ad_u) -- (ada_u) node [above, midway] {$\sigma$};
-      \draw[->,color=blue] (ad_d) -- (ada_d) node [below, midway] {$\tau$};
-      \draw[->,color=blue] (be) -- (bea) node [below, midway] {$\tau$};
-      \draw[->] (ch) -- (chi);
-      \draw[->] (ch) -- (chg);
-      
-      \draw[->,color=red] (ada_u) -- (adad_u) node [above, midway] {$\sigma$};
-      \draw[->,color=blue] (ada_d) -- (adad_d) node [below, midway] {$\tau$};
-      \draw[->,color=blue] (bea) -- (bead) node [below, midway] {$\tau$};
-      
-      
-      \end{tikzpicture}}
- 
- 	
- \only<1>{\begin{gather*}
- 	      M_{QO}=\{a,b,c\}, \quad  M_{AO}=\{g,i\} \\
- 	      M_{QP}=\{h\},    \quad  M_{AP}=\{d,e,f\}
-           \end{gather*}  }
- 
- \only<2>{         $s\approx t$ se:
- 		\begin{itemize}
- 			\item $s$ e $t$ hanno la stessa etichettatura
- 			\item se $s'$ e $t'$ sottostringhe iniziali di $s$ e $t$ tali che $|s'|=|t'|$, $s' \approx t'$
- 			\item se $sa$ è una partita valida, allora esiste $b$ tale che $tb\approx sa$
- 		\end{itemize}
-          } 
- \only<3>{
- 
- Una strategia $\sigma$ è un insieme di partite di lunghezza pari tali che:
- 	\begin{itemize}
- 		\item $\sigma$ è prefix-closed
- 		\item $sab , tac \in \sigma \Rightarrow b=c$
- 		\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
- 	\end{itemize}
- 	}
- 	
- \only<4>{
- 	\[
- 	f_\sigma(x)=
- 	\begin{cases}
- 	 d \text{  se } x=a\\
- 	 / \text{  se } x=b\\
- 	 h \text{  se } x=c\\
- 	 d \text{  se } x=g
- 	\end{cases}
- 	\qquad
- 	f_\tau(x)=
- 	\begin{cases}
- 	 d \text{  se } x=a\\
- 	 e \text{  se } x=b\\
- 	 h \text{  se } x=c\\
- 	 d \text{  se } x=g
- 	\end{cases}
- 	\]
- 	}
- 	
- \only<5>{	
- Estendiamo la relazione $\approx$ alle strategie; poniamo:
- 	\begin{itemize}
- 	\item $\underline{ \sigma \preccurlyeq \tau }$ se per ogni $sab \in \sigma$ e $s' \in \tau$, se $sa\approx s'a'$ allora esiste $b'$ tale che $s'a'b' \in \tau$ e $sab\approx s'a'b'$
- 	\item $\underline{ \sigma \approx \tau \ }; \text{iif} \; \sigma \preccurlyeq \tau \wedge \tau \preccurlyeq \sigma$
- 	\end{itemize}
- 	In questo caso, avremo $\sigma \preccurlyeq \tau, \sigma \not\approx \sigma, \tau \approx \tau $  
- 	}
- 	
- \only<6>{
- 	\begin{itemize}
- 		\item $\preccurlyeq$ è un preordine sulle strategie; di conseguenza $\approx$ è una relazione di equivalenza parziale
- 		\item Nel caso l'equivalenza $\approx$ del gioco sia l'identità, il game tree diventa un albero semplice, e l'ordine tra strategie si può vedere come inclusione di insiemi o tra le funzioni parziali
- 	\end{itemize}
- 	}
-
- \end{frame}
-
-
+% 
+% % game tree
+% \begin{frame}
+%  
+%  	
+%  	
+%  	\only<1>{	\begin{tikzpicture}
+%    
+%    \node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
+%     
+%     \node (a) at (2.5,2) [minimum size=2pt] {a};
+%      \node (b) at (2.5,1) [minimum size=2pt] {b};
+%     \node (c) at (2.5,-1.5) [minimum size=2pt] {c};
+%     
+%     \node (ad) at (5,2.5) [minimum size=2pt] {ad};
+%      \node (be) at (5,2) [minimum size=2pt] {be};
+%     \node (ae) at (5,1) [minimum size=2pt] {ae};
+%      \node (bf) at (5,0.5) [minimum size=2pt] {bf};
+%     \node (bd) at (5,0) [minimum size=2pt] {bd};
+%      \node (ch) at (5,-1) [minimum size=2pt] {ch};
+%     \node (ce) at (5,-2) [minimum size=2pt] {ce};
+%      \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
+%     
+%     \node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
+%      \node (bea) at (7.5,2) [minimum size=2pt] {bea};
+%     \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
+%     \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
+%     
+%     \node (adad) at (10,2.5) [minimum size=2pt] {adad};
+%      \node (bead) at (10,2) [minimum size=2pt] {bead};
+%    
+%    
+%      
+%       \draw[->] (em) -- (a);
+%       \draw[->] (em) -- (b);
+%       \draw[->] (em) -- (c);
+%       
+%       \draw[->] (a) -- (ad);
+%       \draw[->] (b) -- (be);
+%       \draw[->] (a) -- (ae);
+%       \draw[->] (b) -- (bf);
+%       \draw[->] (b) -- (bd);
+%       \draw[->] (c) -- (ch);
+%       \draw[->] (c) -- (ce);
+%       \draw[->] (c) -- (cf);
+%       
+%       \draw[->] (ad) -- (ada);
+%       \draw[->] (be) -- (bea);
+%       \draw[->] (ch) -- (chi);
+%       \draw[->] (ch) -- (chg);
+%       
+%       \draw[->] (ada) -- (adad);
+%       \draw[->] (bea) -- (bead);
+%       
+%       
+%       \end{tikzpicture}	}
+%  
+%  	\only<2>{\begin{tikzpicture}
+%    
+%    \draw [fill=pink] (0,0) ellipse (0.3 and 0.3);  
+%    \draw [fill=pink] (2.5,1.5) ellipse (0.4 and 1);
+%  \draw [fill=pink] (2.5,-1.5) ellipse (0.3 and 0.3);  
+%    \draw [fill=pink] (5,2.25) ellipse (0.4 and 0.7);
+%  \draw [fill=pink] (5,0.5) ellipse (0.4 and 1);
+%    \draw [fill=pink] (5,-1) ellipse (0.3 and 0.3);  
+%    \draw [fill=pink] (5,-2.25) ellipse (0.4 and 0.7);
+%  \draw [fill=pink] (7.5,2.25) ellipse (0.5 and 0.7);  
+%    \draw [fill=pink] (7.5,-0.75) ellipse (0.5 and 0.7);
+%  \draw [fill=pink] (10,2.25) ellipse (0.5 and 0.7);  
+%    
+%    
+%    
+%    \node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
+%     
+%     \node (a) at (2.5,2) [minimum size=2pt] {a};
+%      \node (b) at (2.5,1) [minimum size=2pt] {b};
+%     \node (c) at (2.5,-1.5) [minimum size=2pt] {c};
+%     
+%     \node (ad) at (5,2.5) [minimum size=2pt] {ad};
+%      \node (be) at (5,2) [minimum size=2pt] {be};
+%     \node (ae) at (5,1) [minimum size=2pt] {ae};
+%      \node (bf) at (5,0.5) [minimum size=2pt] {bf};
+%     \node (bd) at (5,0) [minimum size=2pt] {bd};
+%      \node (ch) at (5,-1) [minimum size=2pt] {ch};
+%     \node (ce) at (5,-2) [minimum size=2pt] {ce};
+%      \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
+%     
+%     \node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
+%      \node (bea) at (7.5,2) [minimum size=2pt] {bea};
+%     \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
+%     \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
+%     
+%     \node (adad) at (10,2.5) [minimum size=2pt] {adad};
+%      \node (bead) at (10,2) [minimum size=2pt] {bead};
+%    
+%    
+%      
+%       \draw[->] (em) -- (a) ;
+%       \draw[->] (em) -- (b);
+%       \draw[->] (em) -- (c);
+%       
+%       \draw[->] (a) -- (ad);
+%       \draw[->] (b) -- (be);
+%       \draw[->] (a) -- (ae);
+%       \draw[->] (b) -- (bf);
+%       \draw[->] (b) -- (bd);
+%       \draw[->] (c) -- (ch);
+%       \draw[->] (c) -- (ce);
+%       \draw[->] (c) -- (cf);
+%       
+%       \draw[->] (ad) -- (ada);
+%       \draw[->] (be) -- (bea);
+%       \draw[->] (ch) -- (chi);
+%       \draw[->] (ch) -- (chg);
+%       
+%       \draw[->] (ada) -- (adad);
+%       \draw[->] (bea) -- (bead);
+%       
+%       
+%       \end{tikzpicture}}
+%  	%\includegraphics<2>[width=\textwidth, height=0.7\textheight]{immagini/classi}
+%  	%\includegraphics<6>[width=1.3\textwidth, height=0.6\textheight]{sigmatau}
+%  	\only<3-6>{\begin{tikzpicture}
+%    
+%    \draw [fill=pink] (0,0) ellipse (0.3 and 0.3);  
+%    \draw [fill=pink] (2.5,1.5) ellipse (0.4 and 1);
+%  \draw [fill=pink] (2.5,-1.5) ellipse (0.3 and 0.3);  
+%    \draw [fill=pink] (5,2.25) ellipse (0.4 and 0.7);
+%  \draw [fill=pink] (5,0.5) ellipse (0.4 and 1);
+%    \draw [fill=pink] (5,-1) ellipse (0.3 and 0.3);  
+%    \draw [fill=pink] (5,-2.25) ellipse (0.4 and 0.7);
+%  \draw [fill=pink] (7.5,2.25) ellipse (0.5 and 0.7);  
+%    \draw [fill=pink] (7.5,-0.75) ellipse (0.5 and 0.7);
+%  \draw [fill=pink] (10,2.25) ellipse (0.5 and 0.7);  
+%    
+%    
+%    \tnode{em}{0}{0}{$\epsilon$}
+%    %\node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
+%     
+%     \tnode{a}{2.5}{2}{a}
+%     %\node (a) at (2.5,2) [minimum size=2pt] {a};
+%      \node (b) at (2.5,1) [minimum size=2pt] {b};
+%     \tnode{c}{2.5}{-1.5}{c}
+%     %\node (c) at (2.5,-1.5) [minimum size=2pt] {c};
+%     
+%     \tnode{ad}{5}{2.5}{ad}
+%     %\node (ad) at (5,2.5) [minimum size=2pt] {ad};
+%      \node (be) at (5,2) [minimum size=2pt] {be};
+%     \node (ae) at (5,1) [minimum size=2pt] {ae};
+%      \node (bf) at (5,0.5) [minimum size=2pt] {bf};
+%     \node (bd) at (5,0) [minimum size=2pt] {bd};
+%      \tnode{ch}{5}{-1}{ch}
+%      %\node (ch) at (5,-1) [minimum size=2pt] {ch};
+%     \node (ce) at (5,-2) [minimum size=2pt] {ce};
+%      \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
+%     
+%     \tnode{ada}{7.5}{2.5}{ada}
+%     %\node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
+%      \node (bea) at (7.5,2) [minimum size=2pt] {bea};
+%     \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
+%     \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
+%     
+%     \tnode{adad}{10}{2.5}{adad}
+%     %\node (adad) at (10,2.5) [minimum size=2pt] {adad};
+%      \node (bead) at (10,2) [minimum size=2pt] {bead};
+%    
+%    
+%      
+%       \draw[->,color=red] (em_u) -- (a_u) node [above, midway] {$\sigma$};
+%       \draw[->,color=blue] (em_d) -- (a_d) node [below, midway] {$\tau$};
+%       \draw[->,color=blue] (em_d) -- (b) node [below, midway] {$\tau$};
+%       \draw[->,color=red] (em_u) -- (c_u) node [above, midway] {$\sigma$};
+%       \draw[->,color=blue] (em_d) -- (c_d) node [below, midway] {$\tau$};
+%       
+%       \draw[->,color=red] (a_u) -- (ad_u) node [above, midway] {$\sigma$};
+%       \draw[->,color=blue] (a_d) -- (ad_d) node [below, midway] {$\tau$};
+%       \draw[->,color=blue] (b) -- (be) node [below, midway] {$\tau$};
+%       \draw[->] (a) -- (ae);
+%       \draw[->] (b) -- (bf);
+%       \draw[->] (b) -- (bd);
+%       \draw[->,color=red] (c_u) -- (ch_u) node [above, midway] {$\sigma$};
+%       \draw[->,color=blue] (c_d) -- (ch_d) node [below, midway] {$\tau$};
+%       \draw[->] (c_d) -- (ce);
+%       \draw[->] (c_d) -- (cf);
+%       
+%       \draw[->,color=red] (ad_u) -- (ada_u) node [above, midway] {$\sigma$};
+%       \draw[->,color=blue] (ad_d) -- (ada_d) node [below, midway] {$\tau$};
+%       \draw[->,color=blue] (be) -- (bea) node [below, midway] {$\tau$};
+%       \draw[->] (ch) -- (chi);
+%       \draw[->] (ch) -- (chg);
+%       
+%       \draw[->,color=red] (ada_u) -- (adad_u) node [above, midway] {$\sigma$};
+%       \draw[->,color=blue] (ada_d) -- (adad_d) node [below, midway] {$\tau$};
+%       \draw[->,color=blue] (bea) -- (bead) node [below, midway] {$\tau$};
+%       
+%       
+%       \end{tikzpicture}}
+%  
+%  	
+%  \only<1>{\begin{gather*}
+%  	      M_{QO}=\{a,b,c\}, \quad  M_{AO}=\{g,i\} \\
+%  	      M_{QP}=\{h\},    \quad  M_{AP}=\{d,e,f\}
+%            \end{gather*}  }
+%  
+%  \only<2>{         $s\approx t$ se:
+%  		\begin{itemize}
+%  			\item $s$ e $t$ hanno la stessa etichettatura
+%  			\item se $s'$ e $t'$ sottostringhe iniziali di $s$ e $t$ tali che $|s'|=|t'|$, $s' \approx t'$
+%  			\item se $sa$ è una partita valida, allora esiste $b$ tale che $tb\approx sa$
+%  		\end{itemize}
+%           } 
+%  \only<3>{
+%  
+%  Una strategia $\sigma$ è un insieme di partite di lunghezza pari tali che:
+%  	\begin{itemize}
+%  		\item $\sigma$ è prefix-closed
+%  		\item $sab , tac \in \sigma \Rightarrow b=c$
+%  		\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
+%  	\end{itemize}
+%  	}
+%  	
+%  \only<4>{
+%  	\[
+%  	f_\sigma(x)=
+%  	\begin{cases}
+%  	 d \text{  se } x=a\\
+%  	 / \text{  se } x=b\\
+%  	 h \text{  se } x=c\\
+%  	 d \text{  se } x=g
+%  	\end{cases}
+%  	\qquad
+%  	f_\tau(x)=
+%  	\begin{cases}
+%  	 d \text{  se } x=a\\
+%  	 e \text{  se } x=b\\
+%  	 h \text{  se } x=c\\
+%  	 d \text{  se } x=g
+%  	\end{cases}
+%  	\]
+%  	}
+%  	
+%  \only<5>{	
+%  Estendiamo la relazione $\approx$ alle strategie; poniamo:
+%  	\begin{itemize}
+%  	\item $\underline{ \sigma \preccurlyeq \tau }$ se per ogni $sab \in \sigma$ e $s' \in \tau$, se $sa\approx s'a'$ allora esiste $b'$ tale che $s'a'b' \in \tau$ e $sab\approx s'a'b'$
+%  	\item $\underline{ \sigma \approx \tau \ }; \text{iif} \; \sigma \preccurlyeq \tau \wedge \tau \preccurlyeq \sigma$
+%  	\end{itemize}
+%  	In questo caso, avremo $\sigma \preccurlyeq \tau, \sigma \not\approx \sigma, \tau \approx \tau $  
+%  	}
+%  	
+%  \only<6>{
+%  	\begin{itemize}
+%  		\item $\preccurlyeq$ è un preordine sulle strategie; di conseguenza $\approx$ è una relazione di equivalenza parziale
+%  		\item Nel caso l'equivalenza $\approx$ del gioco sia l'identità, il game tree diventa un albero semplice, e l'ordine tra strategie si può vedere come inclusione di insiemi o tra le funzioni parziali
+%  	\end{itemize}
+%  	}
+% 
+%  \end{frame}
+% 
+% 
 
 \subsection{operazioni tra giochi}
 
