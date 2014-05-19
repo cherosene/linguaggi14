@@ -10,7 +10,7 @@
 \usepackage{stmaryrd}
 \usepackage{graphicx}
 \usepackage{caption}
-\usepackage{subcaption}
+%\usepackage{subcaption}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
 
@@ -305,7 +305,7 @@
 % intenzioni di suicidio
 \begin{frame}
 	
-	IL CONTENUTO DI QUESTA SLIDE DIPENDE DA QUANTO VOGLIAMO DIRE ALLA FINE
+
 	
 	A questo punto vorremmo un modello per PCF tale che:
 	\begin{enumerate}
@@ -321,10 +321,6 @@
 	%% Se non sbaglio FinitaryCSS era decidibile; ha senso aggiungere questa cosa perché ne avevamo parlato a lezione
 
 \end{frame}
-
-
-
-
 
 
 \section{La categoria dei giochi}
@@ -685,6 +681,8 @@
 
 \end{frame}
 
+\subsection{operazioni tra giochi}
+
 % prodotto tensore
 \begin{frame}
 	
@@ -1036,6 +1034,7 @@
 	
 \end{frame}
 
+\subsection{strategie importanti}
 
 % esempi di strategie
 \begin{frame}
@@ -1093,42 +1092,38 @@
 	
 \end{frame}
 
-
-
-
+\subsection{esistenza del modello}
 
 % categoria dei giochi
-% \begin{frame}
-% 	
-% 	\frametitle{La categoria dei giochi $\mathcal{G}$}
-% 	
-% 	Definiamo $\mathcal{G}$ la categoria tale che:
-% 	\begin{itemize}
-% 		\item $\mathcal{G}_0$ sono i giochi
-% 		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B | \sigma \approx \sigma \} / \approx$
-% 		\item Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
-% 	\end{itemize}
-% 	
-% 	In particolare $\mathcal{G}$ è dotata di:
-% 	\begin{itemize}
-% 		\item un oggetto finale ($1$)
-% 		\item è una categoria monoidale (è definito $\otimes$ bifuntore associativo e con elemento neutro)
-% 		\item è una categoria autonoma (per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
-% 		\item NON è una categoria cartesiana chiusa (mancano i prodotti)
-% 	\end{itemize}
-% 	
-% \end{frame}
+\begin{frame}
+ 	
+ 	\frametitle{La categoria dei giochi $\mathcal{G}$}
+ 	
+ 	Definiamo $\mathcal{G}$ la categoria tale che:
+ 	\begin{itemize}
+ 		\item $\mathcal{G}_0$ sono i giochi
+ 		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B | \sigma \approx \sigma \} / \approx$
+ 		\item Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
+ 	\end{itemize}
+ 	
+ 	In particolare $\mathcal{G}$ è dotata di:
+ 	\begin{itemize}
+ 		\item un oggetto finale ($1$)
+ 		\item è una categoria monoidale (è definito $\otimes$ bifuntore associativo e con elemento neutro)
+ 		\item è una categoria autonoma (per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
+ 		\item NON è una categoria cartesiana chiusa (mancano i prodotti)
+ 	\end{itemize}
+ 	
+ \end{frame}
 
 % categoria di co-Kleisli
 \begin{frame}
 
-	%Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ rispetto a $!$; in particolare:
-	Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} dei giochi rispetto a $!$; in particolare:
+Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ rispetto a $!$; in particolare:
+	
 	\begin{itemize}
-		%\item $K_!(\mathcal{G})_0 = \mathcal{G}_0$
-		\item $K_!(\mathcal{G})_0$ sono i giochi
-		%\item Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
-		\item Dati due giochi $A,B$, i morfismi $Mor_{K_!(\mathcal{G})}(A,B)$ sono $\{ \sigma \text{ strategia di } A \Rightarrow B \; \equiv \; !A\limp B \; | \; \sigma \approx \sigma \} / \approx$
+		\item $K_!(\mathcal{G})_0 = \mathcal{G}_0$
+		\item Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
 		\item Date due strategie $\sigma$ e $\tau$, $\tau \circ \sigma = \sigma \fatsemi \tau = \sigma ^\dag ; \tau$
 		\item Dato un gioco $A$, il morfismo identico è $der_A$
 	\end{itemize}
@@ -1139,8 +1134,6 @@
 		\item Esiste un oggetto \emph{finale} ($1$)
 		\item Dati due oggetti, esiste l'oggetto esponente ($A \Rightarrow B$ definito come $!A \limp B$; cioé $Mor(A\& B,C) \cong Mor(A,B\Rightarrow C)$)
 	\end{itemize}
-
-	SI PUÒ TAGLIARE UN PO' QUESTA? (FORSE!)
 
 \end{frame}
 
@@ -1171,12 +1164,6 @@
 	
 \end{frame}
 
-
-
-
-\section{Il modello di Abramsky}
-
-\subsection{Denotazione di PCF}
 % I giochi sono un modello di PCF
 \begin{frame}
 	
@@ -1198,6 +1185,12 @@
 	\end{block}
 	
 \end{frame}
+
+
+
+\section{Il modello di Abramsky}
+
+\subsection{Denotazione di PCF}
 
 % interpretazioni di tipi
 \begin{frame}
@@ -1376,7 +1369,7 @@
 
 \subsection{Universalità}
 
-% eh??
+% universalità1
 \begin{frame}
 	
 	\frametitle{Universalità}
@@ -1398,7 +1391,7 @@
 	
 \end{frame}
 
-% e l'universalità?
+% universalità2
 \begin{frame}
 	
 	Definiamo $\mathcal{G}_{rec}$ la categoria dei giochi effettivamente dati con morfismi le strategie ricorsive
@@ -1419,11 +1412,7 @@
 		è interpretazione di un termine di PCF
 		
 	\end{block}
-	
-	
-	(Exodd) Dov'è finita la proprietà di universalità?
-	
-	
+
 \end{frame}
 
 
