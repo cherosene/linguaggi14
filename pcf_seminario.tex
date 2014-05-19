@@ -1270,6 +1270,136 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 \end{frame}
 
 
+\begin{frame}
+	
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			$\sigma _{tt}$
+		\end{column}
+		
+		\begin{column}{0.45\textwidth}
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=cyan, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (B) at (2,-2.5) [minimum size=2pt, scale=4] {B};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			 
+			 
+			 \only<2-> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
+			 \only<3-> {\node (tt) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$tt$};}
+			 
+			 
+			  \only<3->{\draw[->] [out=280,in=80] (st) to (tt);}
+			 
+			  
+			\end{tikzpicture}
+			
+		\end{column}
+
+
+	\end{columns}
+
+	
+	
+\end{frame}
+
+
+
+
+\begin{frame}
+	
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			$\sigma _{n}$
+		\end{column}
+		
+		\begin{column}{0.45\textwidth}
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (N) at (2,-2.5) [minimum size=2pt, scale=4] {N};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			 
+			 
+			 \only<1-> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
+			 \only<1-> {\node (num_n) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$\underline{n}$};}
+			 
+			 
+			  \only<1->{\draw[->] [out=280,in=80] (st) to (num_n);}
+			 
+			  
+			\end{tikzpicture}
+			
+		\end{column}
+
+
+	\end{columns}
+
+	
+	
+\end{frame}
+
+
+
+
+
+\begin{frame}
+	
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (3,-4) rectangle (0,-1);
+			 \node (N_1) at (1.5,-2.5) [minimum size=2pt, scale=4] {$N_1$};
+			 \node (P_1) at (0.5,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_1) at (0.5,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (6.5,-4) rectangle (3.5,-1);
+			 \node (N_2) at (5,-2.5) [minimum size=2pt, scale=4] {$N_2$};
+			 \node (P_2) at (4,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_2) at (4,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (10.5,-4) rectangle (7.5,-1);
+			 \node (N_3) at (9,-2.5) [minimum size=2pt, scale=4] {$N_3$};
+			 \node (P_3) at (8,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_3) at (8,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			
+			 
+			 \only<2-> {\node (st_1) at (10,-.5) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<3-> {\node (st_2) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$*_{1,1}$};}
+			 \only<4-> {\node (num_1) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$n_{1,1}$};}
+			 
+% 			 \only<2-> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
+% 			 \only<3-> {\node (tt) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$tt$};}
+% 			 
+% 			 
+% 			  \only<3->{\draw[->] [out=280,in=80] (st) to (tt);}
+			 
+			 
+			 \draw[step=.5] (0,-5) grid (10.5,0);
+			 
+			  
+			\end{tikzpicture}
+			
+	
+	$\sigma_{add}$
+	
+	
+\end{frame}
+
+
+
 
 \begin{frame}
 	
