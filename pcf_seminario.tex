@@ -1352,6 +1352,52 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 
 
 
+\begin{frame}
+	
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			$\llbracket <n,m> \rrbracket$
+		\end{column}
+		
+		\begin{column}{0.45\textwidth}
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (N) at (2,-2.5) [minimum size=2pt, scale=2] {$N_1 \& N_2$};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			 
+			 
+			 \only<2-> {\node (st_1) at (1.5,-.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<3-> {\node (num_1) at (1.5,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 \only<4-> {\node (st_2) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<5> {\node (num_2) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$m_2$};}
+			 
+			 
+			  \only<3->{\draw[->] [out=280,in=80] (st_1) to (num_1);}
+			  \only<5>{\draw[->] [out=280,in=80] (st_2) to (num_2);}
+			 
+			  
+			\end{tikzpicture}
+			
+		\end{column}
+
+
+	\end{columns}
+
+	
+	
+\end{frame}
+
+
+
+
+
+
 
 \begin{frame}
 	
@@ -1379,15 +1425,20 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			 \only<2-> {\node (st_1) at (10,-.5) [minimum size=2pt, scale=1.5] {$*_3$};}
 			 \only<3-> {\node (st_2) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$*_{1,1}$};}
 			 \only<4-> {\node (num_1) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$n_{1,1}$};}
+			 \only<5-> {\node (st_3) at (6,-4.5) [minimum size=2pt, scale=1.5] {$*_{2,n}$};}
+			 \only<6-> {\node (num_2) at (6,-.5) [minimum size=2pt, scale=1.5] {$m_{2,n}$};}
+			 \only<7-> {\node (num_3) at (10,-4.5) [minimum size=2pt, scale=1.5] {$(n+m)_3$};}
 			 
-% 			 \only<2-> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
-% 			 \only<3-> {\node (tt) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$tt$};}
-% 			 
-% 			 
-% 			  \only<3->{\draw[->] [out=280,in=80] (st) to (tt);}
-			 
-			 
-			 \draw[step=.5] (0,-5) grid (10.5,0);
+
+
+\only<3->{\draw[->] (st_1) to (st_2);}
+\only<4->{\draw[->] (st_2) to (num_1);}
+\only<5->{\draw[->] (num_1) to (st_3);}
+\only<6->{\draw[->] (st_3) to (num_2);}
+\only<7->{\draw[->] (num_2) to (num_3);}
+
+
+%			 \draw[step=.5] (0,-5) grid (10.5,0);
 			 
 			  
 			\end{tikzpicture}
@@ -1397,6 +1448,157 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 	
 \end{frame}
+
+
+
+\begin{frame}
+	
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.2] (3,-4) rectangle (0,-1);
+			 \node (N_1) at (1.5,-2.5) [minimum size=2pt, scale=1.5] {$N_1 \& N_2 \Rightarrow N_3$};
+			 \node (P_1) at (0.5,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_1) at (0.5,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.2] (6.5,-4) rectangle (3.5,-1);
+			 \node (N_2) at (5,-2.5) [minimum size=2pt, scale=1.5] {$N_4 \& N_5$};
+			 \node (P_2) at (4,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_2) at (4,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (10.5,-4) rectangle (7.5,-1);
+			 \node (N_3) at (9,-2.5) [minimum size=2pt, scale=4] {$N_6$};
+			 \node (P_3) at (8,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_3) at (8,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			
+			 
+			% MOSSE
+			 
+			 
+			 \only<2-> {\node (mv_1) at (10,-.5) [minimum size=2pt, scale=1.5] {$*_6$};}
+			 \only<3-> {\node (mv_2) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<4-> {\node (mv_3) at (0.5,-.5) [minimum size=2pt, scale=1.5] {$*_{1,1}$};}
+			 \only<5-> {\node (mv_4) at (5,-4.5) [minimum size=2pt, scale=1.5] {$*_{4,1}$};}
+			 \only<6-> {\node (mv_5) at (5,-.5) [minimum size=2pt, scale=1.5] {$n_{4,1}$};}
+			 \only<7-> {\node (mv_6) at (0.5,-4.5) [minimum size=2pt, scale=1.5] {$n_{1,1}$};}
+			 \only<8-> {\node (mv_7) at (1.5,-.5) [minimum size=2pt, scale=1.5] {$*_{2,n}$};}
+			 \only<9-> {\node (mv_8) at (6,-4.5) [minimum size=2pt, scale=1.5] {$*_{5,n}$};}
+			 \only<10-> {\node (mv_9) at (6,-.5) [minimum size=2pt, scale=1.5] {$m_{5,n}$};}
+			 \only<11-> {\node (mv_10) at (1.5,-4.5) [minimum size=2pt, scale=1.5] {$m_{2,n}$};}
+			 \only<12-> {\node (mv_11) at (2.8,-.5) [minimum size=2pt, scale=1] {$(n+m)_3$};}
+			 \only<13-> {\node (mv_12) at (10,-4.5) [minimum size=2pt, scale=1] {$(n+m)_6$};}
+			 
+
+		% FRECCE
+
+
+\only<3->{\draw[->] (mv_1) to (mv_2);}
+\only<4->{\draw[->] (mv_2) to (mv_3);}
+\only<5->{\draw[->] (mv_3) to (mv_4);}
+\only<6->{\draw[->] (mv_4) to (mv_5);}
+\only<7->{\draw[->] (mv_5) to (mv_6);}
+\only<8->{\draw[->] (mv_6) to (mv_7);}
+\only<9->{\draw[->] (mv_7) to (mv_8);}
+\only<10->{\draw[->] (mv_8) to (mv_9);}
+\only<11->{\draw[->] (mv_9) to (mv_10);}
+\only<12->{\draw[->] (mv_10) to (mv_11);}
+\only<13->{\draw[->] (mv_11) to (mv_12);}
+
+
+
+%			 \draw[step=.5] (0,-5) grid (10.5,0);
+%			 \foreach \x in {0,1,...,10.5}
+%       \draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+			
+	
+	$\llbracket m + n \rrbracket$
+	
+	
+\end{frame}
+
+
+
+
+
+\begin{frame}
+	
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=orange, opacity=.2] (3,-4) rectangle (0,-1);
+			 \node (N_1) at (1.5,-2.5) [minimum size=2pt, scale=1.5] {$N_1 \& N_2 \Rightarrow B_3$};
+			 \node (P_1) at (0.5,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_1) at (0.5,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.2] (6.5,-4) rectangle (3.5,-1);
+			 \node (N_2) at (5,-2.5) [minimum size=2pt, scale=1.5] {$N_4 \& N_5$};
+			 \node (P_2) at (4,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_2) at (4,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=cyan, opacity=.5] (10.5,-4) rectangle (7.5,-1);
+			 \node (B_3) at (9,-2.5) [minimum size=2pt, scale=4] {$B_6$};
+			 \node (P_3) at (8,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_3) at (8,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			
+			 
+			% MOSSE
+			 
+			 
+			 \only<2-> {\node (mv_1) at (10,-.5) [minimum size=2pt, scale=1.5] {$*_6$};}
+			 \only<2-> {\node (mv_2) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<2-> {\node (mv_3) at (0.5,-.5) [minimum size=2pt, scale=1.5] {$*_{1,1}$};}
+			 \only<2-> {\node (mv_4) at (5,-4.5) [minimum size=2pt, scale=1.5] {$*_{4,1}$};}
+			 \only<2-> {\node (mv_5) at (5,-.5) [minimum size=2pt, scale=1.5] {$n_{4,1}$};}
+			 \only<2-> {\node (mv_6) at (0.5,-4.5) [minimum size=2pt, scale=1.5] {$n_{1,1}$};}
+			 \only<2-> {\node (mv_7) at (1.5,-.5) [minimum size=2pt, scale=1.5] {$*_{2,n}$};}
+			 \only<2-> {\node (mv_8) at (6,-4.5) [minimum size=2pt, scale=1.5] {$*_{5,n}$};}
+			 \only<2-> {\node (mv_9) at (6,-.5) [minimum size=2pt, scale=1.5] {$m_{5,n}$};}
+			 \only<2-> {\node (mv_10) at (1.5,-4.5) [minimum size=2pt, scale=1.5] {$m_{2,n}$};}
+			 \only<2-> {\node (mv_11) at (2.8,-.5) [minimum size=2pt, scale=1] {$f_3$};}
+			 \only<2-> {\node (mv_12) at (10,-4.5) [minimum size=2pt, scale=1] {$f_6$};}
+			 
+
+		% FRECCE
+
+
+%\only<3->{\draw[->] (mv_1) to (mv_2);}
+%\only<4->{\draw[->] (mv_2) to (mv_3);}
+%\only<5->{\draw[->] (mv_3) to (mv_4);}
+%\only<6->{\draw[->] (mv_4) to (mv_5);}
+%\only<7->{\draw[->] (mv_5) to (mv_6);}
+%\only<8->{\draw[->] (mv_6) to (mv_7);}
+%\only<9->{\draw[->] (mv_7) to (mv_8);}
+%\only<10->{\draw[->] (mv_8) to (mv_9);}
+%\only<11->{\draw[->] (mv_9) to (mv_10);}
+%\only<12->{\draw[->] (mv_10) to (mv_11);}
+%\only<13->{\draw[->] (mv_11) to (mv_12);}
+
+
+
+%			 \draw[step=.5] (0,-5) grid (10.5,0);
+%			 \foreach \x in {0,1,...,10.5}
+%       \draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+			
+	
+	$\llbracket Eq? m n \rrbracket$
+	
+	
+\end{frame}
+
+
+
+
+
 
 
 
@@ -1415,6 +1617,117 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 
 	
 \end{frame}
+
+
+
+\begin{frame}
+	
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (4,-4) rectangle (1,-1);
+			 \node (N_1) at (2.5,-2.5) [minimum size=2pt, scale=4] {$N_1$};
+			 \node (P_1) at (1.5,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_1) at (1.5,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (9.5,-4) rectangle (6.5,-1);
+			 \node (N_2) at (8,-2.5) [minimum size=2pt, scale=4] {$N_2$};
+			 \node (P_2) at (7,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_2) at (7,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			
+			 
+			 \only<2-> {\node (mv_1) at (9,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<3-> {\node (mv_2) at (3.5,-4.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<4-> {\node (mv_3) at (3.5,-.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 \only<5-> {\node (mv_4) at (9,-4.5) [minimum size=2pt, scale=1.5] {$n_2$};}
+			 
+
+
+\only<3->{\draw[->] (mv_1) to (mv_2);}
+\only<4->{\draw[->] (mv_2) to (mv_3);}
+\only<5->{\draw[->] (mv_3) to (mv_4);}
+%\only<6->{\draw[->] (st_3) to (num_2);}
+%\only<7->{\draw[->] (num_2) to (num_3);}
+
+
+%			 \draw[step=.5] (0,-5) grid (10.5,0);
+%			 \foreach \x in {0,1,...,10.5}
+%       \draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+			
+	
+	$\llbracket x \rrbracket$
+	
+	
+\end{frame}
+
+
+
+
+\begin{frame}
+	
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=orange, opacity=.5] (4.5,-4) rectangle (0.5,-1);
+			 \node (N_1) at (2.5,-2.5) [minimum size=2pt, scale=2] {$B_1\& N_2 \& N_3$};
+			 \node (P_1) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_1) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (9.5,-4) rectangle (6.5,-1);
+			 \node (N_2) at (8,-2.5) [minimum size=2pt, scale=4] {$N_4$};
+			 \node (P_2) at (7,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_2) at (7,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			
+			 
+			 \only<2-> {\node (mv_1) at (9,-.5) [minimum size=2pt, scale=1.5] {$*_4$};}
+			 \only<3-> {\node (mv_2) at (2,-4.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<4-> {\node (mv_3) at (2,-.5) [minimum size=2pt, scale=1.5] {$f_1$};}
+			 \only<5-> {\node (mv_4) at (4,-4.5) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<6-> {\node (mv_5) at (4,-.5) [minimum size=2pt, scale=1.5] {$n_3$};}
+			 \only<7-> {\node (mv_6) at (9,-4.5) [minimum size=2pt, scale=1.5] {$n_4$};}
+			 
+
+
+\only<3->{\draw[->] (mv_1) to (mv_2);}
+\only<4->{\draw[->] (mv_2) to (mv_3);}
+\only<5->{\draw[->] (mv_3) to (mv_4);}
+\only<6->{\draw[->] (mv_4) to (mv_5);}
+\only<7->{\draw[->] (mv_5) to (mv_6);}
+
+
+%			 \draw[step=.5] (0,-5) grid (10.5,0);
+%			 \foreach \x in {0,1,...,10.5}
+%       \draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+			
+	
+	$Cond$
+	
+	
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
