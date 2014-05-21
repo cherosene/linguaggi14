@@ -135,8 +135,24 @@
 	\end{column}
 	\end{columns}
 
-	%\only<8> {\centering
-	%Solo $P$ può rispondere alle domande di $O$, e viceversa}
+	\onslide<8> {
+	
+	\begin{tikzpicture}
+			 \node (inv) at (4,0) [minimum size=2pt] {};
+			 \node (inv2) at (7,-1) [minimum size=2pt, scale=1] {};
+			\node (text) at (0,-.5) [minimum size=2pt] {Bracketing condition:};
+			
+			 \node (A) at (5,0) [minimum size=2pt, scale=1] {A};
+			 \node (P) at (5.5,-.5) [minimum size=2pt, scale=1] {P};
+			 \node (O) at (6,-1) [minimum size=2pt, scale=1] {O};
+			 
+			
+			 
+			  
+	\end{tikzpicture}
+	
+	
+	}
 	
 \end{frame}
 
@@ -312,7 +328,7 @@ In particolare, la definizione porta alcune conseguenze:
 	\frametitle{Il gioco $A \otimes B$}
 	
 	\begin{itemize}
-		\item $M_{A\otimes B}=M_A \coprod M_B$
+		\item<1-> $M_{A\otimes B}=M_A \coprod M_B$
 		\item $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
 		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
 		%\begin{itemize}
@@ -326,7 +342,7 @@ In particolare, la definizione porta alcune conseguenze:
 		\begin{itemize}
 			\item Il prodotto tensore è associativo
 			\item Esiste un elemento neutro $I$, ossia il gioco vuoto
-			\item Solamente il giocatore $O$ può cambiare componente di gioco
+			\item \textcolor{red}{Solamente il giocatore $O$ può cambiare componente di gioco}
 		\end{itemize}
 		
 	\end{block}
@@ -337,55 +353,7 @@ In particolare, la definizione porta alcune conseguenze:
 
 \begin{frame}[t]
 	
-% 	\begin{tabular}{c c}
-% 		
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<4>{$\textcolor{red}{*^O_B}$}\only<5->{$*^O_B$}
-% 		\\
-% 		
-% 		\begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_b.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<3>{$\textcolor{red}{n^P_A}$}\only<4->{$n^P_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<5->{$\textcolor{red}{m^P_B}$}
-% 		
-% 		
-% 	\end{tabular}
-% 	
-% 	
-% 	{
-% 	\centering
-% 	\huge
-% 	
-% 	
-% 	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}}
-% 	\onslide<3->{\only<-3>{$\textcolor{red}{n^P_A}$}\only<4->{$n^P_A$}}
-% 	\onslide<4->{\only<-4>{$\textcolor{red}{*^O_B}$}\only<5->{$*^O_B$}}
-% 	\onslide<5->{\only<-5>{$\textcolor{red}{m^P_B}$}}
-% 
-% 	
-% 	
-% 	}
+
 	
 \end{frame}
 
@@ -420,55 +388,7 @@ In particolare, la definizione porta alcune conseguenze:
 
 
 \begin{frame}[t]
-	
-% 	\begin{tabular}{c c}
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<3>{$\textcolor{red}{*^P_A}$}\only<4->{$*^P_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<2>{$\textcolor{red}{*^O_B}$}\only<3->{$*^O_B$}
-% 		\\
-% 		
-% 		\begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a_storto.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_b.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<4>{$\textcolor{red}{n^O_A}$}\only<5->{$n^O_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<5->{$\textcolor{red}{m^P_B}$}
-% 		
-% 		
-% 	\end{tabular}
-% 	
-% 	
-% 	{
-% 	\centering
-% 	\huge
-% 	
-% 	
-% 	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_B}$}\only<3->{$*^O_B$}}
-% 	\onslide<3->{\only<-3>{$\textcolor{red}{*^P_A}$}\only<4->{$*^P_A$}}
-% 	\onslide<4->{\only<-4>{$\textcolor{red}{n^O_A}$}\only<5->{$n^O_A$}}
-% 	\onslide<5->{\only<-5>{$\textcolor{red}{m^P_B}$}}
-% 	
-% 	
-% 	
-% 	}
+
 	
 	
 \end{frame}
@@ -497,54 +417,7 @@ In particolare, la definizione porta alcune conseguenze:
 
 
 \begin{frame}[t]
-	
-% 	\begin{tabular}{c c}
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		
-% 		
-% 		\\
-% 		
-% 		\begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_b.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<3>{$\textcolor{red}{n^P_A}$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		
-% 		
-% 	\end{tabular}
-% 	
-% 	
-% 	{
-% 	\centering
-% 	\huge
-% 	
-% 
-% 	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}}
-% 	\onslide<3->{\only<-3>{$\textcolor{red}{n^P_A}$}}
-% 
-% 	
-% 	
-% 	}
-% 	
+
 	
 \end{frame}
 
@@ -577,82 +450,7 @@ In particolare, la definizione porta alcune conseguenze:
 
 
 \begin{frame}[t]
-	
-% 	\begin{tabular}{c c c c}
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<8>{$\textcolor{red}{*^O_3}$}\only<9->{$*^O_3$}
-% 		&
-% 		%%%%%%% TAVOLO 3
-% 		\only<4>{$\textcolor{red}{*^O_2}$}\only<5->{$*^O_2$}
-% 		&
-% 		%%%%%%% TAVOLO 4
-% 		\only<2>{$\textcolor{red}{*^O_1}$}\only<3->{$*^O_1$}\onslide<6->{\only<-6>{$\textcolor{red}{*^O_1}$}\only<7->{$*^O_1$}}
-% 		
-% 		\\
-% 		
-% 		\begin{minipage}{0.22\textwidth}
-% 			\begin{figure}[t]
-% 				\large
-% 				\centering
-% 				\def\svgwidth{0.8\textwidth}
-% 				\input{immagini/tavolo_a_4.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.22\textwidth}
-% 			\begin{figure}[t]
-% 				\large
-% 				\centering
-% 				\def\svgwidth{0.8\textwidth}
-% 				\input{immagini/tavolo_a_3.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} & \begin{minipage}{0.22\textwidth}
-% 			\begin{figure}[t]
-% 				\large
-% 				\centering
-% 				\def\svgwidth{0.8\textwidth}
-% 				\input{immagini/tavolo_a_2.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} & \begin{minipage}{0.22\textwidth}
-% 			\begin{figure}[t]
-% 				\large
-% 				\centering
-% 				\def\svgwidth{0.8\textwidth}
-% 				\input{immagini/tavolo_a_1.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<9>{$\textcolor{red}{n^P_3}$}
-% 		&
-% 		%%%%%%% TAVOLO 3
-% 		\only<5>{$\textcolor{red}{n^P_2}$}\only<6->{$n^P_2$}
-% 		&
-% 		%%%%%%% TAVOLO 4
-% 		\only<3>{$\textcolor{red}{n^P_1}$}\only<4->{$n^P_1$}\onslide<7->{\only<-7>{$\textcolor{red}{n^P_1}$}\only<8->{$n^P_1$}}
-% 		
-% 	\end{tabular}
-% 	
-% 	
-% 	{
-% 	\centering
-% 	\huge
-% 	
-% 	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_1}$}\only<3->{$*^O_1$}}
-% 	\onslide<3->{\only<-3>{$\textcolor{red}{n^P_1}$}\only<4->{$n^P_1$}}
-% 	\onslide<4->{\only<-4>{$\textcolor{red}{*^O_2}$}\only<5->{$*^O_2$}}
-% 	\onslide<5->{\only<-5>{$\textcolor{red}{n^P_2}$}\only<6->{$n^P_2$}}
-% 	\onslide<6->{\only<-6>{$\textcolor{red}{*^O_1}$}\only<7->{$*^O_1$}}
-% 	\onslide<7->{\only<-7>{$\textcolor{red}{n^P_1}$}\only<8->{$n^P_1$}}
-% 	\onslide<8->{\only<-8>{$\textcolor{red}{*^O_3}$}\only<9->{$*^O_3$}}
-% 	\onslide<9->{\only<-9>{$\textcolor{red}{n^P_3}$}}
-% 	
-% 	}
+
 	
 	
 \end{frame}
