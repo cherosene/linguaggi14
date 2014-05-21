@@ -105,7 +105,7 @@
 					\; *_1n_1, $ 
 					$ \only<5>{\textcolor{red}}{*_1*_2},
 					\; \only<6>{\textcolor{red}}{*_1*_2n_2}, 
-					\; \only<7>{\textcolor{red}}{*_1*_2n_2n_1} \}$
+					\; \only<7-8>{\textcolor{red}}{*_1*_2n_2n_1} \}$
 					\item $\approx_{A} = id_{A}$        
 		\end{itemize}}
 	\end{column}
@@ -135,17 +135,30 @@
 	\end{column}
 	\end{columns}
 
-	\onslide<8> {
+	\onslide<8-9> {
 	
 	\begin{tikzpicture}
-			 \node (inv) at (4,0) [minimum size=2pt] {};
-			 \node (inv2) at (7,-1) [minimum size=2pt, scale=1] {};
-			\node (text) at (0,-.5) [minimum size=2pt] {Bracketing condition:};
 			
-			 \node (A) at (5,0) [minimum size=2pt, scale=1] {A};
-			 \node (P) at (5.5,-.5) [minimum size=2pt, scale=1] {P};
-			 \node (O) at (6,-1) [minimum size=2pt, scale=1] {O};
+			\node (text) at (0,-.45) [minimum size=2pt] {Bracketing condition:};
+			\only<9>{
+			\node (text2) at (7.7,-.23) [minimum size=2pt] {Ad ogni risposta è associata};
+			\node (text3) at (7.7,-.6) [minimum size=2pt] {naturalmente una domanda};
+			}
+			 \node (st1) at (2.5,0) [minimum size=2pt, scale=1.5] {$*_1$};
+			 \node (st2) at (3.2,0) [minimum size=2pt, scale=1.5] {$*_2$};
+			 \node (n2) at (3.9,0) [minimum size=2pt, scale=1.5] {$n_2$};
+			 \node (n1) at (4.6,0) [minimum size=2pt, scale=1.5] {$n_1$};
 			 
+			 \node (pst1) at (2.5,-1) [minimum size=2pt, scale=1.5] {$($};
+			 \node (pst2) at (3.2,-1) [minimum size=2pt, scale=1.5] {$($};
+			 \node (pn2) at (3.9,-1) [minimum size=2pt, scale=1.5] {$)$};
+			 \node (pn1) at (4.6,-1) [minimum size=2pt, scale=1.5] {$)$};
+			 
+			 \draw[->] (st1) to (pst1);
+			 \draw[->] (st2) to (pst2);
+			 \draw[->] (n1) to (pn1);
+			 \draw[->] (n2) to (pn2);
+				
 			
 			 
 			  
@@ -326,33 +339,99 @@ In particolare, la definizione porta alcune conseguenze:
 \begin{frame}
 	
 	\frametitle{Il gioco $A \otimes B$}
-	
+	Dati due giochi $A$ e $B$ definiamo il gioco $A\otimes B$ come:
 	\begin{itemize}
-		\item<1-> $M_{A\otimes B}=M_A \coprod M_B$
-		\item $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
-		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
-		%\begin{itemize}
-			
-		%	\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
-		%\end{itemize}
-		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
+		\item<2-> $M_{A\otimes B}=M_A \coprod M_B$
+		\item<3-> $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
+		\item<4-> $P_{A\otimes B}$ sono tutte le partite $s$ tali che $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+		\begin{itemize}
+			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
+		\end{itemize}
+		\item<5-> $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
 	
+	\onslide<6-9>{
 	\begin{block}{Proprietà}
 		\begin{itemize}
-			\item Il prodotto tensore è associativo
-			\item Esiste un elemento neutro $I$, ossia il gioco vuoto
-			\item \textcolor{red}{Solamente il giocatore $O$ può cambiare componente di gioco}
+			\item<7-> Il prodotto tensore è associativo
+			\item<8-> Esiste un elemento neutro $I$, ossia il gioco vuoto
+			\item<9-> \textcolor{red}{Solamente il giocatore $O$ può cambiare componente di gioco}
 		\end{itemize}
 		
 	\end{block}
-	
+	}
 	
 \end{frame}
 
-
+% esempio Prodotto Tensore
 \begin{frame}[t]
+\frametitle{Il gioco $A \otimes B$}
+
+\pause
+\begin{itemize}
+ \item $A$ con $P_A=\{
+ \only<3-7>{\textcolor{red}{\epsilon}} \only<1-2,8->{\epsilon},
+ \;  \only<8-9>{\textcolor{red}{*_O}} \only<1-7,10->{*_O}, 
+ \; \only<10->{\textcolor{red}{*_O\checkmark_P}} \only<1-9>{*_O\checkmark_P}, 
+ \;*_O\times_P 
+ \}$
+ \item $B$ con $P_B=\{
+ \only<3>{\textcolor{red}{\epsilon}} \only<1-2,4->{\epsilon},
+ \;  \only<4-5>{\textcolor{red}{*_O}} \only<1-3,6->{*_O}, 
+ \; *_O0_P,
+ \; *_O1_P,
+ \; \only<6->{\textcolor{red}{*_O2_P}} \only<1-5>{*_O2_P},
+ \; *_O3_P,
+ \; \dots \}$
+\end{itemize}
+\pause
+\centering Descriviamo $A \otimes B$ tramite il tavolo di gioco
+
+\begin{tikzpicture}
+ 
+	 \node (inv) at (0,0) [minimum size=2pt] {};
+ 	 \node (inv2) at (11,-4) [minimum size=2pt] {};
 	
+	\draw [fill=blue, opacity=.5] (4.5,-4.3) rectangle (1,-.8);
+	\draw [fill=red, opacity=.5] (9.5,-4.3) rectangle (6,-.8);
+	 
+	  \node (A) at (2.75,-2.55) [minimum size=2pt, scale=4] {A};
+ 	  \node (PA) at (1.5,-3.8) [minimum size=2pt, scale=3] {P};
+  	  \node (OA) at (1.5,-1.3) [minimum size=2pt, scale=3] {O};
+  
+	  \node (B) at (7.75,-2.55) [minimum size=2pt, scale=4] {B};
+ 	  \node (PB) at (6.5,-3.8) [minimum size=2pt, scale=3] {P};
+  	  \node (OB) at (6.5,-1.3) [minimum size=2pt, scale=3] {O};
+  
+	  \only<4-> {\node (st1) at (7.75,-.4) [minimum size=2pt, scale=2] {$*_O$};}
+	  \only<5> {\node (false1) at (2.75,-4.7) [minimum size=2pt, scale=2] {?};}
+	  \only<6-> {\node (ri1) at (7.75,-4.7) [minimum size=2pt, scale=2] {$2_P$};}
+	  \only<7> {\node (false2) at (6.5,-.4) [minimum size=2pt, scale=2] {?};}
+	  \only<8-> {\node (st2) at (2.75,-.4) [minimum size=2pt, scale=2] {$*_O$};}
+	  \only<9> {\node (false3) at (6.5,-4.7) [minimum size=2pt, scale=2] {?};}
+	  \only<10-> {\node (ri2) at (2.75,-4.7) [minimum size=2pt, scale=2] {$\checkmark_P$};}
+	 
+	 \only<5>{\draw[->] (st1) to (false1);}
+	 
+	 \only<6->{\draw[->] (st1) to (ri1);}
+	 
+	 \only<7>{\draw[->] (ri1) to (false2);}
+	 
+	 \only<8->{\draw[->] (ri1) to (st2);}
+	 
+	 \only<9>{\draw[->] (st2) to (false3);}
+	 
+	 \only<10->{\draw[->] (st2) to (ri2);}
+	
+	 
+ 
+\end{tikzpicture}
+
+
+
+
+
 
 	
 \end{frame}
@@ -362,61 +441,99 @@ In particolare, la definizione porta alcune conseguenze:
 \begin{frame}
 	
 	\frametitle{Il gioco $A \limp B$}
-	
+	Dati due giochi $A$ e $B$ definiamo il gioco $A\limp B$ come:
 	\begin{itemize}
-		\item $M_{A\limp B}=M_A \coprod M_B$
-		\item $\lambda^{QA}_{A\limp B}=\lambda^{QA}_A \coprod \lambda^{QA}_B$
+		\item<2-> $M_{A\limp B}=M_A \coprod M_B$
+		\item<3-> $\lambda^{QA}_{A\limp B}=\lambda^{QA}_A \coprod \lambda^{QA}_B$
 		
-		$\lambda^{OP}_{A\limp B}=\overline{\lambda^{OP}_A} \coprod \lambda^{OP}_B$
-		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che:
+		$\lambda^{OP}_{A\limp B}=\textcolor{red}{\overline{\lambda^{OP}_A}} \coprod \lambda^{OP}_B$
+		\item<4-> $P_{A\otimes B}$ sono tutte le partite $s$ tali che:
 		\begin{itemize}
 			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
 			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
 		\end{itemize}
-		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
+		\item<5-> $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
-	
+	\onslide<6>
 	\begin{block}{Proprietà}
 		
-		\begin{itemize}
-			\item Solamente il giocatore $P$ può cambiare componente di gioco
-		\end{itemize}
+		\textcolor{red}{Solamente il giocatore $P$ può cambiare componente di gioco}
+		
 	
 	\end{block}
 	
 \end{frame}
 
-
+% esempio implicazione lineare
 \begin{frame}[t]
+\frametitle{Il gioco $A \limp B$}
 
-	
-	
-\end{frame}
+\pause
+\begin{itemize}
+ \item $A$ con $P_A=\{
+ \only<3-6>{\textcolor{red}{\epsilon}} \only<1-2,7->{\epsilon},
+ \;  \only<7-8>{\textcolor{red}{*_O}} \only<1-6,9->{*_O}, 
+ \; \only<9->{\textcolor{red}{*_O\checkmark_P}} \only<1-8>{*_O\checkmark_P}, 
+ \;*_O\times_P 
+ \}$
+ \item $B$ con $P_B=\{
+ \only<3-5>{\textcolor{red}{\epsilon}} \only<1-2,6->{\epsilon},
+ \;  \only<6-10>{\textcolor{red}{*_O}} \only<1-5,11->{*_O}, 
+ \; *_O0_P,
+ \; *_O1_P,
+ \; \only<11->{\textcolor{red}{*_O2_P}} \only<1-10>{*_O2_P},
+ \; *_O3_P,
+ \; \dots \}$
+\end{itemize}
+\pause
+\centering Descriviamo $A \limp B$ tramite il tavolo di gioco
 
-% gioco unione
-\begin{frame}
+\begin{tikzpicture}
+ 
+	 \node (inv) at (0,0) [minimum size=2pt] {};
+ 	 \node (inv2) at (11,-4) [minimum size=2pt] {};
 	
-	\frametitle{Il gioco $A \& B$}
+	\draw [fill=blue, opacity=.5] (4.5,-4.3) rectangle (1,-.8);
+	\draw [fill=red, opacity=.5] (9.5,-4.3) rectangle (6,-.8);
+	 
+	  \node (A) at (2.75,-2.55) [minimum size=2pt, scale=4] {A};
+	  \only<3>{\node (Pfake) at (1.5,-3.8) [minimum size=2pt, scale=3] {\textcolor{red}{P}};}
+  	  \only<3>{\node (Ofake) at (1.5,-1.3) [minimum size=2pt, scale=3] {\textcolor{red}{O}};}
+ 	  \only<4->{\node (PA) at (2.4,-1.3) [minimum size=2pt, scale=2.7] {P=O$_A$};}
+  	  \only<4->{\node (OA) at (2.4,-3.8) [minimum size=2pt, scale=2.7] {O=P$_A$};}
+  
+	  \node (B) at (7.75,-2.55) [minimum size=2pt, scale=4] {B};
+ 	  \node (PB) at (6.5,-3.8) [minimum size=2pt, scale=3] {P};
+  	  \node (OB) at (6.5,-1.3) [minimum size=2pt, scale=3] {O};
+  
+          \only<5> {\node (false1) at (2.75,-4.7) [minimum size=2pt, scale=2] {?};}
+	  \only<6-> {\node (st1) at (7.75,-.4) [minimum size=2pt, scale=2] {$*_O$};}
+	  \only<7-> {\node (st2) at (2.75,-.4) [minimum size=2pt, scale=2] {$*_O$};}
+	  \only<8> {\node (false2) at (6.5,-.4) [minimum size=2pt, scale=2] {?};}
+	  \only<9-> {\node (ri2) at (2.75,-4.7) [minimum size=2pt, scale=2] {$\checkmark_P$};}
+	  \only<10> {\node (false3) at (1.5,-.4) [minimum size=2pt, scale=2] {?};}
+	  \only<11-> {\node (ri1) at (7.75,-4.7) [minimum size=2pt, scale=2] {$2_P$};}
+	  
+	  
+	 
+	 \only<7->{\draw[->][out=220, in=340] (st1) to (st2);}
+	 \only<8>{\draw[->] (st2) to (false2);}
+	 \only<9->{\draw[->] (st2) to (ri2);}
+	 \only<10>{\draw[->] (ri2) to (false3);}
+	 \only<11->{\draw[->] (ri2) to (ri1);}
+	 
+	 
+	 
+	 %\only<10->{\draw[->] (st2) to (ri2);}
 	
-	\begin{itemize}
-		\item $M_{A\& B}=M_A \coprod M_B$
-		\item $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
-		\item $P_{A\& B}=P_A \coprod P_B$
-		\item $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
-	\end{itemize}
-	
-	\begin{block}{Proprietà}
-		\begin{itemize}
-			\item Una partita di $A\& B$ è giocata su una sola delle due componenti
-			\item Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$ (anche vuota)
-		\end{itemize}
-		
-	\end{block}
-	
-\end{frame}
+	 
+ 
+\end{tikzpicture}
 
 
-\begin{frame}[t]
+
+
+
 
 	
 \end{frame}
@@ -448,12 +565,41 @@ In particolare, la definizione porta alcune conseguenze:
 	
 \end{frame}
 
-
+% roulette russa
 \begin{frame}[t]
 
 	
 	
 \end{frame}
+	
+
+
+% gioco unione
+\begin{frame}
+	
+	\frametitle{Il gioco $A \& B$}
+	
+	\begin{itemize}
+		\item $M_{A\& B}=M_A \coprod M_B$
+		\item $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
+		\item $P_{A\& B}=P_A \coprod P_B$
+		\item $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
+	\end{itemize}
+	
+	\begin{block}{Proprietà}
+		\begin{itemize}
+			\item Una partita di $A\& B$ è giocata su una sola delle due componenti
+			\item Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$ (anche vuota)
+		\end{itemize}
+		
+	\end{block}
+	
+\end{frame}
+
+
+\begin{frame}[t]
+\end{frame}
+
 
 \subsection{strategie importanti}
 
