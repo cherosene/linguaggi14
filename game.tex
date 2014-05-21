@@ -140,8 +140,6 @@
 	
 \end{frame}
 
-
-
 % strategie
 \begin{frame}
 
@@ -229,6 +227,7 @@
 	
 \end{frame}
 
+% ordine tra strategie
 \begin{frame}
  
  Estendiamo la relazione $\approx$ alle strategie, ponendo:
@@ -247,6 +246,7 @@ In particolare, la definizione porta alcune conseguenze:
 	
 \end{frame}
 
+% esempio di ordine
 \begin{frame}
 	\begin{columns}
 	\begin{column}{0.45\textwidth}
@@ -488,7 +488,7 @@ In particolare, la definizione porta alcune conseguenze:
 	\begin{block}{Proprietà}
 		\begin{itemize}
 			\item Una partita di $A\& B$ è giocata su una sola delle due componenti
-			\item Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$
+			\item Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$ (anche vuota)
 		\end{itemize}
 		
 	\end{block}
@@ -725,7 +725,7 @@ In particolare, la definizione porta alcune conseguenze:
  	Definiamo $\mathcal{G}$ la categoria tale che:
  	\begin{itemize}
  		\item $\mathcal{G}_0$ sono i giochi
- 		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B | \sigma \approx \sigma \} / \approx$
+ 		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B \;|\; \sigma \approx_s \sigma \} / \approx_s$
  		\item Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
  	\end{itemize}
  	
@@ -793,7 +793,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 \begin{frame}
 	
 	Dato $A$ gioco, date $[\sigma],[\tau]$ classi di strategie di $A$, definiamo
-	$[\sigma] \sqsubseteq_A [\tau] \Leftrightarrow \sigma \preccurlyeq_A \tau$ \\
+	\[[\sigma] \sqsubseteq [\tau] \Leftrightarrow \sigma \preccurlyeq_s \tau\]
 % 	NOTA: con l'equinvalenza banale, non c'è bisogno di parlare di classi
 	\begin{block}{Teorema}
 		$K_! (\mathcal{G})$ con l'ordine $\sqsubseteq$ è razionale
