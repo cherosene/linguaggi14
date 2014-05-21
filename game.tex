@@ -169,10 +169,6 @@
 	
 \end{frame}
 
-
-
-
-
 % esempi di strategie
 \begin{frame}
 
@@ -236,20 +232,77 @@
 \begin{frame}
  
  Estendiamo la relazione $\approx$ alle strategie, ponendo:
+ \pause
 	\begin{itemize}
-	\item $\underline{ \sigma \preccurlyeq \tau }$ se per ogni $sab \in \sigma$ e $s' \in \tau$ t.c. $sa\approx s'a'$, esiste $b'$ tale che $s'a'b' \in \tau$ e $sab\approx s'a'b'$
-	\item $\underline{ \sigma \approx \tau \ } \; \text{sse} \; \sigma \preccurlyeq \tau \wedge \tau \preccurlyeq \sigma$
+	\item $\underline{ \sigma \preccurlyeq_s \tau }$ se per ogni $sab \in \sigma$ e $s' \in \tau$ t.c. $sa\approx s'a'$, esiste $b'$ tale che $s'a'b' \in \tau$ e $sab\approx s'a'b'$
+	\item $\underline{ \sigma \approx_s \tau \ } \; \text{sse} \; \sigma \preccurlyeq_s \tau \wedge \tau \preccurlyeq_s \sigma$
 	\end{itemize}  
-	
-	
+	\pause
+In particolare, la definizione porta alcune conseguenze: 
 
 	\begin{itemize}
-		\item $\preccurlyeq$ è un preordine sulle strategie; di conseguenza $\approx$ è una relazione di equivalenza parziale
-		\item Nel caso l'equivalenza $\approx$ del gioco sia l'identità, l'ordine tra strategie si può vedere come inclusione di insiemi o tra le funzioni parziali. Intuitivamente, $\sigma \preccurlyeq \tau$ se $\tau$ può fare più mosse di $\sigma$
+		\item $\preccurlyeq_s$ è un preordine sulle strategie; di conseguenza $\approx_s$ è una relazione di equivalenza parziale
+		\item Nel caso l'equivalenza $\approx$ del gioco sia l'identità, l'ordine tra strategie si può vedere come inclusione di insiemi o tra le funzioni parziali. Intuitivamente, $\sigma \preccurlyeq_s \tau$ se $\tau$ può fare più mosse di $\sigma$
 	\end{itemize}
 	
 \end{frame}
 
+\begin{frame}
+	\begin{columns}
+	\begin{column}{0.45\textwidth}
+	Gioco $A=( M_A , \lambda_A , P_A , \approx_A )$
+		\begin{itemize}
+		         	\item $M_{A}=\{*_1,*_2,n_1,n_2\}$
+		           	\item $\lambda_{A}= \{ (*_1,OQ) ;$ $ (*_2,PQ) ; (n_1,PA) ; (n_2,OA) \}$
+					\item $P_{A}= \{ 
+					\epsilon ,$
+					$ *_1 ,
+					\; *_1n_1, $ 
+					$ *_1*_2,
+					\; *_1*_2n_2, 
+					\; *_1*_2n_2n_1 \}$
+					\item $\approx_{A} = id_{A}$        
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.4\textwidth}
+		\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+			 \draw [fill=blue, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (A) at (2,-2.5) [minimum size=2pt, scale=4] {A};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};
+			 
+			 \node (st_12) at (1,-.5) [minimum size=2pt, scale=1.5] {$*_1$};
+			 \only<1-2>{\node (ri_12) at (1,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+	 		 \only<3-4>{\node (st_22) at (1,-4.5) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \node (st_1) at (3,-.5) [minimum size=2pt, scale=1.5] {$*_1$};
+			 \node (st_2) at (3,-4.5) [minimum size=2pt, scale=1.5] {$*_2$};
+			 \node (ri_1) at (2,-.5) [minimum size=2pt, scale=1.5] {$n_2$};
+			 \node (ri_2) at (2,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};
+			 
+			  \draw[->] [out=280,in=80] (st_1) to (st_2);
+			  \draw[->] [out=110,in=300] (st_2) to (ri_1);
+			  \draw[->] [out=280,in=80] (ri_1) to (ri_2);
+			  \only<1-2>{\draw[->] [out=280,in=80] (st_12) to (ri_12);}
+			  \only<3-4>{\draw[->] [out=280,in=80] (st_12) to (st_22);}
+			\end{tikzpicture}
+		
+	\end{column}
+	\end{columns}
+	\centering
+	\begin{gather*}
+	\only<1-2>{\sigma=\{\epsilon, *_1n_1\}\leftrightarrow f_\sigma(*_1)=n_1  \\}
+	\only<3-4>{\sigma=\{\only<4>{\textcolor{red}{\epsilon, \; *_1*_2}}\only<3>{\epsilon, \; *_1*_2}\}\leftrightarrow \only<4>{\textcolor{red}{f_\sigma(*_1)=*_2}}\only<3>{f_\sigma(*_1)=*_2}  \\}
+	\tau=\{\only<4>{\textcolor{red}{\epsilon, \; *_1*_2}}\only<1-3>{\epsilon, \; *_1*_2}, \; *_1*_2n_2n_1\}\leftrightarrow 
+	\only<4>{\textcolor{red}{f_\tau(*_1)=*_2}}\only<1-3>{f_\tau(*_1)=*_2},\; 
+	f_\tau(n_2)=n_1
+	\\
+	\only<2>{\sigma \not\preccurlyeq_s \tau, \; \sigma \not\preccurlyeq_s \tau}
+	\only<4>{\sigma \preccurlyeq_s \tau}
+	\end{gather*}
+\end{frame}
 
 \subsection{operazioni tra giochi}
 
