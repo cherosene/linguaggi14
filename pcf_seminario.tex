@@ -1274,7 +1274,12 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
-			$\sigma _{tt}$
+			La strategia $\sigma_t$ è la seguente
+			\begin{itemize}
+				\item<2-> Alla domanda di $O$\dots
+				\item<3-> \dots $P$ risponde $tt$
+			\end{itemize}
+			\onslide<4->{La strategia $\sigma_n$ funziona allo stesso modo}
 		\end{column}
 		
 		\begin{column}{0.45\textwidth}
@@ -1283,59 +1288,36 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			 \node (inv) at (0,0) [minimum size=2pt] {};
 			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
 			 
-	\only<1->{	 \draw [fill=cyan, opacity=.5] (3.5,-4) rectangle (.5,-1);
+	\only<1-3>{	 \draw [fill=cyan, opacity=.5] (3.5,-4) rectangle (.5,-1);
 			 \node (B) at (2,-2.5) [minimum size=2pt, scale=4] {B};
 			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
 			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
 			 
 			 
 			 
-			 \only<2-> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
-			 \only<3-> {\node (tt) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$tt$};}
+			 \only<2-3> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
+			 \only<3> {\node (tt) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$tt$};}
 			 
 			 
-			  \only<3->{\draw[->] [out=280,in=80] (st) to (tt);}
-			 
+			  \only<3>{\draw[->] [out=280,in=80] (st) to (tt);}
 			  
-			\end{tikzpicture}
-			
-		\end{column}
-
-
-	\end{columns}
-
-	
-	
-\end{frame}
-
-
-
-
-\begin{frame}
-	
-	\begin{columns}
-		\begin{column}{0.45\textwidth}
-			$\sigma _{n}$
-		\end{column}
-		
-		\begin{column}{0.45\textwidth}
-			
-			\begin{tikzpicture}
-			 \node (inv) at (0,0) [minimum size=2pt] {};
-			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
-			 
-	\only<1->{	 \draw [fill=green, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			  
+			  
+			  
+			  
+			\only<4->{	 \draw [fill=green, opacity=.5] (3.5,-4) rectangle (.5,-1);
 			 \node (N) at (2,-2.5) [minimum size=2pt, scale=4] {N};
 			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
 			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
 			 
 			 
 			 
-			 \only<1-> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
-			 \only<1-> {\node (num_n) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$\underline{n}$};}
+			 \only<4-> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
+			 \only<4-> {\node (num_n) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$\underline{n}$};}
 			 
 			 
-			  \only<1->{\draw[->] [out=280,in=80] (st) to (num_n);}
+			  \only<4->{\draw[->] [out=280,in=80] (st) to (num_n);}			  
+			  
 			 
 			  
 			\end{tikzpicture}
@@ -1352,11 +1334,22 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 
 
 
+
 \begin{frame}
 	
-	\begin{columns}
+	\frametitle{$\llbracket <s,t> \rrbracket$}
+	
+	\begin{columns}	
+	
 		\begin{column}{0.45\textwidth}
-			$\llbracket <n,m> \rrbracket$
+			Dato il termine $<s,t>$ ad esso associamo la strategia prodotto $<\llbracket s \rrbracket , \llbracket t \rrbracket >$.
+			
+			Ad esempio nel caso $\llbracket <n,m> \rrbracket$:
+			\begin{itemize}
+				\item<2-> Se $O$ fa una domanda sulla prima componente\dots
+				\item<3-> \dots $P$ risponde usando la strategia $\llbracket n \rrbracket$
+				\item<4-> Altrimenti risponde usando la strategia $\llbracket m \rrbracket$
+			\end{itemize}
 		\end{column}
 		
 		\begin{column}{0.45\textwidth}
@@ -1375,11 +1368,11 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			 \only<2-> {\node (st_1) at (1.5,-.5) [minimum size=2pt, scale=1.5] {$*_1$};}
 			 \only<3-> {\node (num_1) at (1.5,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};}
 			 \only<4-> {\node (st_2) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
-			 \only<5> {\node (num_2) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$m_2$};}
+			 \only<4-> {\node (num_2) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$m_2$};}
 			 
 			 
 			  \only<3->{\draw[->] [out=280,in=80] (st_1) to (num_1);}
-			  \only<5>{\draw[->] [out=280,in=80] (st_2) to (num_2);}
+			  \only<4->{\draw[->] [out=280,in=80] (st_2) to (num_2);}
 			 
 			  
 			\end{tikzpicture}
@@ -1400,11 +1393,11 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 
 
 \begin{frame}
-	
+			
 			
 			\begin{tikzpicture}
 			 \node (inv) at (0,0) [minimum size=2pt] {};
-			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 \node (inv2) at (4,-4) [minimum size=2pt, scale=1.5] {};
 			 
 	\only<1->{	 \draw [fill=green, opacity=.5] (3,-4) rectangle (0,-1);
 			 \node (N_1) at (1.5,-2.5) [minimum size=2pt, scale=4] {$N_1$};
@@ -1431,10 +1424,10 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			 
 
 
-\only<3->{\draw[->] (st_1) to (st_2);}
-\only<4->{\draw[->] (st_2) to (num_1);}
-\only<5->{\draw[->] (num_1) to (st_3);}
-\only<6->{\draw[->] (st_3) to (num_2);}
+\only<3-4>{\draw[->] (st_1) to (st_2);}
+\only<4>{\draw[->] (st_2) to (num_1);}
+\only<5-6>{\draw[->] (num_1) to (st_3);}
+\only<6>{\draw[->] (st_3) to (num_2);}
 \only<7->{\draw[->] (num_2) to (num_3);}
 
 
@@ -1443,8 +1436,22 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			  
 			\end{tikzpicture}
 			
+	La strategia $\sigma_{add}$ rappresenta la somma tra numeri naturali
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item<2-> La domanda di $O$ ($*_3$)\dots
+				\item<3-> \dots viene girata a $N_1$ da $P$. $O$ risponde con il primo addendo
+	\end{itemize}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item<5-> $P$ chiede il secondo addendo ($*_{2,n}$). $O$ risponde
+				\item<7-> $P$ risponde alla domanda iniziale con la somma degli addendi
+			\end{itemize}
+		\end{column}
+	\end{columns}	
 	
-	$\sigma_{add}$
 	
 	
 \end{frame}
@@ -1452,6 +1459,9 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 
 
 \begin{frame}
+
+
+			\frametitle{$\llbracket N + M \rrbracket = <\sigma_{add} , <\llbracket N \rrbracket , \llbracket M \rrbracket>> \fatsemi App$}
 	
 			
 			\begin{tikzpicture}
@@ -1494,17 +1504,21 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 		% FRECCE
 
 
-\only<3->{\draw[->] (mv_1) to (mv_2);}
-\only<4->{\draw[->] (mv_2) to (mv_3);}
-\only<5->{\draw[->] (mv_3) to (mv_4);}
-\only<6->{\draw[->] (mv_4) to (mv_5);}
-\only<7->{\draw[->] (mv_5) to (mv_6);}
-\only<8->{\draw[->] (mv_6) to (mv_7);}
-\only<9->{\draw[->] (mv_7) to (mv_8);}
-\only<10->{\draw[->] (mv_8) to (mv_9);}
-\only<11->{\draw[->] (mv_9) to (mv_10);}
-\only<12->{\draw[->] (mv_10) to (mv_11);}
-\only<13->{\draw[->] (mv_11) to (mv_12);}
+\only<3>{\draw[->] (mv_1) to (mv_2);}
+\only<4,14>{\draw[->] (mv_2) to (mv_3);}
+\only<5>{\draw[->] (mv_3) to (mv_4);}
+\only<6,14>{\draw[->] (mv_4) to (mv_5);}
+\only<7>{\draw[->] (mv_5) to (mv_6);}
+\only<8,14>{\draw[->] (mv_6) to (mv_7);}
+\only<9>{\draw[->] (mv_7) to (mv_8);}
+\only<10,14>{\draw[->] (mv_8) to (mv_9);}
+\only<11>{\draw[->] (mv_9) to (mv_10);}
+\only<12,14>{\draw[->] (mv_10) to (mv_11);}
+\only<13>{\draw[->] (mv_11) to (mv_12);}
+
+\only<14>{\draw[->] (mv_3) to (mv_6);}
+\only<14>{\draw[->] (mv_7) to (mv_10);}
+\only<14>{\draw[->] (mv_1) to (mv_12);}
 
 
 
@@ -1514,9 +1528,27 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			 
 			  
 			\end{tikzpicture}
-			
 	
-	$\llbracket m + n \rrbracket$
+	\only<-13>{
+	$App$ rappresenta l'applicazione tra termini. Nell'esempio:
+	
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item<2-> Ogni mossa di $O$ viene copiata da $P$ sulla componente corrispondente
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item<4-> $O$ è costretto a muovere rispettando le regole di $\sigma_{add}$ e $<\llbracket N \rrbracket , \llbracket M \rrbracket>$
+			\end{itemize}
+		\end{column}
+	\end{columns}	
+	}
+	
+	\only<14>{Notiamo che le sequenze di mosse su ogni singolo tavolo sono partite valide del gioco corrispondente, come richiesto da $\fatsemi$}
+	
+		
 	
 	
 \end{frame}
@@ -1527,6 +1559,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 
 \begin{frame}
 	
+			\frametitle{$\llbracket Eq? m n \rrbracket$}			
 			
 			\begin{tikzpicture}
 			 \node (inv) at (0,0) [minimum size=2pt] {};
@@ -1590,7 +1623,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			\end{tikzpicture}
 			
 	
-	$\llbracket Eq? m n \rrbracket$
+	In modo analogo al precedente possiamo dare la strategia $\llbracket Eq? M N \rrbracket=<\sigma_{eq}, < \llbracket M \rrbracket , \llbracket N \rrbracket > > \fatsemi App$
 	
 	
 \end{frame}
