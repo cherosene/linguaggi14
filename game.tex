@@ -854,19 +854,24 @@ Date $\sigma$ strategia di $A\limp B$ e $\tau$ di $B\limp C$, allora
 			
 \end{frame}
 
-% strategia copycat con esempio
+
+% strategia copycat
 \begin{frame}
 
 	\frametitle{La strategia \emph{copycat} su $A\limp A$}
-Dato un gioco $A$, è sempre possibile costruire la strategia \emph{copycat} su $A\limp A$:
+Dato $A$, è sempre possibile costruire la strategia \emph{copycat} su $A\limp A$:
 
 \begin{itemize}
- \item +
+ \item<2-> $id_A=\{s \in P_{A\limp A} : s|_1=s|_2 \}$ 
+ \item<3-> la strategia consiste nel copiare le mosse di $O$ sull'altra componente, quindi la funzione parziale associata a questa strategia è
+ \[
+ f(x_1)=x_2, \quad f(x_2)=x_1 \quad \forall x \in M_A
+ \]
+ \item<4-> Data $\sigma$ strategia di $A\limp B$, avremo che $id_A;\sigma=\sigma$
 \end{itemize}
 
 
 \end{frame}
-
 
 
 \subsection{esistenza del modello}
@@ -878,22 +883,22 @@ Dato un gioco $A$, è sempre possibile costruire la strategia \emph{copycat} su 
  	
  	Definiamo $\mathcal{G}$ la categoria tale che:
  	\begin{itemize}
- 		\item $\mathcal{G}_0$ sono i giochi
- 		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B \;|\; \sigma \approx_s \sigma \} / \approx_s$
- 		\item Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
-		\item Il morfismo identico è dato dalla strategia $id_A$
+ 		\item<2-> $\mathcal{G}_0$ sono i giochi
+ 		\item<3-> dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B \;|\; \sigma \approx_s \sigma \} / \approx_s$
+ 		\item<4-> Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
+		\item<5-> Il morfismo identico è dato dalla strategia $id_A$
  	\end{itemize}
  	
- 	In particolare abbiamo che $\mathcal{G}$:
+ 	\onslide<6->{In particolare abbiamo che $\mathcal{G}$:}
  	\begin{itemize}
- 		\item è dotata di un oggetto finale ($1$)
- 		\item è una categoria monoidale 
+ 		\item<7-> è dotata di un oggetto finale ($1$)
+ 		\item<8-> è una categoria monoidale 
  		
  		($\otimes$ è un bifuntore associativo con elemento neutro)
- 		\item è una categoria autonoma 
+ 		\item<9-> è una categoria autonoma 
  		
  		(per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
- 		\item NON è una categoria cartesiana chiusa (mancano i prodotti)
+ 		\item<10-> NON è una categoria cartesiana chiusa (mancano i prodotti)
  	\end{itemize}
  	
  \end{frame}
@@ -902,27 +907,27 @@ Dato un gioco $A$, è sempre possibile costruire la strategia \emph{copycat} su 
 \begin{frame}
 	
 	\frametitle{Il gioco $A \& B$}
-	
+	Dati due giochi $A$ e $B$ definiamo il gioco $A\& B$ come:
 	\begin{itemize}
-		\item $M_{A\& B}=M_A \coprod M_B$
-		\item $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
-		\item $P_{A\& B}=P_A \coprod P_B$
-		\item $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
+		\item<2-> $M_{A\& B}=M_A \coprod M_B$
+		\item<2-> $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
+		\item<2-> $P_{A\& B}=P_A \coprod P_B$
+		\item<2-> $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
 	\end{itemize}
 	
+	\onslide<3->{
 	\begin{block}{Proprietà}
 		\begin{itemize}
-			\item Una partita di $A\& B$ è giocata su una sola delle due componenti
-			\item Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$ (anche vuota)
-		\end{itemize}
-		
+			\item<4-> Una partita di $A\& B$ è giocata su una sola delle due componenti
+			\item<5-> Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$ (anche vuota)
+		\end{itemize}	
 	\end{block}
-	
+	}
 \end{frame}
 
 % dag e der
 \begin{frame}[t]
-Definire dag e der
+\frametitle{strategie $der$ e $\dag$ }
 \end{frame}
 
 

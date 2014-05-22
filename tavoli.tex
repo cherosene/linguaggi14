@@ -48,26 +48,63 @@
 	
 \end{frame}
 
+% dag e der
+\begin{frame}[t]
+\frametitle{strategie $der$ e $\dag$}
 
-% strategia copycat con esempio
-\begin{frame}
-
-	\frametitle{La strategia \emph{copycat} su $A\limp A$}
-Dato $A$, è sempre possibile costruire la strategia \emph{copycat} su $A\limp A$:
-
+Dato un gioco $A$, definiamo la strategia $der$ su $!A\limp A$:
 \begin{itemize}
- \item<2-> $id_A=\{s \in P_{A\limp A} : s|_1=s|_2 \}$ 
- \item<3-> la strategia consiste nel copiare le mosse di $O$ sull'altra componente, quindi la funzione parziale associata a questa strategia è
- \[
- f(x_1)=x_2, \quad f(x_2)=x_1 \quad \forall x \in M_A
- \]
- \item<4-> Data $\sigma$ strategia di $A\limp B$, avremo che $id_A;\sigma=\sigma$
+ \item Se $A_i$ è l'$i$-esima componente di $!A$, allora $der_A^i$ si comporta come la strategia copycat su $A_i\limp A \;\cong\; A\limp A$, e non agisce sulle altre componenti 
+ \item Dato che le componenti di $!A$ sono equivalenti, avremo che $der_A^i\approx_s der_A^j \: \forall i,j$ , quindi lo indicheremo semplicemente con $der_A$  
 \end{itemize}
+
+Data una strategia $\sigma$ su $!A\limp B$, definiamo la strategia $\sigma^{\dag}$ su $!A\limp !B$:
+
+
+\begin{tikzpicture}
+ 
+ \node (inv) at (0,0) [minimum size=2pt] {};
+	 \node (inv2) at (11,-4) [minimum size=2pt] {};
+	 
+	 \foreach \y in {0,-1.2,-2.4} {
+  \foreach \x in {0,2,4} { 
+	  \draw [fill=blue, opacity=.5] (\x+1,\y-1.2) rectangle (\x,\y-.2);
+	 
+	  \node (A\x) at (\x+.5,\y-.7) [minimum size=2pt, scale=1.5] {A};
+	  %\node (O) at (\x+.8,\y) [minimum size=2pt, scale=1] {O};
+	  }
+	  \draw [<->] (A0) -- (A2)  node [above,midway] {P} ;
+	  \draw [<->] (A2) -- (A4)  node [above,midway] {P} ;
+% 	  \draw [->] (A0) to [loop above] () ;
+% 	  \draw [->] (A2) to [loop above] () ;
+% 	  \draw [->] (A4) to [loop above] () ;
+
+
+ \draw [fill=red, opacity=.5] (8,\y-1.2) rectangle (7,\y-.2);
+	 \node (B) at (7.5,\y-.7) [minimum size=2pt, scale=1.5] {B};
+	 \node (s) at (10,\y-.7) [minimum size=2pt, scale=2] {$\sigma$};
+	 \draw [<->] (A4) -- (B)  node [above,midway] {P} ;
+	 
+	 \ifnum \y<0
+	   \draw[<->] (B) -- (7.5,\y+.5)  node [right,midway] {O};
+	 \fi
+ }
+\end{tikzpicture}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{frame}
-
-
 
 
 % % prova di implicazione
