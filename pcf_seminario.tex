@@ -1214,8 +1214,6 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 		\end{description}
 
 	\end{example}	
-	DOBBIAMO METTERE UN PAIO DI INTERPRETAZIONI\\
-	(Exodd) un paio? Sta tutto qui il difficile!
 	
 \end{frame}
 
@@ -1261,13 +1259,438 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			\item $\llbracket Eq? M N \rrbracket = < \sigma_{eq} , < \llbracket M \rrbracket , \llbracket N \rrbracket > > \fatsemi \; App$
 			\item $\llbracket < s ,t > \rrbracket = <\llbracket s \rrbracket , \llbracket t \rrbracket>$
 			\item $\llbracket Proj_1<s,t> \rrbracket = \llbracket s \rrbracket$
-			\item $\llbracket Proj_1<s,t> \rrbracket = \llbracket t \rrbracket$
+			\item $\llbracket Proj_2<s,t> \rrbracket = \llbracket t \rrbracket$
 		\end{itemize}
 
 	\end{block}
 
 	
 \end{frame}
+
+
+\begin{frame}
+	
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			La strategia $\sigma_tt$ è la seguente
+			\begin{itemize}
+				\item<2-> Alla domanda di $O$\dots
+				\item<3-> \dots $P$ risponde $tt$
+			\end{itemize}
+			\onslide<4->{La strategia $\sigma_n$ funziona allo stesso modo}
+		\end{column}
+		
+		\begin{column}{0.45\textwidth}
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1-3>{	 \draw [fill=cyan, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (B) at (2,-2.5) [minimum size=2pt, scale=4] {B};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			 
+			 
+			 \only<2-3> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
+			 \only<3> {\node (tt) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$tt$};}
+			 
+			 
+			  \only<3>{\draw[->] [out=280,in=80] (st) to (tt);}
+			  
+			  
+			  
+			  
+			  
+			\only<4->{	 \draw [fill=green, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (N) at (2,-2.5) [minimum size=2pt, scale=4] {N};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			 
+			 
+			 \only<4-> {\node (st) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*$};}
+			 \only<4-> {\node (num_n) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$\underline{n}$};}
+			 
+			 
+			  \only<4->{\draw[->] [out=280,in=80] (st) to (num_n);}			  
+			  
+			 
+			  
+			\end{tikzpicture}
+			
+		\end{column}
+
+
+	\end{columns}
+
+	
+	
+\end{frame}
+
+
+
+
+
+\begin{frame}
+	
+	\frametitle{$\llbracket <s,t> \rrbracket$}
+	
+	\begin{columns}	
+	
+		\begin{column}{0.45\textwidth}
+			Dato il termine $<s,t>$ ad esso associamo la strategia prodotto $<\llbracket s \rrbracket , \llbracket t \rrbracket >$.
+			
+			Ad esempio nel caso $\llbracket <n,m> \rrbracket$:
+			\begin{itemize}
+				\item<2-> Se $O$ fa una domanda sulla prima componente\dots
+				\item<3-> \dots $P$ risponde usando la strategia $\llbracket n \rrbracket$
+				\item<4-> Altrimenti risponde usando la strategia $\llbracket m \rrbracket$
+			\end{itemize}
+		\end{column}
+		
+		\begin{column}{0.45\textwidth}
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (N) at (2,-2.5) [minimum size=2pt, scale=2] {$N_1 \& N_2$};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			 
+			 
+			 \only<2-> {\node (st_1) at (1.5,-.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<3-> {\node (num_1) at (1.5,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 \only<4-> {\node (st_2) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<4-> {\node (num_2) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$m_2$};}
+			 
+			 
+			  \only<3->{\draw[->] [out=280,in=80] (st_1) to (num_1);}
+			  \only<4->{\draw[->] [out=280,in=80] (st_2) to (num_2);}
+			 
+			  
+			\end{tikzpicture}
+			
+		\end{column}
+
+
+	\end{columns}
+
+	
+	
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+			
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (3,-4) rectangle (0,-1);
+			 \node (N_1) at (1.5,-2.5) [minimum size=2pt, scale=4] {$N_1$};
+			 \node (P_1) at (0.5,-1.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_1) at (0.5,-3.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (6.5,-4) rectangle (3.5,-1);
+			 \node (N_2) at (5,-2.5) [minimum size=2pt, scale=4] {$N_2$};
+			 \node (P_2) at (4,-1.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_2) at (4,-3.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (10.5,-4) rectangle (7.5,-1);
+			 \node (N_3) at (9,-2.5) [minimum size=2pt, scale=4] {$N_3$};
+			 \node (P_3) at (8,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_3) at (8,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			 
+			 
+			 \node (et_1) at (3.25,-2.5) [minimum size=2pt, scale=1.5] {$\&$};
+			 \node (imp_1) at (7,-2.5) [minimum size=2pt, scale=1.5] {$\Rightarrow$};
+			
+			 
+			 \only<2-> {\node (st_1) at (10,-.5) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<3-> {\node (st_2) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*_{1,1}$};}
+			 \only<4-> {\node (num_1) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$n_{1,1}$};}
+			 \only<5-> {\node (st_3) at (6,-.5) [minimum size=2pt, scale=1.5] {$*_{2,n}$};}
+			 \only<6-> {\node (num_2) at (6,-4.5) [minimum size=2pt, scale=1.5] {$m_{2,n}$};}
+			 \only<7-> {\node (num_3) at (10,-4.5) [minimum size=2pt, scale=1.5] {$(n+m)_3$};}
+			 
+
+
+\only<3-4>{\draw[->] (st_1) to (st_2);}
+\only<4>{\draw[->] (st_2) to (num_1);}
+\only<5-6>{\draw[->] (num_1) to (st_3);}
+\only<6>{\draw[->] (st_3) to (num_2);}
+\only<7->{\draw[->] (num_2) to (num_3);}
+
+
+% 			 \draw[step=.5] (0,-5) grid (10.5,0);
+% 			 \foreach \x in {0,1,...,10.5}
+%       \draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+			
+	La strategia $\sigma_{add}$ rappresenta la somma tra numeri naturali
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item<2-> La domanda di $O$ ($*_3$)\dots
+				\item<3-> \dots viene girata a $N_1$ da $P$. $O$ risponde con il primo addendo
+	\end{itemize}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item<5-> $P$ chiede il secondo addendo ($*_{2,n}$). $O$ risponde
+				\item<7-> $P$ risponde alla domanda iniziale con la somma degli addendi
+			\end{itemize}
+		\end{column}
+	\end{columns}	
+	
+	
+	
+\end{frame}
+
+
+
+\begin{frame}
+
+
+			\frametitle{$\llbracket N + M \rrbracket = <\sigma_{add} , <\llbracket N \rrbracket , \llbracket M \rrbracket>> \fatsemi App$}
+	
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.2] (3,-4) rectangle (0,-1);
+			 \node (N_1) at (1.5,-2.5) [minimum size=2pt, scale=1.5] {$N_1 \& N_2 \Rightarrow N_3$};
+			 \node (P_1) at (0.5,-1.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_1) at (0.5,-3.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.2] (6.5,-4) rectangle (3.5,-1);
+			 \node (N_2) at (5,-2.5) [minimum size=2pt, scale=1.5] {$N_4 \& N_5$};
+			 \node (P_2) at (4,-1.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_2) at (4,-3.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (10.5,-4) rectangle (7.5,-1);
+			 \node (N_3) at (9,-2.5) [minimum size=2pt, scale=4] {$N_6$};
+			 \node (P_3) at (8,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_3) at (8,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			
+			
+			
+			% SIMBOLI
+			
+			\node (et_1) at (3.25,-2.5) [minimum size=2pt, scale=1.5] {$\&$};
+			\node (imp_1) at (7,-2.5) [minimum size=2pt, scale=1.5] {$\Rightarrow$};
+			
+			 
+			% MOSSE
+			 
+			 
+			 \only<2-> {\node (mv_1) at (10,-.5) [minimum size=2pt, scale=1.5] {$*_6$};}
+			 \only<3-> {\node (mv_2) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<4-> {\node (mv_3) at (0.5,-4.5) [minimum size=2pt, scale=1.5] {$*_{1,1}$};}
+			 \only<5-> {\node (mv_4) at (5,-.5) [minimum size=2pt, scale=1.5] {$*_{4,1}$};}
+			 \only<6-> {\node (mv_5) at (5,-4.5) [minimum size=2pt, scale=1.5] {$n_{4,1}$};}
+			 \only<7-> {\node (mv_6) at (0.5,-.5) [minimum size=2pt, scale=1.5] {$n_{1,1}$};}
+			 \only<8-> {\node (mv_7) at (1.5,-4.5) [minimum size=2pt, scale=1.5] {$*_{2,n}$};}
+			 \only<9-> {\node (mv_8) at (6,-.5) [minimum size=2pt, scale=1.5] {$*_{5,n}$};}
+			 \only<10-> {\node (mv_9) at (6,-4.5) [minimum size=2pt, scale=1.5] {$m_{5,n}$};}
+			 \only<11-> {\node (mv_10) at (1.5,-.5) [minimum size=2pt, scale=1.5] {$m_{2,n}$};}
+			 \only<12-> {\node (mv_11) at (2.8,-4.5) [minimum size=2pt, scale=1] {$(n+m)_3$};}
+			 \only<13-> {\node (mv_12) at (10,-4.5) [minimum size=2pt, scale=1] {$(n+m)_6$};}
+			 
+
+		% FRECCE
+
+
+\only<3>{\draw[->] (mv_1) to (mv_2);}
+\only<4,14>{\draw[->] (mv_2) to (mv_3);}
+\only<5>{\draw[->] (mv_3) to (mv_4);}
+\only<6,14>{\draw[->] (mv_4) to (mv_5);}
+\only<7>{\draw[->] (mv_5) to (mv_6);}
+\only<8,14>{\draw[->] (mv_6) to (mv_7);}
+\only<9>{\draw[->] (mv_7) to (mv_8);}
+\only<10,14>{\draw[->] (mv_8) to (mv_9);}
+\only<11>{\draw[->] (mv_9) to (mv_10);}
+\only<12,14>{\draw[->] (mv_10) to (mv_11);}
+\only<13>{\draw[->] [out=20, in=140] (mv_11) to (mv_12);}
+
+\only<14>{\draw[->] (mv_3) to (mv_6);}
+\only<14>{\draw[->] (mv_7) to (mv_10);}
+\only<14>{\draw[->] (mv_1) to (mv_12);}
+
+
+
+%			 \draw[step=.5] (0,-5) grid (10.5,0);
+%			 \foreach \x in {0,1,...,10.5}
+%       \draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+	
+	\only<-13>{
+	$App$ rappresenta l'applicazione tra termini. Nell'esempio:
+	
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item<2-> Ogni mossa di $O$ viene copiata da $P$ sulla componente corrispondente
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item<4-> $O$ è costretto a muovere rispettando le regole di $\sigma_{add}$ e $<\llbracket N \rrbracket , \llbracket M \rrbracket>$
+			\end{itemize}
+		\end{column}
+	\end{columns}	
+	}
+	
+	\only<14>{Notiamo che le sequenze di mosse su ogni singolo tavolo sono partite valide del gioco corrispondente, come richiesto da $\fatsemi$}
+	
+		
+	
+	
+\end{frame}
+
+
+
+
+
+\begin{frame}
+	
+			\frametitle{$\llbracket Eq? m n \rrbracket$}			
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=orange, opacity=.2] (3,-4) rectangle (0,-1);
+			 \node (N_1) at (1.5,-2.5) [minimum size=2pt, scale=1.5] {$N_1 \& N_2 \Rightarrow B_3$};
+			 \node (P_1) at (0.5,-1.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_1) at (0.5,-3.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.2] (6.5,-4) rectangle (3.5,-1);
+			 \node (N_2) at (5,-2.5) [minimum size=2pt, scale=1.5] {$N_4 \& N_5$};
+			 \node (P_2) at (4,-1.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_2) at (4,-3.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=cyan, opacity=.5] (10.5,-4) rectangle (7.5,-1);
+			 \node (B_3) at (9,-2.5) [minimum size=2pt, scale=4] {$B_6$};
+			 \node (P_3) at (8,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_3) at (8,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			
+			
+			
+			
+			% SIMBOLI
+			
+			\node (et_1) at (3.25,-2.5) [minimum size=2pt, scale=1.5] {$\&$};
+			\node (imp_1) at (7,-2.5) [minimum size=2pt, scale=1.5] {$\Rightarrow$};
+			
+			
+			
+			 
+			% MOSSE
+			 
+			 
+			 \only<2-> {\node (mv_1) at (10,-.5) [minimum size=2pt, scale=1.5] {$*_6$};}
+			 \only<2-> {\node (mv_2) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<2-> {\node (mv_3) at (0.5,-4.5) [minimum size=2pt, scale=1.5] {$*_{1,1}$};}
+			 \only<2-> {\node (mv_4) at (5,-.5) [minimum size=2pt, scale=1.5] {$*_{4,1}$};}
+			 \only<2-> {\node (mv_5) at (5,-4.5) [minimum size=2pt, scale=1.5] {$n_{4,1}$};}
+			 \only<2-> {\node (mv_6) at (0.5,-.5) [minimum size=2pt, scale=1.5] {$n_{1,1}$};}
+			 \only<2-> {\node (mv_7) at (1.5,-4.5) [minimum size=2pt, scale=1.5] {$*_{2,n}$};}
+			 \only<2-> {\node (mv_8) at (6,-.5) [minimum size=2pt, scale=1.5] {$*_{5,n}$};}
+			 \only<2-> {\node (mv_9) at (6,-4.5) [minimum size=2pt, scale=1.5] {$m_{5,n}$};}
+			 \only<2-> {\node (mv_10) at (1.5,-.5) [minimum size=2pt, scale=1.5] {$m_{2,n}$};}
+			 \only<2-> {\node (mv_11) at (2.8,-4.5) [minimum size=2pt, scale=1] {$f_3$};}
+			 \only<2-> {\node (mv_12) at (10,-4.5) [minimum size=2pt, scale=1] {$f_6$};}
+			 
+			 
+
+		% FRECCE
+
+ 			\only<2>{\draw[->] [out=200, in=340] (mv_1) to (mv_2);}
+			\only<2>{\draw[->] (mv_2) to (mv_3);}
+ 			\only<2>{\draw[->] (mv_3) to (mv_4);}
+			\only<2>{\draw[->] (mv_4) to (mv_5);}
+ 			\only<2>{\draw[->] (mv_5) to (mv_6);}
+			\only<2>{\draw[->] (mv_6) to (mv_7);}
+ 			\only<2>{\draw[->] (mv_7) to (mv_8);}
+			\only<2>{\draw[->] (mv_8) to (mv_9);}
+ 			\only<2>{\draw[->] (mv_9) to (mv_10);}
+			\only<2>{\draw[->] (mv_10) to (mv_11);}
+ 			\only<2>{\draw[->] [out=20, in=140] (mv_11) to (mv_12);}
+			
+%			\only<2>{\draw[->] (mv_3) to (mv_6);}
+%			\only<2>{\draw[->] (mv_7) to (mv_10);}
+%			\only<2>{\draw[->] (mv_1) to (mv_12);}
+
+%\only<3->{\draw[->] (mv_1) to (mv_2);}
+%\only<4->{\draw[->] (mv_2) to (mv_3);}
+%\only<5->{\draw[->] (mv_3) to (mv_4);}
+%\only<6->{\draw[->] (mv_4) to (mv_5);}
+%\only<7->{\draw[->] (mv_5) to (mv_6);}
+%\only<8->{\draw[->] (mv_6) to (mv_7);}
+%\only<9->{\draw[->] (mv_7) to (mv_8);}
+%\only<10->{\draw[->] (mv_8) to (mv_9);}
+%\only<11->{\draw[->] (mv_9) to (mv_10);}
+%\only<12->{\draw[->] (mv_10) to (mv_11);}
+%\only<13->{\draw[->] (mv_11) to (mv_12);}
+
+
+
+%			 \draw[step=.5] (0,-5) grid (10.5,0);
+%			 \foreach \x in {0,1,...,10.5}
+%       \draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+			
+	
+	In modo analogo al precedente possiamo dare la strategia $\llbracket Eq? M N \rrbracket=<\sigma_{eq}, < \llbracket M \rrbracket , \llbracket N \rrbracket > > \fatsemi App$
+	
+	
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+	
+	Per parlare di variabili occorre introdurre il concetto di \emph{ambiente}
+	
+	\begin{block}{Ambiente}
+		Dato il termine $t:T$, siano $x_1:S_1 ,\; \dots \; ,x_n :S_n$ le variabili libere che vi compaiono
+		
+		Chiamiamo $\Pi = \{ x_1:S_1 , \; \dots \; ,x_n :S_n \}$ l'ambiente di $t$
+		
+	\end{block}
+	
+	Con $\Delta \vdash t:T$ indichiamo che $\Pi \subseteq \Delta$
+	
+	Lo scopo dell'ambiente quello di fare da \emph{input}, cioé assegnare un valore alle variabili libere
+	
+	
+	
+\end{frame}
+
+
 
 
 
@@ -1276,15 +1699,219 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	\begin{block}{Termini}
 		\begin{itemize}
 			\item $\llbracket x:S \rrbracket = Cc:1\& \llbracket S \rrbracket \rightarrow \llbracket S \rrbracket$
+			\item $\llbracket \Pi \vdash \lambda (x : S) . t : T \rrbracket = Cur(\llbracket t \rrbracket) : 1\& \llbracket \Pi \rrbracket \rightarrow \llbracket S \rrbracket \Rightarrow \llbracket T \rrbracket$ dove $ \Pi, x:S \vdash t  : T$
 			\item $\llbracket if \; B \; then \; M \; else \; N \rrbracket = <Cond, < \llbracket B \rrbracket , \llbracket M \rrbracket , \llbracket N \rrbracket > > \fatsemi App$
 			\item $\llbracket M(N) \rrbracket = < \llbracket M \rrbracket , \llbracket N \rrbracket > \fatsemi App$
-			\item $\llbracket \lambda (x : S) . t : T \rrbracket = Cur(\llbracket t \rrbracket) : 1\& \Pi \rightarrow \llbracket S \rrbracket \Rightarrow \llbracket T \rrbracket$ dove $\llbracket t \rrbracket : 1\& \Pi \& \llbracket S \rrbracket \rightarrow \llbracket T \rrbracket$
 		\end{itemize}
 		
 	\end{block}
 
 	
 \end{frame}
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+			
+			
+			\frametitle{$\llbracket x \rrbracket$}
+			
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-4) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (4,-3) rectangle (2,-1);
+			 \node (N_1) at (3,-2) [minimum size=2pt, scale=2] {$N_1$};
+			 \node (P_1) at (2.25,-1.25) [minimum size=2pt, scale=1.5] {P};
+			 \node (O_1) at (2.25,-2.75) [minimum size=2pt, scale=1.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (8.5,-3) rectangle (6.5,-1);
+			 \node (N_2) at (7.5,-2) [minimum size=2pt, scale=2] {$N_2$};
+			 \node (P_2) at (6.75,-2.75) [minimum size=2pt, scale=1.5] {P};
+			 \node (O_2) at (6.75,-1.25) [minimum size=2pt, scale=1.5] {O};}
+			 
+			
+			 
+			 \only<2-> {\node (mv_1) at (8,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<3-> {\node (mv_2) at (3.5,-3.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<4-> {\node (mv_3) at (3.5,-.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 \only<5-> {\node (mv_4) at (8,-3.5) [minimum size=2pt, scale=1.5] {$n_2$};}
+			 
+
+
+\only<3>{\draw[->] (mv_1) to (mv_2);}
+\only<4>{\draw[->] (mv_2) to (mv_3);}
+\only<5>{\draw[->] (mv_3) to (mv_4);}
+%\only<6->{\draw[->] (st_3) to (num_2);}
+%\only<7->{\draw[->] (num_2) to (num_3);}
+
+
+% 			 \draw[step=.5] (0,-4) grid (10.5,0);
+% 			 \foreach \x in {0,1,...,10.5}
+%       \draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+			
+	
+	
+	La strategia $\llbracket x \rrbracket$ consiste nel copiare le mosse di $O$ sul primo tavolo (strategia \emph{copycat})
+	\begin{itemize}
+		\item<2-> $P$ coppia le mosse di $O$ tra i due tavoli
+		\item<4-> $O$ muove in maniera arbitraria
+	\end{itemize}
+	
+	
+	\onslide<6>{Le mosse di $O$ nell'ambiente influenzano il comportamento di $P$ durante la partita}
+
+	
+	
+\end{frame}
+
+
+
+\begin{frame}
+			
+			
+			\frametitle{$\llbracket \Pi \vdash \lambda (x : S) . t : T \rrbracket = Cur(\llbracket t \rrbracket) : 1\& \llbracket \Pi \rrbracket \rightarrow \llbracket S \rrbracket \Rightarrow \llbracket T \rrbracket$}
+			
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-4) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (4,-3) rectangle (2,-1);
+			 \node (N_1) at (3,-2) [minimum size=2pt, scale=2] {$N_1$};
+			 \node (P_1) at (2.25,-1.25) [minimum size=2pt, scale=1.5] {P};
+			 \node (O_1) at (2.25,-2.75) [minimum size=2pt, scale=1.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (8.5,-3) rectangle (6.5,-1);
+			 \node (N_2) at (7.5,-2) [minimum size=2pt, scale=2] {$N_2$};
+			 \node (P_2) at (6.75,-2.75) [minimum size=2pt, scale=1.5] {P};
+			 \node (O_2) at (6.75,-1.25) [minimum size=2pt, scale=1.5] {O};}
+			 
+			
+			 
+			 \only<2-> {\node (mv_1) at (8,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<3-> {\node (mv_2) at (3.5,-3.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<4-> {\node (mv_3) at (3.5,-.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 \only<5-> {\node (mv_4) at (8,-3.5) [minimum size=2pt, scale=1.5] {$n_2$};}
+			 
+
+
+\only<3>{\draw[->] (mv_1) to (mv_2);}
+\only<4>{\draw[->] (mv_2) to (mv_3);}
+\only<5>{\draw[->] (mv_3) to (mv_4);}
+%\only<6->{\draw[->] (st_3) to (num_2);}
+%\only<7->{\draw[->] (num_2) to (num_3);}
+
+
+% 			 \draw[step=.5] (0,-4) grid (10.5,0);
+% 			 \foreach \x in {0,1,...,10.5}
+%       \draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+			
+	
+	Notiamo che una strategia $\sigma : A\& B \rightarrow C$ può essere canonicamente interpretata come una strategia di $A \rightarrow B \Rightarrow C$
+	
+	\onslide<6>{Chiamiamo la strategia ottenuta $Cur(\sigma)$}
+
+	
+	
+\end{frame}
+
+
+
+
+\begin{frame}
+	
+			
+			\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<1->{	 \draw [fill=orange, opacity=.5] (4.5,-4) rectangle (0.5,-1);
+			 \node (N_1) at (2.5,-2.5) [minimum size=2pt, scale=2] {$B_1\& N_2 \& N_3$};
+			 \node (P_1) at (1,-1.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_1) at (1,-3.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (9.5,-4) rectangle (6.5,-1);
+			 \node (N_2) at (8,-2.5) [minimum size=2pt, scale=4] {$N_4$};
+			 \node (P_2) at (7,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O_2) at (7,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			
+			 
+			 \only<2-> {\node (mv_1) at (9,-.5) [minimum size=2pt, scale=1.5] {$*_4$};}
+			 \only<3-> {\node (mv_2) at (2,-0.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<4-> {\node (mv_3) at (2,-4.5) [minimum size=2pt, scale=1.5] {$f_1$};}
+			 \only<5-> {\node (mv_4) at (4,-0.5) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<6-> {\node (mv_5) at (4,-4.5) [minimum size=2pt, scale=1.5] {$n_3$};}
+			 \only<7-> {\node (mv_6) at (9,-4.5) [minimum size=2pt, scale=1.5] {$n_4$};}
+			 
+
+
+\only<3>{\draw[->] (mv_1) to (mv_2);}
+\only<4-5>{\draw[->] (mv_2) to (mv_3);}
+\only<5>{\draw[->] (mv_3) to (mv_4);}
+\only<6-7>{\draw[->] (mv_4) to (mv_5);}
+\only<7>{\draw[->] (mv_5) to (mv_6);}
+
+
+% 			 \draw[step=.5] (0,-5) grid (10.5,0);
+% 			 \foreach \x in {0,1,...,10.5}
+% 				\draw (\x,0.2) node {\x};
+			 
+			  
+			\end{tikzpicture}
+			
+	
+	La strategia $cond$ rappresenta il costrutto \emph{if \dots then \dots else \dots}
+	\begin{itemize}
+		\item<2-> Alla domanda di $O$, $P$ controlla la guardia ($B_1$)
+		\item<4-> Se la guardia risulta vera $P$ consulta $N_2$, altrimenti $N_3$
+		\item<6-> $P$ copia la risposta data su $N_4$
+	\end{itemize}
+
+	
+	
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+	
+	\begin{block}{Teorema}
+		La semantica dei giochi data finora è \emph{sound}, cioè:
+		\begin{itemize}
+			\item se $s \eqobs t$
+			\item se $s$ e $t$ sono costruiti senza usare il ricursore $Y$
+		\end{itemize}
+  allora $\llbracket s \rrbracket = 
+	\llbracket t \rrbracket$
+	\end{block}
+
+	
+\end{frame}
+
+
+
+
+
+
 
 
 
@@ -1293,14 +1920,83 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	\begin{block}{Ricursore}
 	
 		\begin{itemize}
-			\item $\llbracket \lambda (f : A \rightarrow A).f(F(f)) \rrbracket = \Theta:1\&((A\Rightarrow A) \Rightarrow A) \rightarrow (A\Rightarrow A) \Rightarrow A$ dove $F:(A\rightarrow A)\rightarrow A$ è una variabile
+			\item Definiamo $\Theta$ come segue
+			\begin{gather*}
+				\llbracket F: (A \rightarrow A) \Rightarrow A \vdash \lambda (f : A \rightarrow A).f(F(f)) \rrbracket = \\
+				\Theta:1\&((A\Rightarrow A) \Rightarrow A) \rightarrow (A\Rightarrow A) \Rightarrow A
+			\end{gather*}
 			\item $\llbracket Y \rrbracket = \Theta ^\triangledown : 1 \rightarrow (A\Rightarrow A) \Rightarrow A$
 		\end{itemize}
 		
 	\end{block}
+	
+	Notiamo che per le definizioni date precedentemente si ha $\llbracket Y \rrbracket = \bigsqcup_{n\in \omega} \llbracket Y^{(n)} \rrbracket$ dove:
+	
+	\begin{gather*}
+		Y^{(0)} \equiv \lambda(f: A \rightarrow A).\perp_A \\
+		Y^{(k+1)} \equiv \lambda(f : A\rightarrow A).f(Y^{(k)}(f))
+	\end{gather*}
+
 
 	
 \end{frame}
+
+
+
+
+
+\begin{frame}
+
+\begin{block}{Esempio}
+	Secondo la nostra semantica si ha $\llbracket Y (\lambda x. 5) \rrbracket = \sigma_5$?
+	
+	\begin{align*}
+		Y^{(0)}(\lambda x .5) & \twoheadrightarrow \perp_{Nat} \\
+		\llbracket Y^{(0)}(\lambda x.5) \rrbracket & = \{ \epsilon \}
+	\end{align*}
+	
+	\begin{align*}
+		Y^{(1)}(\lambda x .5) & \twoheadrightarrow [\lambda x .5](Y^{(0)}(\lambda x .5)) \\
+													& \twoheadrightarrow 5 \\
+		\llbracket Y^{(1)}(\lambda x.5) \rrbracket & = \sigma_5 \\
+		\llbracket Y(\lambda x.5) \rrbracket & = \sigma_5
+	\end{align*}
+	
+	
+\end{block}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\begin{block}{Esempio}
+	Posto $F \equiv \lambda f . \lambda x . f(x+1)$ secondo la nostra semantica si ha $\llbracket Y (F) \rrbracket = \{ \epsilon \}$?
+	
+	\begin{align*}
+		Y^{(0)}(F) & \twoheadrightarrow \perp_{N \rightarrow N} \\
+		\llbracket Y^{(0)}(F) \rrbracket & = \{ \epsilon \}
+	\end{align*}
+	
+	Supponiamo $Y^{(k)}(F) \twoheadrightarrow \perp_{N \rightarrow N}$
+	
+	\begin{align*}
+		Y^{(k+1)}(F) & \twoheadrightarrow F(Y^{(k)}(F)) \\
+													& \twoheadrightarrow F(\perp_{N \rightarrow N}) \\
+													& \twoheadrightarrow \lambda x.\perp_{N \rightarrow N}(x+1) \\
+													& \twoheadrightarrow \lambda x.\perp_N \\
+													& \equiv \perp_{N\rightarrow N}
+		\end{align*}
+	
+	Quindi possiamo affermare $\llbracket Y(F) \rrbracket = \bigsqcup_{n\in \omega} \llbracket Y^{(n)}(F) \rrbracket = \bigsqcup_{n\in \omega} \{ \epsilon \} = \{ \epsilon \}$
+	
+\end{block}
+
+\end{frame}
+
 
 
 
