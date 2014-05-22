@@ -66,7 +66,7 @@
 		\item Se $S$ e $T$ sono tipi, $S\rightarrow T$ è un tipo
 	\end{itemize}
 	
-	\begin{example}
+	\begin{block}{Esempio}
 		\begin{itemize}
 			\item $Nat\times Nat$
 			\item $(Nat\times Bool) \rightarrow Bool$
@@ -74,7 +74,7 @@
 			\item $(Nat \rightarrow Nat) \rightarrow Nat \rightarrow Nat$
 		\end{itemize}
 
-	\end{example}
+	\end{block}
 
 	
 \end{frame}
@@ -110,7 +110,7 @@
 % operazioni ben tipate (formate)
 \begin{frame}
 	Con $t:T$ indichiamo che il termine $t$ è di tipo $T$
-	\begin{example}
+	\begin{block}{Esempio}
 		\begin{itemize}
 			\item $(\underline{n} + \underline{m})+ \underline{n} :Nat$
 			\item $Eq?(\underline{n})(\underline{m}):Bool$
@@ -128,7 +128,7 @@
 			\item \textcolor{red}{$Y[IsZero]$} non è ben formato
 		\end{itemize}
 
-	\end{example}
+	\end{block}
 
 	
 \end{frame}
@@ -149,7 +149,7 @@
 	\end{itemize}
 
 	
-	\begin{example}
+	\begin{block}{Esempio}
 		\begin{itemize}
 			\item $Eq?(\underline{n})(\underline{m}):Bool\quad$ è un programma
 			\item $Y [Succ]:Nat\quad$ è un programma
@@ -157,7 +157,7 @@
 			\item $x+\underline{n}:Nat\quad$ \emph{non} è un programma (non è chiuso)
 		\end{itemize}
 
-	\end{example}
+	\end{block}
 	
 \end{frame}
 
@@ -195,14 +195,47 @@
 		E lo indichiamo con $Eval(M)=N$
 	\end{itemize}
 	
-	\begin{theorem}[Proprietà di Church-Rosser]
+	\begin{block}{Proprietà di Church-Rosser}
 		Se $M \twoheadrightarrow N_1$ e $M \twoheadrightarrow N_2$, allora esiste $P$ tale che $N_1 \twoheadrightarrow P$ e $N_2 \twoheadrightarrow P$
-	\end{theorem}
+	\end{block}
 	
 	Questo risultato assicura l'unicità della valutazione
 	Non sempre però un termine ha una forma normale, in questo caso scriviamo $Eval(M)=undef$
 	
 \end{frame}
+
+
+
+\begin{frame}
+
+	\begin{block}{Esempio}
+		\begin{align*}
+			Y(\lambda x .5) & \twoheadrightarrow [\lambda x .5](Y(\lambda x .5)) \\
+											& \twoheadrightarrow 5 
+		\end{align*}
+	
+		Quindi $Eval( Y(\lambda x . 5) ) = 5$
+	
+	\end{block}
+
+	\begin{block}{Esempio}
+			Posto $F \equiv \lambda f . \lambda x . f(x+1)$
+			\begin{align*}
+				Y(F) & \twoheadrightarrow F(Y(F)) \\
+						 & \twoheadrightarrow \lambda x . Y(F)(x+1) \\
+						 & \twoheadrightarrow \lambda x . [\lambda y . Y(F)(y+1)](x+1) \\
+						 & \twoheadrightarrow \lambda x . Y(F)(x+2) \\
+						 & \twoheadrightarrow \dots
+			\end{align*}
+			
+			Si può mostrare che non esistono riduzioni ad una forma normale; quindi $Eval(Y(F))=undef$
+
+	\end{block}
+
+\end{frame}
+
+
+
 
 % Contesto e Equivalenza oss
 \begin{frame}
@@ -211,12 +244,12 @@
 	
 	Definiamo un \emph{contesto} come un termine in cui compare un "buco" indicato con $[\;]$
 	
-	\begin{example}
+	\begin{block}{Esempio}
 		$C[\;] \equiv \lambda (x:Nat).x+[\;]$
 		
 		Porre il termine $\underline{n}$ nel contesto $C[\;]$ significa considerare il termine
 		$C[\underline{n}] \equiv \lambda (x:Nat).x+\underline{n}$
-	\end{example}
+	\end{block}
 	
 	Diciamo che due termini $M$ ed $N$ sono osservazionalmente equivalenti se per ogni contesto $C[\;]$ si ha $Eval(C[M])=Eval(C[N])$
 	e lo indichiamo con $M\eqobs N$
@@ -1196,7 +1229,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 \begin{frame}
 	
 		
-	\begin{example}
+	\begin{block}{example}
 		\begin{description}
 			\item[$Bool$] \begin{itemize}
 			              	\item $M_{Bool}=\{*,t,f\}$
@@ -1213,7 +1246,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			              \end{itemize}
 		\end{description}
 
-	\end{example}	
+	\end{block}	
 	
 \end{frame}
 
@@ -1728,10 +1761,17 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			 \node (inv) at (0,0) [minimum size=2pt] {};
 			 \node (inv2) at (4,-4) [minimum size=2pt, scale=1.5] {};
 			 
-	\only<1->{	 \draw [fill=green, opacity=.5] (4,-3) rectangle (2,-1);
-			 \node (N_1) at (3,-2) [minimum size=2pt, scale=2] {$N_1$};
-			 \node (P_1) at (2.25,-1.25) [minimum size=2pt, scale=1.5] {P};
-			 \node (O_1) at (2.25,-2.75) [minimum size=2pt, scale=1.5] {O};}
+	
+	\only<1->{	 \draw [fill=orange, opacity=.5] (2,-3) rectangle (0,-1);
+			 \node (A_0) at (1,-2) [minimum size=2pt, scale=2] {$A$};
+			 \node (P_0) at (0.25,-1.25) [minimum size=2pt, scale=1.5] {P};
+			 \node (O_0) at (0.25,-2.75) [minimum size=2pt, scale=1.5] {O};}	
+			 
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (5,-3) rectangle (3,-1);
+			 \node (N_1) at (4,-2) [minimum size=2pt, scale=2] {$N_1$};
+			 \node (P_1) at (3.25,-1.25) [minimum size=2pt, scale=1.5] {P};
+			 \node (O_1) at (3.25,-2.75) [minimum size=2pt, scale=1.5] {O};}
 			 
 	\only<1->{	 \draw [fill=green, opacity=.5] (8.5,-3) rectangle (6.5,-1);
 			 \node (N_2) at (7.5,-2) [minimum size=2pt, scale=2] {$N_2$};
@@ -1741,10 +1781,15 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			
 			 
 			 \only<2-> {\node (mv_1) at (8,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
-			 \only<3-> {\node (mv_2) at (3.5,-3.5) [minimum size=2pt, scale=1.5] {$*_1$};}
-			 \only<4-> {\node (mv_3) at (3.5,-.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 \only<3-> {\node (mv_2) at (4.5,-3.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<4-> {\node (mv_3) at (4.5,-.5) [minimum size=2pt, scale=1.5] {$n_1$};}
 			 \only<5-> {\node (mv_4) at (8,-3.5) [minimum size=2pt, scale=1.5] {$n_2$};}
 			 
+
+			\node (sym_1) at (2.5,-2) [minimum size=2pt, scale=1.5] {$\&$};
+			\node (sym_2) at (5.75,-2) [minimum size=2pt, scale=1.5] {$\rightarrow$};
+
+
 
 
 \only<3>{\draw[->] (mv_1) to (mv_2);}
@@ -1788,10 +1833,17 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			 \node (inv) at (0,0) [minimum size=2pt] {};
 			 \node (inv2) at (4,-4) [minimum size=2pt, scale=1.5] {};
 			 
-	\only<1->{	 \draw [fill=green, opacity=.5] (4,-3) rectangle (2,-1);
-			 \node (N_1) at (3,-2) [minimum size=2pt, scale=2] {$N_1$};
-			 \node (P_1) at (2.25,-1.25) [minimum size=2pt, scale=1.5] {P};
-			 \node (O_1) at (2.25,-2.75) [minimum size=2pt, scale=1.5] {O};}
+	
+	\only<1->{	 \draw [fill=orange, opacity=.5] (2,-3) rectangle (0,-1);
+			 \node (A_0) at (1,-2) [minimum size=2pt, scale=2] {$A$};
+			 \node (P_0) at (0.25,-1.25) [minimum size=2pt, scale=1.5] {P};
+			 \node (O_0) at (0.25,-2.75) [minimum size=2pt, scale=1.5] {O};}	
+			 
+			 
+	\only<1->{	 \draw [fill=green, opacity=.5] (5,-3) rectangle (3,-1);
+			 \node (N_1) at (4,-2) [minimum size=2pt, scale=2] {$N_1$};
+			 \node (P_1) at (3.25,-1.25) [minimum size=2pt, scale=1.5] {P};
+			 \node (O_1) at (3.25,-2.75) [minimum size=2pt, scale=1.5] {O};}
 			 
 	\only<1->{	 \draw [fill=green, opacity=.5] (8.5,-3) rectangle (6.5,-1);
 			 \node (N_2) at (7.5,-2) [minimum size=2pt, scale=2] {$N_2$};
@@ -1801,10 +1853,15 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			
 			 
 			 \only<2-> {\node (mv_1) at (8,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
-			 \only<3-> {\node (mv_2) at (3.5,-3.5) [minimum size=2pt, scale=1.5] {$*_1$};}
-			 \only<4-> {\node (mv_3) at (3.5,-.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 \only<3-> {\node (mv_2) at (4.5,-3.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<4-> {\node (mv_3) at (4.5,-.5) [minimum size=2pt, scale=1.5] {$n_1$};}
 			 \only<5-> {\node (mv_4) at (8,-3.5) [minimum size=2pt, scale=1.5] {$n_2$};}
 			 
+
+			\node (sym_1) at (2.5,-2) [minimum size=2pt, scale=1.5] {$\rightarrow$};
+			\node (sym_2) at (5.75,-2) [minimum size=2pt, scale=1.5] {$\Rightarrow$};
+
+
 
 
 \only<3>{\draw[->] (mv_1) to (mv_2);}
@@ -1861,11 +1918,16 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			 
 
 
+			\node (sym_1) at (5.5,-2.5) [minimum size=2pt, scale=1.5] {$\Rightarrow$};
+
+
+
 \only<3>{\draw[->] (mv_1) to (mv_2);}
 \only<4-5>{\draw[->] (mv_2) to (mv_3);}
 \only<5>{\draw[->] (mv_3) to (mv_4);}
 \only<6-7>{\draw[->] (mv_4) to (mv_5);}
 \only<7>{\draw[->] (mv_5) to (mv_6);}
+
 
 
 % 			 \draw[step=.5] (0,-5) grid (10.5,0);
@@ -1897,11 +1959,11 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	\begin{block}{Teorema}
 		La semantica dei giochi data finora è \emph{sound}, cioè:
 		\begin{itemize}
-			\item se $s \eqobs t$
+			\item se $\llbracket s \rrbracket = 
+	\llbracket t \rrbracket$
 			\item se $s$ e $t$ sono costruiti senza usare il ricursore $Y$
 		\end{itemize}
-  allora $\llbracket s \rrbracket = 
-	\llbracket t \rrbracket$
+  allora $s \eqobs t$
 	\end{block}
 
 	
@@ -2014,7 +2076,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	\begin{block}{Teorema}
 		
 		Per ogni tipo $\tau$ di PCF, posto $T= \llbracket \tau \rrbracket$, si ha che $1 \rightarrow T$ è un dI-domain;
-		in particolare $\mathcal{M}(K_! (\mathcal{G}) )$ è un \emph{cpo-based model} algebrico
+		in particolare $\mathcal{M}(K_! (\mathcal{G}) )$ è un modello algebrico
 		
 	\end{block}
 	
@@ -2059,8 +2121,6 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 		
 	\end{block}
 	
-	DA SCRIVERE MEGLIO
-	
 \end{frame}
 
 \subsection{Universalità}
@@ -2104,8 +2164,12 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 	\begin{block}{Universalità}
 		
-		Ogni strategia di $\mathcal{M}(\mathcal{E}_{rec})$ è definibile in PCF, cioè
+		\begin{itemize}
+			\item Ogni strategia di $\mathcal{M}(\mathcal{E}_{rec})$ è definibile in PCF, cioè
 		è interpretazione di un termine di PCF
+			\item $\mathcal{M}(\mathcal{E}_{rec})$ è un \emph{oggetto iniziale} della categoria FAMOD(PCF)
+		\end{itemize}
+		
 		
 	\end{block}
 
