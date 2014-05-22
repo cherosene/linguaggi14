@@ -105,7 +105,7 @@
 					\; *_1n_1, $ 
 					$ \only<5>{\textcolor{red}}{*_1*_2},
 					\; \only<6>{\textcolor{red}}{*_1*_2n_2}, 
-					\; \only<7-8>{\textcolor{red}}{*_1*_2n_2n_1} \}$
+					\; \only<7->{\textcolor{red}}{*_1*_2n_2n_1} \}$
 					\item $\approx_{A} = id_{A}$        
 		\end{itemize}}
 	\end{column}
@@ -573,6 +573,7 @@ In particolare, la definizione porta alcune conseguenze:
 	\]
 }
 
+\only<1-10>{
 \onslide<3->{
 \begin{itemize}
  \item $Gun=A$ con $P_A=\{
@@ -596,10 +597,38 @@ In particolare, la definizione porta alcune conseguenze:
  $\quad \only<10>{\textcolor{red}{f(bang_n)=n_P}} \only<4-9>{f(bang_n)=n_P}$
 \end{itemize}
 }
+}
+
+
+\only<11->{
+
+\begin{itemize}
+ \item $Gun=A$ con $P_A=\{
+ \only<3-5>{\textcolor{red}{\epsilon}} \only<1-2,6->{\epsilon},
+ \;  \only<6,8>{\textcolor{red}{\underline{pull}}} \only<1-5,7,9->{\underline{pull}}, 
+ \; \only<7>{\textcolor{red}{\underline{pull}\:click}} \only<1-6,8->{\underline{pull}\:click}, 
+ \; \only<9->{\textcolor{red}{\underline{pull}\:bang}} \only<1-8>{\underline{pull}\:bang} 
+ \}$
+ \item $Life=B$ con $P_B=\{
+ \only<3-4>{\textcolor{red}{\epsilon}} \only<1-2,5->{\epsilon},
+ \;  \only<5-9>{\textcolor{red}{*_O}} \only<1-4,10->{*_O}, 
+ \; *_O\checkmark_P,
+ \; *_O1_P,
+ \; \only<10->{\textcolor{red}{*_O2_P}} \only<1-9>{*_O2_P},
+ \; *_O3_P,
+ \; \dots \}$
+ \item Strategia \textit{Roulette Russa}:
+ 
+ $\only<6>{\textcolor{red}{f(*_O)=\underline{pull}_2}} \only<4-5,7->{f(*_O)=\underline{pull}_2}$, 
+ $\quad \only<8>{\textcolor{red}{f(click_{2n})=\underline{pull}_{2n+2}}} \only<4-7,9->{f(click_{2n})=\underline{pull}_{2n+2}} \forall n$,  
+ $\quad \only<10->{\textcolor{red}{f(bang_{2n})=n_P}} \only<4-9>{f(bang_{2n})=n_P}$
+\end{itemize}
+
+}
 
 
 
-\only<2->{ 
+\only<2-10>{ 
 	\begin{tikzpicture}
 	 \node (inv) at (0,0) [minimum size=2pt] {};
 	 \node (inv2) at (11,-4) [minimum size=2pt] {};
@@ -632,93 +661,62 @@ In particolare, la definizione porta alcune conseguenze:
 	  \end{tikzpicture}
 
 	}
-	
-	
-\end{frame}
 
+	
+\only<11->{ 
+	\begin{tikzpicture}
+	 \node (inv) at (0,0) [minimum size=2pt] {};
+	 \node (inv2) at (11,-4) [minimum size=2pt] {};
+	 \foreach \x in {0,3,6} { 
+	  \draw [fill=blue, opacity=.5] (\x+2,-3) rectangle (\x,-1);
+	 % \node (A) at (\x+1,-2) [minimum size=2pt, scale=2] {A};
+	  \node (P) at (\x+0.3,-1.3) [minimum size=2pt, scale=1.5] {P};
+ 	  \node (O) at (\x+0.3,-2.7) [minimum size=2pt, scale=1.5] {O};
+	  }
+	  \node (A) at (7,-2) [minimum size=2pt, scale=2] {A$_2$};
+	  \node (A) at (4,-2) [minimum size=2pt, scale=2] {A$_4$};
+	  \node (A) at (1,-2) [minimum size=2pt, scale=2] {A$_6$};
+	 \draw [fill=red, opacity=.5] (11,-3) rectangle (9,-1);
+	 \node (B) at (10,-2) [minimum size=2pt, scale=2] {B};
+	 \node (P) at (9.3,-2.7) [minimum size=2pt, scale=1.5] {P};
+ 	 \node (O) at (9.3,-1.3) [minimum size=2pt, scale=1.5] {O};
+	 
+	 \only<5->{\node (st1) at (10,-0.5) [minimum size=2pt, scale=1.5] {$*_O$};}
+ 	 \only<6->{\node (st2) at (7,-0.5) [minimum size=2pt, scale=1.5] {$\underline{pull}_2$};}
+	 \only<7->{\node (ri2) at (7,-3.5) [minimum size=2pt, scale=1.5] {$click_2$};}
+ 	 \only<8->{\node (st3) at (4,-0.5) [minimum size=2pt, scale=1.5] {$\underline{pull}_4$};}
+	 \only<9->{\node (ri3) at (4,-3.5) [minimum size=2pt, scale=1.5] {$bang_4$};}
+ 	 \only<10->{\node (ri1) at (10,-3.5) [minimum size=2pt, scale=1.5] {$2_P$};}
+ 	 
+	  \only<6->{\draw[->] [out=250,in=280] (st1) to (st2);}
+	  \only<7->{\draw[->] [out=250,in=30] (st2) to (ri2);}
+	  \only<8->{\draw[->] [out=80,in=280] (ri2) to (st3);}
+	  \only<9->{\draw[->] [out=250,in=110] (st3) to (ri3);}
+	  \only<10->{\draw[->] [out=30,in=150] (ri3) to (ri1);}
+	  \end{tikzpicture}
 
-% gioco unione
-\begin{frame}
+	}
 	
-	\frametitle{Il gioco $A \& B$}
-	
-	\begin{itemize}
-		\item $M_{A\& B}=M_A \coprod M_B$
-		\item $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
-		\item $P_{A\& B}=P_A \coprod P_B$
-		\item $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
-	\end{itemize}
-	
-	\begin{block}{Proprietà}
-		\begin{itemize}
-			\item Una partita di $A\& B$ è giocata su una sola delle due componenti
-			\item Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$ (anche vuota)
-		\end{itemize}
-		
-	\end{block}
-	
-\end{frame}
-
-
-\begin{frame}[t]
 \end{frame}
 
 
 \subsection{strategie importanti}
 
-% esempi di strategie
+% strategia composizione
 \begin{frame}
 
-	\frametitle{Alcune strategie}
-	
-	DOBBIAMO DECIDERE COME SPIEGARE LE STRATEGIE; QUESTE ANDREBBERO DETTE:
-	\begin{itemize}
-		\item $\sigma ; \tau$ [NO]
-		\item $id_{A\limp A}$ (la copy-cat) [SI]
-		\item $App:(A \Rightarrow B)\& A \Rightarrow B$ [SI]
-	\end{itemize}
+	\frametitle{La strategia $\sigma ; \tau$}
+Date due strategie $\sigma$ del gioco $A\limp B$ e $\tau$ del gioco $B\limp C$, possiamo definire la strategia \emph{composizione} $\sigma ; \tau$ del gioco $A\limp C$:
+
+\begin{itemize}
+ \item +
+\end{itemize}
+
 
 \end{frame}
 
 
 \begin{frame}[t]
-	
-% 	\frametitle{La strategia copycat}
-% 	
-% 	\begin{tabular}{c c}
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		
-% 		\\
-% 		
-% 		\begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a_storto.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		
-% 		
-% 	\end{tabular}
-	
-
 	
 \end{frame}
 
@@ -746,6 +744,37 @@ In particolare, la definizione porta alcune conseguenze:
  	
  \end{frame}
 
+ % gioco unione
+\begin{frame}
+	
+	\frametitle{Il gioco $A \& B$}
+	
+	\begin{itemize}
+		\item $M_{A\& B}=M_A \coprod M_B$
+		\item $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
+		\item $P_{A\& B}=P_A \coprod P_B$
+		\item $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
+	\end{itemize}
+	
+	\begin{block}{Proprietà}
+		\begin{itemize}
+			\item Una partita di $A\& B$ è giocata su una sola delle due componenti
+			\item Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$ (anche vuota)
+		\end{itemize}
+		
+	\end{block}
+	
+\end{frame}
+
+% dag e der
+\begin{frame}[t]
+\end{frame}
+
+
+
+
+
+ 
 % categoria di co-Kleisli
 \begin{frame}
 
@@ -754,7 +783,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	\begin{itemize}
 		\item $K_!(\mathcal{G})_0 = \mathcal{G}_0$
 		\item Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
-		\item Date due strategie $\sigma$ e $\tau$, $\tau \circ \sigma = \sigma \fatsemi \tau = \sigma ^\dag ; \tau$
+		\item Date due strategie $\sigma$ e $\tau$, $\tau \circ \sigma = \sigma \fatsemi \tau := \sigma ^\dag ; \tau$
 		\item Dato un gioco $A$, il morfismo identico è $der_A$
 	\end{itemize}
 

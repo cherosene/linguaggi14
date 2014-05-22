@@ -1214,8 +1214,6 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 		\end{description}
 
 	\end{example}	
-	DOBBIAMO METTERE UN PAIO DI INTERPRETAZIONI\\
-	(Exodd) un paio? Sta tutto qui il difficile!
 	
 \end{frame}
 
@@ -1261,7 +1259,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 			\item $\llbracket Eq? M N \rrbracket = < \sigma_{eq} , < \llbracket M \rrbracket , \llbracket N \rrbracket > > \fatsemi \; App$
 			\item $\llbracket < s ,t > \rrbracket = <\llbracket s \rrbracket , \llbracket t \rrbracket>$
 			\item $\llbracket Proj_1<s,t> \rrbracket = \llbracket s \rrbracket$
-			\item $\llbracket Proj_1<s,t> \rrbracket = \llbracket t \rrbracket$
+			\item $\llbracket Proj_2<s,t> \rrbracket = \llbracket t \rrbracket$
 		\end{itemize}
 
 	\end{block}
@@ -1274,7 +1272,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
-			La strategia $\sigma_t$ è la seguente
+			La strategia $\sigma_tt$ è la seguente
 			\begin{itemize}
 				\item<2-> Alla domanda di $O$\dots
 				\item<3-> \dots $P$ risponde $tt$
@@ -1528,7 +1526,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 \only<10,14>{\draw[->] (mv_8) to (mv_9);}
 \only<11>{\draw[->] (mv_9) to (mv_10);}
 \only<12,14>{\draw[->] (mv_10) to (mv_11);}
-\only<13>{\draw[->] (mv_11) to (mv_12);}
+\only<13>{\draw[->] [out=20, in=140] (mv_11) to (mv_12);}
 
 \only<14>{\draw[->] (mv_3) to (mv_6);}
 \only<14>{\draw[->] (mv_7) to (mv_10);}
@@ -1625,21 +1623,21 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 
 		% FRECCE
 
-% 			\only<2>{\draw[->] (mv_1) to (mv_2);}
+ 			\only<2>{\draw[->] [out=200, in=340] (mv_1) to (mv_2);}
 			\only<2>{\draw[->] (mv_2) to (mv_3);}
-% 			\only<2>{\draw[->] (mv_3) to (mv_4);}
+ 			\only<2>{\draw[->] (mv_3) to (mv_4);}
 			\only<2>{\draw[->] (mv_4) to (mv_5);}
-% 			\only<2>{\draw[->] (mv_5) to (mv_6);}
+ 			\only<2>{\draw[->] (mv_5) to (mv_6);}
 			\only<2>{\draw[->] (mv_6) to (mv_7);}
-% 			\only<2>{\draw[->] (mv_7) to (mv_8);}
+ 			\only<2>{\draw[->] (mv_7) to (mv_8);}
 			\only<2>{\draw[->] (mv_8) to (mv_9);}
-% 			\only<2>{\draw[->] (mv_9) to (mv_10);}
+ 			\only<2>{\draw[->] (mv_9) to (mv_10);}
 			\only<2>{\draw[->] (mv_10) to (mv_11);}
-% 			\only<2>{\draw[->] (mv_11) to (mv_12);}
+ 			\only<2>{\draw[->] [out=20, in=140] (mv_11) to (mv_12);}
 			
-			\only<2>{\draw[->] (mv_3) to (mv_6);}
-			\only<2>{\draw[->] (mv_7) to (mv_10);}
-			\only<2>{\draw[->] (mv_1) to (mv_12);}
+%			\only<2>{\draw[->] (mv_3) to (mv_6);}
+%			\only<2>{\draw[->] (mv_7) to (mv_10);}
+%			\only<2>{\draw[->] (mv_1) to (mv_12);}
 
 %\only<3->{\draw[->] (mv_1) to (mv_2);}
 %\only<4->{\draw[->] (mv_2) to (mv_3);}
