@@ -702,11 +702,163 @@ In particolare, la definizione porta alcune conseguenze:
 
 \subsection{strategie importanti}
 
-% strategia composizione
+% strategia composizione con esempio
 \begin{frame}
 
 	\frametitle{La strategia $\sigma ; \tau$}
-Date due strategie $\sigma$ del gioco $A\limp B$ e $\tau$ del gioco $B\limp C$, possiamo definire la strategia \emph{composizione} $\sigma ; \tau$ del gioco $A\limp C$:
+Date $\sigma$ strategia di $A\limp B$ e $\tau$ di $B\limp C$, allora
+
+\begin{itemize}
+ \item<2-> $\sigma ; \tau =\{s|_{A,C} : s \in (M_A \coprod M_B \coprod M_C)^*, \; s|_{A,B} \in \sigma, \; s|_{B,C} \in \tau \}$
+ \item<3-> $\sigma ; \tau$ è una strategia di $A\limp C$
+\end{itemize}
+
+\onslide<4->{Si può dare una costruzione di $\sigma ; \tau$ algoritmica:}
+
+\only<-13>{
+\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (11,-5) [minimum size=2pt, scale=1.5] {};
+			
+			\only<5->{
+			 \draw [fill=blue, opacity=.5] (1.9,-3.5) rectangle (-.1,-1.5);
+			 \draw [fill=red, opacity=.5] (4.9,-3.5) rectangle (2.9,-1.5);
+			 \draw [fill=red, opacity=.5] (7.4,-3.5) rectangle (5.4,-1.5);
+			 \draw [fill=green, opacity=.5] (10.4,-3.5) rectangle (8.4,-1.5);
+			 			 
+			 \node (A) at (.9,-2.5) [minimum size=2pt, scale=2] {A};
+			 \node (B) at (3.9,-2.5) [minimum size=2pt, scale=2] {B};
+			 \node (B) at (6.4,-2.5) [minimum size=2pt, scale=2] {B};
+			 \node (C) at (9.4,-2.5) [minimum size=2pt, scale=2] {C};
+			 
+			 \node (P) at (.2,-1.8) [minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (3.2,-3.2) [minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (5.7,-1.8) [minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (8.7,-3.2) [minimum size=2pt, scale=1.5] {P};
+			 
+			 \node (O) at (.2,-3.2) [minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (3.2,-1.8) [minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (5.7,-3.2) [minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (8.7,-1.8) [minimum size=2pt, scale=1.5] {O};
+			 
+			 %\node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};
+			 
+			 \node (sigma) at (2.3,-.3) [minimum size=2pt, scale=2] {\only<8,10,12>{\textcolor{red}{$\sigma$}} \only<1-7,9,11,13>{$\sigma$}};
+			 \node (tau) at (7.9,-.3) [minimum size=2pt, scale=2] {\only<7,9,13>{\textcolor{red}{$\tau$}} \only<1-6,8,10-12>{$\tau$}};
+			\draw[dashed] (5.15, -4.5) -- (5.15, -.5);
+			}
+			
+			
+			\only<6->{ \node (st_1) at (9.4,-1) [minimum size=2pt, scale=1.5] {$*_1$};}
+			\only<7->{\node (st_2) at (6.9,-1) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<7->{\node (st_2b) at (4.4,-1) [minimum size=2pt, scale=1.5] {$*_2$};}
+			\only<8->{  \node (ri_2) at (6.9,-4) [minimum size=2pt, scale=1.5] {$n_2$};}
+			 \only<8->{ \node (ri_2b) at (4.4,-4) [minimum size=2pt, scale=1.5] {$n_2$};}
+			 \only<9->{\node (st_3) at (5.9,-1) [minimum size=2pt, scale=1.5] {$*_3$};}
+			\only<9->{ \node (st_3b) at (3.4,-1) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<10->{\node (st_4) at (.9,-1) [minimum size=2pt, scale=1.5] {$*_4$};}
+			 \only<11->{\node (ri_4) at (.9,-4) [minimum size=2pt, scale=1.5] {$n_4$};}
+			 \only<12->{\node (ri_3b) at (3.4,-4) [minimum size=2pt, scale=1.5] {$n_3$};}
+			\only<12->{ \node (ri_3) at (5.9,-4) [minimum size=2pt, scale=1.5] {$n_3$};}
+			\only<13->{ \node (ri_1) at (9.4,-4) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 
+			 %\node (ri_2) at (2,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};
+			 
+			 \only<7->{ \draw[->] (st_1) to (st_2);}
+			  \only<8->{\draw[dashed,->] (st_2) to (ri_2);}
+			  \only<8->{\draw[->] (st_2b) to (ri_2b);}
+			  \only<9->{\draw[->] (ri_2) to (st_3);}
+			 \only<9->{ \draw[dashed,->] (ri_2b) to (st_3b);}
+			\only<10->{  \draw[->] (st_3b) to (st_4);}
+			 \only<11->{ \draw[->] (st_4) to (ri_4);}
+			 \only<12->{ \draw[dashed,->] (st_3) to (ri_3);}
+			 \only<12->{ \draw[->] (ri_4) to (ri_3b);}
+			 \only<13->{ \draw[->] [in=150, out=30] (ri_3) to (ri_1);}
+			  
+			  %\draw[->] [out=180,in=300] (st_2) to (ri_1);
+			  %\draw[->] [out=280,in=0] (ri_1) to (ri_2);
+			
+			\end{tikzpicture}
+}
+
+\only<14->{
+\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (11,-5) [minimum size=2pt, scale=1.5] {};
+			
+			\only<5->{
+			 \draw [fill=blue, opacity=.5] (1.9,-3.5) rectangle (-.1,-1.5);
+			 \draw [fill=red, opacity=.1] (4.9,-3.5) rectangle (2.9,-1.5);
+			 \draw [fill=red, opacity=.1] (7.4,-3.5) rectangle (5.4,-1.5);
+			 \draw [fill=green, opacity=.5] (10.4,-3.5) rectangle (8.4,-1.5);
+			 			 
+			 \node (A) at (.9,-2.5) [minimum size=2pt, scale=2] {A};
+			 \node (B) at (3.9,-2.5) [opacity=.1, minimum size=2pt, scale=2] {B};
+			 \node (B) at (6.4,-2.5) [opacity=.1, minimum size=2pt, scale=2] {B};
+			 \node (C) at (9.4,-2.5) [minimum size=2pt, scale=2] {C};
+			 
+			 \node (P) at (.2,-1.8) [minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (3.2,-3.2) [opacity=.1, minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (5.7,-1.8) [opacity=.1, minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (8.7,-3.2) [minimum size=2pt, scale=1.5] {P};
+			 
+			 \node (O) at (.2,-3.2) [minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (3.2,-1.8) [opacity=.1, minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (5.7,-3.2) [opacity=.1, minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (8.7,-1.8) [minimum size=2pt, scale=1.5] {O};
+			 
+			 %\node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};
+			 
+			 \node (sigma) at (2.3,-.3) [minimum size=2pt, scale=2] {\only<8,10,12>{\textcolor{red}{$\sigma$}} \only<1-7,9,11,13>{$\sigma$}};
+			 \node (tau) at (7.9,-.3) [minimum size=2pt, scale=2] {\only<7,9,13>{\textcolor{red}{$\tau$}} \only<1-6,8,10-12>{$\tau$}};
+			\draw[opacity=.1, dashed] (5.15, -4.5) -- (5.15, -.5);
+			}
+			
+			\node (st) at (5.15, -.3)[minimum size=2pt, scale=2] {$\sigma ; \tau$};
+			
+			
+			\only<6->{ \node (st_1) at (9.4,-1) [minimum size=2pt, scale=1.5] {$*_1$};}
+			\only<7->{\node (st_2) at (6.9,-1) [opacity=.1, minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<7->{\node (st_2b) at (4.4,-1) [opacity=.1, minimum size=2pt, scale=1.5] {$*_2$};}
+			\only<8->{  \node (ri_2) at (6.9,-4) [opacity=.1, minimum size=2pt, scale=1.5] {$n_2$};}
+			 \only<8->{ \node (ri_2b) at (4.4,-4) [opacity=.1, minimum size=2pt, scale=1.5] {$n_2$};}
+			 \only<9->{\node (st_3) at (5.9,-1) [opacity=.1, minimum size=2pt, scale=1.5] {$*_3$};}
+			\only<9->{ \node (st_3b) at (3.4,-1) [opacity=.1, minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<10->{\node (st_4) at (.9,-1) [minimum size=2pt, scale=1.5] {$*_4$};}
+			 \only<11->{\node (ri_4) at (.9,-4) [minimum size=2pt, scale=1.5] {$n_4$};}
+			 \only<12->{\node (ri_3b) at (3.4,-4) [opacity=.1, minimum size=2pt, scale=1.5] {$n_3$};}
+			\only<12->{ \node (ri_3) at (5.9,-4) [opacity=.1, minimum size=2pt, scale=1.5] {$n_3$};}
+			\only<13->{ \node (ri_1) at (9.4,-4) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 
+			 %\node (ri_2) at (2,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};
+			 
+			 \only<7->{ \draw[opacity=.1, ->] (st_1) to (st_2);}
+			  \only<8->{\draw[opacity=.1, dashed,->] (st_2) to (ri_2);}
+			  \only<8->{\draw[opacity=.1, ->] (st_2b) to (ri_2b);}
+			  \only<9->{\draw[opacity=.1, ->] (ri_2) to (st_3);}
+			 \only<9->{ \draw[opacity=.1, dashed,->] (ri_2b) to (st_3b);}
+			\only<10->{  \draw[opacity=.1, ->] (st_3b) to (st_4);}
+			 \only<11->{ \draw[->] (st_4) to (ri_4);}
+			 \only<12->{ \draw[opacity=.1, dashed,->] (st_3) to (ri_3);}
+			 \only<12->{ \draw[opacity=.1, ->] (ri_4) to (ri_3b);}
+			 \only<13->{ \draw[opacity=.1, ->] [in=150, out=30] (ri_3) to (ri_1);}
+			 
+			 \draw[->] [in=360, out=200] (st_1) to (st_4);
+			 \draw[->] [in=160, out=20] (ri_4) to (ri_1);
+			  
+			  %\draw[->] [out=180,in=300] (st_2) to (ri_1);
+			  %\draw[->] [out=280,in=0] (ri_1) to (ri_2);
+			
+			\end{tikzpicture}
+	}		
+			
+\end{frame}
+
+% strategia copycat con esempio
+\begin{frame}
+
+	\frametitle{La strategia \emph{copycat} su $A\limp A$}
+Dato un gioco $A$, è sempre possibile costruire la strategia \emph{copycat} su $A\limp A$:
 
 \begin{itemize}
  \item +
@@ -716,9 +868,6 @@ Date due strategie $\sigma$ del gioco $A\limp B$ e $\tau$ del gioco $B\limp C$, 
 \end{frame}
 
 
-\begin{frame}[t]
-	
-\end{frame}
 
 \subsection{esistenza del modello}
 
@@ -732,13 +881,18 @@ Date due strategie $\sigma$ del gioco $A\limp B$ e $\tau$ del gioco $B\limp C$, 
  		\item $\mathcal{G}_0$ sono i giochi
  		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B \;|\; \sigma \approx_s \sigma \} / \approx_s$
  		\item Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
+		\item Il morfismo identico è dato dalla strategia $id_A$
  	\end{itemize}
  	
- 	In particolare $\mathcal{G}$ è dotata di:
+ 	In particolare abbiamo che $\mathcal{G}$:
  	\begin{itemize}
- 		\item un oggetto finale ($1$)
- 		\item è una categoria monoidale (è definito $\otimes$ bifuntore associativo e con elemento neutro)
- 		\item è una categoria autonoma (per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
+ 		\item è dotata di un oggetto finale ($1$)
+ 		\item è una categoria monoidale 
+ 		
+ 		($\otimes$ è un bifuntore associativo con elemento neutro)
+ 		\item è una categoria autonoma 
+ 		
+ 		(per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
  		\item NON è una categoria cartesiana chiusa (mancano i prodotti)
  	\end{itemize}
  	
@@ -768,17 +922,16 @@ Date due strategie $\sigma$ del gioco $A\limp B$ e $\tau$ del gioco $B\limp C$, 
 
 % dag e der
 \begin{frame}[t]
+Definire dag e der
 \end{frame}
 
 
-
-
-
- 
 % categoria di co-Kleisli
 \begin{frame}
 
-Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ rispetto a $!$; in particolare:
+Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ rispetto a $!$
+
+In particolare:
 	
 	\begin{itemize}
 		\item $K_!(\mathcal{G})_0 = \mathcal{G}_0$
@@ -793,7 +946,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 		\item Esiste un oggetto \emph{finale} ($1$)
 		\item Dati due oggetti, esiste l'oggetto esponente 
 		
-		(l'operatore ``$\Rightarrow$'' è tale che $Mor(A\& B,C) \cong Mor(A,B\Rightarrow C)$)
+		(``$\Rightarrow$'' è tale che $Mor_{K_!(\mathcal{G})}(A\& B,C) \cong Mor_{K_!(\mathcal{G})}(A,B\Rightarrow C)$)
 	\end{itemize}
 
 \end{frame}
