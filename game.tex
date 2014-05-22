@@ -258,7 +258,7 @@
 
 % ordine tra strategie
 \begin{frame}
- 
+ \frametitle{Ordine fra strategie}
  Estendiamo la relazione $\approx$ alle strategie, ponendo:
  \pause
 	\begin{itemize}
@@ -277,6 +277,7 @@ In particolare, la definizione porta alcune conseguenze:
 
 % esempio di ordine
 \begin{frame}
+\frametitle{Ordine fra strategie}
 	\begin{columns}
 	\begin{column}{0.45\textwidth}
 	Gioco $A=( M_A , \lambda_A , P_A , \approx_A )$
@@ -926,30 +927,71 @@ Dato $A$, è sempre possibile costruire la strategia \emph{copycat} su $A\limp A
 \end{frame}
 
 % dag e der
-\begin{frame}[t]
-\frametitle{strategie $der$ e $\dag$ }
-\end{frame}
+\begin{frame}
+\frametitle{strategie $der$ e $\dag$}
 
+Dato un gioco $A$, definiamo la strategia $der$ su $!A\limp A$:
+\begin{itemize}
+ \item<2-> Se $A_i$ è l'$i$-esima componente di $!A$, allora $der_A^i$ si comporta come la strategia copycat su $A_i\limp A \;\cong\; A\limp A$, e non agisce sulle altre componenti 
+ \item<3-> Dato che le componenti di $!A$ sono equivalenti, avremo che $der_A^i\approx_s der_A^j \: \forall i,j$ , quindi lo indicheremo semplicemente con $der_A$  
+\end{itemize}
+
+\onslide<4->{
+Data una strategia $\sigma$ su $!A\limp B$, definiamo la strategia $\sigma^{\dag}$ su $!A\limp !B$:
+}
+
+\onslide<5->{
+\begin{tikzpicture}
+ 
+ \node (inv) at (0,0) [minimum size=2pt] {};
+	 \node (inv2) at (11,-4) [minimum size=2pt] {};
+	 
+	 \foreach \y in {0,-1.2,-2.4} {
+  \foreach \x in {0,2,4} { 
+	  \draw [fill=blue, opacity=.5] (\x+1,\y-1.2) rectangle (\x,\y-.2);
+	  \node (A\x) at (\x+.5,\y-.7) [minimum size=2pt, scale=1.5] {A};
+	  }
+	  \draw [<->] (A0) -- (A2)  node [above,midway] {P} ;
+	  \draw [<->] (A2) -- (A4)  node [above,midway] {P} ;
+
+ \draw [fill=red, opacity=.5] (8,\y-1.2) rectangle (7,\y-.2);
+	 \node (B) at (7.5,\y-.7) [minimum size=2pt, scale=1.5] {B};
+	 \node (s) at (10,\y-.7) [minimum size=2pt, scale=2] {$\sigma$};
+	 \draw [<->] (A4) -- (B)  node [above,midway] {P} ;
+
+ }
+ 
+ \draw [<->] [out=0,in=0] (8,-1.9) to (8,-3.1) ;
+ \draw [<->] [out=0,in=0] (8,-1.9) to (8,-.7) ;
+ \node (O) at (8.6,-2.5) [minimum size=2pt, scale=1.1] {O};
+ \node (O) at (8.6,-1.3) [minimum size=2pt, scale=1.1] {O};
+ \draw[opacity=.5, dashed] (-.5, -1.3) -- (10.5, -1.3);
+ \draw[opacity=.5, dashed] (-.5, -2.5) -- (10.5, -2.5);
+ \end{tikzpicture}
+}
+
+\end{frame}
 
 % categoria di co-Kleisli
 \begin{frame}
-
+\frametitle{categoria di co-Kleisli}
+\onslide<2->{
 Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ rispetto a $!$
 
 In particolare:
-	
+	}
 	\begin{itemize}
-		\item $K_!(\mathcal{G})_0 = \mathcal{G}_0$
-		\item Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
-		\item Date due strategie $\sigma$ e $\tau$, $\tau \circ \sigma = \sigma \fatsemi \tau := \sigma ^\dag ; \tau$
-		\item Dato un gioco $A$, il morfismo identico è $der_A$
+		\item<3-> $K_!(\mathcal{G})_0 = \mathcal{G}_0$
+		\item<4-> Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
+		\item<5-> Date due strategie $\sigma$ e $\tau$, $\tau \circ \sigma = \sigma \fatsemi \tau := \sigma ^\dag ; \tau$
+		\item<6-> Dato un gioco $A$, il morfismo identico è $der_A$
 	\end{itemize}
 
-	In particolare $K_!(\mathcal{G})$ è una \emph{categoria cartesiana chiusa}, cioè:
+	\onslide<7->{In particolare $K_!(\mathcal{G})$ è una \emph{categoria cartesiana chiusa}, cioè:}
 	\begin{itemize}
-		\item Dati due oggetti esiste il \emph{prodotto} ($A\& B$)
-		\item Esiste un oggetto \emph{finale} ($1$)
-		\item Dati due oggetti, esiste l'oggetto esponente 
+		\item<8-> Dati due oggetti esiste il \emph{prodotto} ($A\& B$)
+		\item<9-> Esiste un oggetto \emph{finale} ($1$)
+		\item<10-> Dati due oggetti, esiste l'oggetto esponente 
 		
 		(``$\Rightarrow$'' è tale che $Mor_{K_!(\mathcal{G})}(A\& B,C) \cong Mor_{K_!(\mathcal{G})}(A,B\Rightarrow C)$)
 	\end{itemize}
@@ -959,21 +1001,23 @@ In particolare:
 % ppo e ccc razionale
 \begin{frame}
 	
-	\frametitle{order enrichement}
-	
+	\frametitle{order enrichement e razionalità}
+	\onslide<2->{
 	Definiamo un \emph{pointed poset (ppo)} come un poset con un minimo (generalmente indicato con $\perp$)
-	
-	Definiamo una categoria cartesiana chiusa $C$ \emph{pointed poset enriched} se:
+	}
+	\onslide<3->{
+	Definiamo una categoria cartesiana chiusa $C$ \emph{pointed poset enriched} se:}
 	\begin{itemize}
-		\item Dati due oggetti $A,B$, $(Mor(A,B),\sqsubseteq _{A,B},\perp _{A,B})$ è un pointed poset
-		\item Composizione, prodotto e currying sono monotoni
-		\item Per ogni $f: A\rightarrow B$, per ogni gioco $C$, $\perp_{B,C} \circ f = \perp _{A,B}$
+		\item<4-> Dati due oggetti $A,B$, $(Mor(A,B),\sqsubseteq _{A,B},\perp _{A,B})$ è un pointed poset
+		\item<5-> Composizione, prodotto e currying sono monotoni
+		\item<6-> Per ogni $f: A\rightarrow B$, per ogni gioco $C$, $\perp_{B,C} \circ f = \perp _{A,B}$
 	\end{itemize}
-	
+	\onslide<7->{
 	Definiamo una categoria cartesiana chiusa $C$ \emph{razionale} se:
+	}
 	\begin{itemize}
-		\item è ppo-enriched
-		\item per ogni $f: A\times B \rightarrow B$ si ha:
+		\item<8-> è ppo-enriched
+		\item<9-> per ogni $f: A\times B \rightarrow B$ si ha:
 		\begin{itemize}
 			\item La catena $(f^{(k)} | k\in \omega)$ definita da $f^{(0)}=\perp _{A,B}$ e $f^{k+1} = f \circ <id_A , f^{(k)}>$ ammette \emph{least upper bound} $f^{\triangledown}$
 			\item Dati $g:C\rightarrow A$ e $h:B\rightarrow D$, $g\circ f^\triangledown \circ h = \bigsqcup_{k\in \omega} g \circ f^{(k)} \circ h$
@@ -985,14 +1029,17 @@ In particolare:
 
 % I giochi sono un modello di PCF
 \begin{frame}
-	
+	\frametitle{Denotazione di PCF}
+	\onslide<2->{
 	Dato $A$ gioco, date $[\sigma],[\tau]$ classi di strategie di $A$, definiamo
 	\[[\sigma] \sqsubseteq [\tau] \Leftrightarrow \sigma \preccurlyeq_s \tau\]
-% 	NOTA: con l'equinvalenza banale, non c'è bisogno di parlare di classi
+	}
+	\onslide<3->{
 	\begin{block}{Teorema}
 		$K_! (\mathcal{G})$ con l'ordine $\sqsubseteq$ è razionale
 	\end{block}
-	
+	}
+	\onslide<4->{
 	\begin{block}{Teorema}
 		Sia $C$ una categoria cartesiana chiusa razionale. Si ha che:
 		\begin{itemize}
@@ -1002,7 +1049,7 @@ In particolare:
 		allora la denotazione può essere estesa a tutti i termini di PCF
 		
 	\end{block}
-	
+	}
 \end{frame}
 
 

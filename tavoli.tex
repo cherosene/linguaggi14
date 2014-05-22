@@ -49,18 +49,20 @@
 \end{frame}
 
 % dag e der
-\begin{frame}[t]
+\begin{frame}
 \frametitle{strategie $der$ e $\dag$}
 
 Dato un gioco $A$, definiamo la strategia $der$ su $!A\limp A$:
 \begin{itemize}
- \item Se $A_i$ è l'$i$-esima componente di $!A$, allora $der_A^i$ si comporta come la strategia copycat su $A_i\limp A \;\cong\; A\limp A$, e non agisce sulle altre componenti 
- \item Dato che le componenti di $!A$ sono equivalenti, avremo che $der_A^i\approx_s der_A^j \: \forall i,j$ , quindi lo indicheremo semplicemente con $der_A$  
+ \item<2-> Se $A_i$ è l'$i$-esima componente di $!A$, allora $der_A^i$ si comporta come la strategia copycat su $A_i\limp A \;\cong\; A\limp A$, e non agisce sulle altre componenti 
+ \item<3-> Dato che le componenti di $!A$ sono equivalenti, avremo che $der_A^i\approx_s der_A^j \: \forall i,j$ , quindi lo indicheremo semplicemente con $der_A$  
 \end{itemize}
 
+\onslide<4->{
 Data una strategia $\sigma$ su $!A\limp B$, definiamo la strategia $\sigma^{\dag}$ su $!A\limp !B$:
+}
 
-
+\onslide<5->{
 \begin{tikzpicture}
  
  \node (inv) at (0,0) [minimum size=2pt] {};
@@ -69,28 +71,26 @@ Data una strategia $\sigma$ su $!A\limp B$, definiamo la strategia $\sigma^{\dag
 	 \foreach \y in {0,-1.2,-2.4} {
   \foreach \x in {0,2,4} { 
 	  \draw [fill=blue, opacity=.5] (\x+1,\y-1.2) rectangle (\x,\y-.2);
-	 
 	  \node (A\x) at (\x+.5,\y-.7) [minimum size=2pt, scale=1.5] {A};
-	  %\node (O) at (\x+.8,\y) [minimum size=2pt, scale=1] {O};
 	  }
 	  \draw [<->] (A0) -- (A2)  node [above,midway] {P} ;
 	  \draw [<->] (A2) -- (A4)  node [above,midway] {P} ;
-% 	  \draw [->] (A0) to [loop above] () ;
-% 	  \draw [->] (A2) to [loop above] () ;
-% 	  \draw [->] (A4) to [loop above] () ;
-
 
  \draw [fill=red, opacity=.5] (8,\y-1.2) rectangle (7,\y-.2);
 	 \node (B) at (7.5,\y-.7) [minimum size=2pt, scale=1.5] {B};
 	 \node (s) at (10,\y-.7) [minimum size=2pt, scale=2] {$\sigma$};
 	 \draw [<->] (A4) -- (B)  node [above,midway] {P} ;
-	 
-	 \ifnum \y<0
-	   \draw[<->] (B) -- (7.5,\y+.5)  node [right,midway] {O};
-	 \fi
- }
-\end{tikzpicture}
 
+ }
+ 
+ \draw [<->] [out=0,in=0] (8,-1.9) to (8,-3.1) ;
+ \draw [<->] [out=0,in=0] (8,-1.9) to (8,-.7) ;
+ \node (O) at (8.6,-2.5) [minimum size=2pt, scale=1.1] {O};
+ \node (O) at (8.6,-1.3) [minimum size=2pt, scale=1.1] {O};
+ \draw[opacity=.5, dashed] (-.5, -1.3) -- (10.5, -1.3);
+ \draw[opacity=.5, dashed] (-.5, -2.5) -- (10.5, -2.5);
+ \end{tikzpicture}
+}
 
 
 

@@ -204,8 +204,7 @@
 	
 \end{frame}
 
-
-
+% Forme indecidibili
 \begin{frame}
 
 	\begin{block}{Esempio}
@@ -234,9 +233,6 @@
 
 \end{frame}
 
-
-
-
 % Contesto e Equivalenza oss
 \begin{frame}
 	
@@ -255,9 +251,6 @@
 	e lo indichiamo con $M\eqobs N$
 	
 \end{frame}
-
-
-
 
 \subsection{Proprietà di PCF}
 % calcolabilità
@@ -337,9 +330,7 @@
 
 % intenzioni di suicidio
 \begin{frame}
-	
 
-	
 	A questo punto vorremmo un modello per PCF tale che:
 	\begin{enumerate}
 		\item Sia fully abstract
@@ -347,12 +338,6 @@
 		\item Il modello sia \emph{minimale} (cioè esista una "immersione" in ogni altro modello fully abstract)
 	\end{enumerate}
 	
-	%\begin{block}{Si può chiedere di più? da sistemare}
-	%	Si potrebbe richiedere che la denotazione fornisca algoritmi per decidere se due termini siano osservazionalmente equivalenti, almeno per i termini di FinitaryPCF (PCF costruito partendo dal solo tipo base $Bool$); un risultato di Loader ci dice che questo NON è possibile
-	%\end{block}
-	
-	%% Se non sbaglio FinitaryCSS era decidibile; ha senso aggiungere questa cosa perché ne avevamo parlato a lezione
-
 \end{frame}
 
 
@@ -365,27 +350,110 @@
 \begin{frame}
 	\frametitle{I giochi}
 	
-	Il modello che andremo a considerare si basa sulla \emph{teoria dei giochi}
+	Il modello che andremo a considerare si basa sulla \emph{teoria dei giochi}.
 	
 	
-	Un gioco è una 4-upla $A=( M_A , \lambda_A , P_A , \approx_A )$ dove:
+	Un \textbf{gioco} è una 4-upla $A=( M_A , \lambda_A , P_A , \approx_A )$ dove:
 	\begin{itemize}
-	\item $M_A$ è l'insieme delle mosse
-	\item $\lambda_A$ è una funzione da $M_A$ all'insieme $\{ O,P\} \times \{Q,A\}$; in particolare:
+	\item<2-> $M_A$ è l'insieme delle mosse
+	\item<3-> $\lambda_A$ è una funzione da $M_A$ all'insieme $\{ O,P\} \times \{Q,A\}$; in particolare:
 		\begin{itemize}
 		\item $O$ indica il giocatore "opponent" e $P$ il giocatore "player"
 		\item $Q$ indica una domanda e $A$ una risposta
 		\end{itemize}
-	\item Una partita è una stringa di mosse tale che:
+	\item<4-> Una \textit{partita} è una stringa finita di mosse tale che:
 		\begin{enumerate}
 		\item La prima mossa è di $O$
 		\item $P$ e $O$ si alternano
-		\item In ogni momento della partita, il numero di risposte deve essere al più uguale al numero di domande (\emph{bracketing condition})
+		\item In ogni sottostringa iniziale, il numero di risposte deve essere al più uguale al numero di domande (\emph{bracketing condition})
 		\end{enumerate}
-	\item $P_A$ è un sottoinsieme prefix-closed di partite; chiameremo $P_A$ l'insieme delle partite valide
-	\item  $\approx_A$ è una relazione di equivalenza sulle partite valide
+	\item<5-> $P_A$ è un sottoinsieme prefix-closed di partite; chiameremo $P_A$ l'insieme delle \textit{partite valide}
+	\item<6->  $\approx_A$ è una relazione di equivalenza sulle partite valide
 	\end{itemize}
 	
+	
+\end{frame}
+
+% tavolo e carte
+\begin{frame}
+
+\frametitle{Tavolo di Gioco}
+	
+	Possiamo rappresentare partite accettabili tramite il \emph{Tavolo di Gioco}
+	
+	\begin{columns}
+	\begin{column}{0.45\textwidth}
+	\only<2->{Gioco $A=( M_A , \lambda_A , P_A , \approx_A )$
+		\begin{itemize}
+		         	\item $M_{A}=\{*_1,*_2,n_1,n_2\}$
+		           	\item $\lambda_{A}= \{ (*_1,OQ) ;$ $ (*_2,PQ) ; (n_1,PA) ; (n_2,OA) \}$
+					\item $P_{A}= \{ 
+					\only<3>{\textcolor{red}}{\epsilon} ,$
+					$ \only<4>{\textcolor{red}}{*_1} ,
+					\; *_1n_1, $ 
+					$ \only<5>{\textcolor{red}}{*_1*_2},
+					\; \only<6>{\textcolor{red}}{*_1*_2n_2}, 
+					\; \only<7->{\textcolor{red}}{*_1*_2n_2n_1} \}$
+					\item $\approx_{A} = id_{A}$        
+		\end{itemize}}
+	\end{column}
+	\begin{column}{0.4\textwidth}
+		\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+	\only<3->{	 \draw [fill=blue, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (A) at (2,-2.5) [minimum size=2pt, scale=4] {A};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};}
+			 
+			 
+			 
+			 \only<4-> {\node (st_1) at (2.5,-.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<5-> {\node (st_2) at (2.5,-4.5) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<6->{\node (ri_1) at (1.5,-.5) [minimum size=2pt, scale=1.5] {$n_2$};}
+			 \only<7->{\node (ri_2) at (1.5,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 
+			  \only<5->{\draw[->] [out=280,in=80] (st_1) to (st_2);}
+			  \only<6->{\draw[->] [out=110,in=300] (st_2) to (ri_1);}
+			  \only<7->{\draw[->] [out=280,in=80] (ri_1) to (ri_2);}
+			  
+			\end{tikzpicture}
+		
+	\end{column}
+	\end{columns}
+
+	\onslide<8-9> {
+	
+	\begin{tikzpicture}
+			
+			\node (text) at (0,-.45) [minimum size=2pt] {Bracketing condition:};
+			\only<9>{
+			\node (text2) at (7.7,-.23) [minimum size=2pt] {Ad ogni risposta è associata};
+			\node (text3) at (7.7,-.6) [minimum size=2pt] {naturalmente una domanda};
+			}
+			 \node (st1) at (2.5,0) [minimum size=2pt, scale=1.5] {$*_1$};
+			 \node (st2) at (3.2,0) [minimum size=2pt, scale=1.5] {$*_2$};
+			 \node (n2) at (3.9,0) [minimum size=2pt, scale=1.5] {$n_2$};
+			 \node (n1) at (4.6,0) [minimum size=2pt, scale=1.5] {$n_1$};
+			 
+			 \node (pst1) at (2.5,-1) [minimum size=2pt, scale=1.5] {$($};
+			 \node (pst2) at (3.2,-1) [minimum size=2pt, scale=1.5] {$($};
+			 \node (pn2) at (3.9,-1) [minimum size=2pt, scale=1.5] {$)$};
+			 \node (pn1) at (4.6,-1) [minimum size=2pt, scale=1.5] {$)$};
+			 
+			 \draw[->] (st1) to (pst1);
+			 \draw[->] (st2) to (pst2);
+			 \draw[->] (n1) to (pn1);
+			 \draw[->] (n2) to (pn2);
+				
+			
+			 
+			  
+	\end{tikzpicture}
+	
+	
+	}
 	
 \end{frame}
 
@@ -394,324 +462,164 @@
 
 	\frametitle{Strategie}
 	
-	Una strategia $\sigma$ è un insieme di partite di lunghezza pari (l'ultima mossa è di $P$) tali che:
+	Una \textbf{strategia} $\sigma$ è un insieme di partite di lunghezza pari (l'ultima mossa è di $P$) tali che:
 	\begin{itemize}
-		\item $\sigma$ è prefix-closed
-		\item le strategie sono history free, cioè
+		\item<2-> $\sigma$ sia prefix-closed sulle partite di lunghezza pari
+		\item<3-> $\sigma$ sia \textit{history free}, cioè
 		\begin{itemize}
 			\item $sab , tac \in \sigma \Rightarrow b=c$
-			\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
+			\item $sab, t\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
 		\end{itemize}
-
-% 	\item $\sigma$ è prefix-closed
-% 	\item $sab , tac \in \sigma \Rightarrow b=c$ (history free)
-% 	\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
 	\end{itemize}
 	
-	\begin{exampleblock}{Albero di Gioco}
- 
-	Prendiamo un gioco, il cui set di mosse $M$ è suddiviso dalla funzione di labelling $\lambda$ in
-	  \begin{gather*}
-	      M_{QO}=\{a,b,c\}, \quad  M_{AO}=\{g,i\} \\
-	      M_{QP}=\{h\},    \quad  M_{AP}=\{d,e,f\}
-          \end{gather*}  
-	Il set di partite valide $P$, la relazione di equivalenza $\approx$, e le strategie del gioco si possono rappresentare in maniera semplice tramite il \emph{Game Tree}
-	\end{exampleblock}
+	
+	\onslide<4> 
+	La condizione di history free, rende le strategie esprimibili tramite una \textit{funzione parziale} a loro associata:
+	\begin{gather*}
+		    f: M^O \rightharpoonup M^P\\
+	            sab\in \sigma \Rightarrow f_\sigma(a)=b\\
+	            X=\{ab\;|\;f(a)=b\} \rightarrow \sigma_f=<X> 
+	\end{gather*}
 	
 	
 \end{frame}
 
-% game tree
- \begin{frame}
-% 
-% 	
-% 	
-% 	\only<1>{	\begin{tikzpicture}
-%   
-%   \node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
-%    
-%    \node (a) at (2.5,2) [minimum size=2pt] {a};
-%     \node (b) at (2.5,1) [minimum size=2pt] {b};
-%    \node (c) at (2.5,-1.5) [minimum size=2pt] {c};
-%    
-%    \node (ad) at (5,2.5) [minimum size=2pt] {ad};
-%     \node (be) at (5,2) [minimum size=2pt] {be};
-%    \node (ae) at (5,1) [minimum size=2pt] {ae};
-%     \node (bf) at (5,0.5) [minimum size=2pt] {bf};
-%    \node (bd) at (5,0) [minimum size=2pt] {bd};
-%     \node (ch) at (5,-1) [minimum size=2pt] {ch};
-%    \node (ce) at (5,-2) [minimum size=2pt] {ce};
-%     \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
-%    
-%    \node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
-%     \node (bea) at (7.5,2) [minimum size=2pt] {bea};
-%    \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
-%    \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
-%    
-%    \node (adad) at (10,2.5) [minimum size=2pt] {adad};
-%     \node (bead) at (10,2) [minimum size=2pt] {bead};
-%   
-%   
-%     
-%      \draw[->] (em) -- (a);
-%      \draw[->] (em) -- (b);
-%      \draw[->] (em) -- (c);
-%      
-%      \draw[->] (a) -- (ad);
-%      \draw[->] (b) -- (be);
-%      \draw[->] (a) -- (ae);
-%      \draw[->] (b) -- (bf);
-%      \draw[->] (b) -- (bd);
-%      \draw[->] (c) -- (ch);
-%      \draw[->] (c) -- (ce);
-%      \draw[->] (c) -- (cf);
-%      
-%      \draw[->] (ad) -- (ada);
-%      \draw[->] (be) -- (bea);
-%      \draw[->] (ch) -- (chi);
-%      \draw[->] (ch) -- (chg);
-%      
-%      \draw[->] (ada) -- (adad);
-%      \draw[->] (bea) -- (bead);
-%      
-%      
-%      \end{tikzpicture}	}
-% 
-% 	\only<2>{\begin{tikzpicture}
-%   
-%   \draw [fill=pink] (0,0) ellipse (0.3 and 0.3);  
-%   \draw [fill=pink] (2.5,1.5) ellipse (0.4 and 1);
-% \draw [fill=pink] (2.5,-1.5) ellipse (0.3 and 0.3);  
-%   \draw [fill=pink] (5,2.25) ellipse (0.4 and 0.7);
-% \draw [fill=pink] (5,0.5) ellipse (0.4 and 1);
-%   \draw [fill=pink] (5,-1) ellipse (0.3 and 0.3);  
-%   \draw [fill=pink] (5,-2.25) ellipse (0.4 and 0.7);
-% \draw [fill=pink] (7.5,2.25) ellipse (0.5 and 0.7);  
-%   \draw [fill=pink] (7.5,-0.75) ellipse (0.5 and 0.7);
-% \draw [fill=pink] (10,2.25) ellipse (0.5 and 0.7);  
-%   
-%   
-%   
-%   \node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
-%    
-%    \node (a) at (2.5,2) [minimum size=2pt] {a};
-%     \node (b) at (2.5,1) [minimum size=2pt] {b};
-%    \node (c) at (2.5,-1.5) [minimum size=2pt] {c};
-%    
-%    \node (ad) at (5,2.5) [minimum size=2pt] {ad};
-%     \node (be) at (5,2) [minimum size=2pt] {be};
-%    \node (ae) at (5,1) [minimum size=2pt] {ae};
-%     \node (bf) at (5,0.5) [minimum size=2pt] {bf};
-%    \node (bd) at (5,0) [minimum size=2pt] {bd};
-%     \node (ch) at (5,-1) [minimum size=2pt] {ch};
-%    \node (ce) at (5,-2) [minimum size=2pt] {ce};
-%     \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
-%    
-%    \node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
-%     \node (bea) at (7.5,2) [minimum size=2pt] {bea};
-%    \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
-%    \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
-%    
-%    \node (adad) at (10,2.5) [minimum size=2pt] {adad};
-%     \node (bead) at (10,2) [minimum size=2pt] {bead};
-%   
-%   
-%     
-%      \draw[->] (em) -- (a) ;
-%      \draw[->] (em) -- (b);
-%      \draw[->] (em) -- (c);
-%      
-%      \draw[->] (a) -- (ad);
-%      \draw[->] (b) -- (be);
-%      \draw[->] (a) -- (ae);
-%      \draw[->] (b) -- (bf);
-%      \draw[->] (b) -- (bd);
-%      \draw[->] (c) -- (ch);
-%      \draw[->] (c) -- (ce);
-%      \draw[->] (c) -- (cf);
-%      
-%      \draw[->] (ad) -- (ada);
-%      \draw[->] (be) -- (bea);
-%      \draw[->] (ch) -- (chi);
-%      \draw[->] (ch) -- (chg);
-%      
-%      \draw[->] (ada) -- (adad);
-%      \draw[->] (bea) -- (bead);
-%      
-%      
-%      \end{tikzpicture}}
-% 	%\includegraphics<2>[width=\textwidth, height=0.7\textheight]{immagini/classi}
-% 	%\includegraphics<6>[width=1.3\textwidth, height=0.6\textheight]{sigmatau}
-% 	\only<3-6>{\begin{tikzpicture}
-%   
-%   \draw [fill=pink] (0,0) ellipse (0.3 and 0.3);  
-%   \draw [fill=pink] (2.5,1.5) ellipse (0.4 and 1);
-% \draw [fill=pink] (2.5,-1.5) ellipse (0.3 and 0.3);  
-%   \draw [fill=pink] (5,2.25) ellipse (0.4 and 0.7);
-% \draw [fill=pink] (5,0.5) ellipse (0.4 and 1);
-%   \draw [fill=pink] (5,-1) ellipse (0.3 and 0.3);  
-%   \draw [fill=pink] (5,-2.25) ellipse (0.4 and 0.7);
-% \draw [fill=pink] (7.5,2.25) ellipse (0.5 and 0.7);  
-%   \draw [fill=pink] (7.5,-0.75) ellipse (0.5 and 0.7);
-% \draw [fill=pink] (10,2.25) ellipse (0.5 and 0.7);  
-%   
-%   
-%   \tnode{em}{0}{0}{$\epsilon$}
-%   %\node (em) at (0,0) [minimum size=2pt] {$\epsilon$};
-%    
-%    \tnode{a}{2.5}{2}{a}
-%    %\node (a) at (2.5,2) [minimum size=2pt] {a};
-%     \node (b) at (2.5,1) [minimum size=2pt] {b};
-%    \tnode{c}{2.5}{-1.5}{c}
-%    %\node (c) at (2.5,-1.5) [minimum size=2pt] {c};
-%    
-%    \tnode{ad}{5}{2.5}{ad}
-%    %\node (ad) at (5,2.5) [minimum size=2pt] {ad};
-%     \node (be) at (5,2) [minimum size=2pt] {be};
-%    \node (ae) at (5,1) [minimum size=2pt] {ae};
-%     \node (bf) at (5,0.5) [minimum size=2pt] {bf};
-%    \node (bd) at (5,0) [minimum size=2pt] {bd};
-%     \tnode{ch}{5}{-1}{ch}
-%     %\node (ch) at (5,-1) [minimum size=2pt] {ch};
-%    \node (ce) at (5,-2) [minimum size=2pt] {ce};
-%     \node (cf) at (5,-2.5) [minimum size=2pt] {cf};
-%    
-%    \tnode{ada}{7.5}{2.5}{ada}
-%    %\node (ada) at (7.5,2.5) [minimum size=2pt] {ada};
-%     \node (bea) at (7.5,2) [minimum size=2pt] {bea};
-%    \node (chi) at (7.5,-0.5) [minimum size=2pt] {chi};
-%    \node (chg) at (7.5,-1) [minimum size=2pt] {chg};
-%    
-%    \tnode{adad}{10}{2.5}{adad}
-%    %\node (adad) at (10,2.5) [minimum size=2pt] {adad};
-%     \node (bead) at (10,2) [minimum size=2pt] {bead};
-%   
-%   
-%     
-%      \draw[->,color=red] (em_u) -- (a_u) node [above, midway] {$\sigma$};
-%      \draw[->,color=blue] (em_d) -- (a_d) node [below, midway] {$\tau$};
-%      \draw[->,color=blue] (em_d) -- (b) node [below, midway] {$\tau$};
-%      \draw[->,color=red] (em_u) -- (c_u) node [above, midway] {$\sigma$};
-%      \draw[->,color=blue] (em_d) -- (c_d) node [below, midway] {$\tau$};
-%      
-%      \draw[->,color=red] (a_u) -- (ad_u) node [above, midway] {$\sigma$};
-%      \draw[->,color=blue] (a_d) -- (ad_d) node [below, midway] {$\tau$};
-%      \draw[->,color=blue] (b) -- (be) node [below, midway] {$\tau$};
-%      \draw[->] (a) -- (ae);
-%      \draw[->] (b) -- (bf);
-%      \draw[->] (b) -- (bd);
-%      \draw[->,color=red] (c_u) -- (ch_u) node [above, midway] {$\sigma$};
-%      \draw[->,color=blue] (c_d) -- (ch_d) node [below, midway] {$\tau$};
-%      \draw[->] (c_d) -- (ce);
-%      \draw[->] (c_d) -- (cf);
-%      
-%      \draw[->,color=red] (ad_u) -- (ada_u) node [above, midway] {$\sigma$};
-%      \draw[->,color=blue] (ad_d) -- (ada_d) node [below, midway] {$\tau$};
-%      \draw[->,color=blue] (be) -- (bea) node [below, midway] {$\tau$};
-%      \draw[->] (ch) -- (chi);
-%      \draw[->] (ch) -- (chg);
-%      
-%      \draw[->,color=red] (ada_u) -- (adad_u) node [above, midway] {$\sigma$};
-%      \draw[->,color=blue] (ada_d) -- (adad_d) node [below, midway] {$\tau$};
-%      \draw[->,color=blue] (bea) -- (bead) node [below, midway] {$\tau$};
-%      
-%      
-%      \end{tikzpicture}}
-% 
-% 	
-% \only<1>{\begin{gather*}
-% 	      M_{QO}=\{a,b,c\}, \quad  M_{AO}=\{g,i\} \\
-% 	      M_{QP}=\{h\},    \quad  M_{AP}=\{d,e,f\}
-%           \end{gather*}  }
-% 
-% \only<2>{         $s\approx t$ se:
-% 		\begin{itemize}
-% 			\item $s$ e $t$ hanno la stessa etichettatura
-% 			\item se $s'$ e $t'$ sottostringhe iniziali di $s$ e $t$ tali che $|s'|=|t'|$, $s' \approx t'$
-% 			\item se $sa$ è una partita valida, allora esiste $b$ tale che $tb\approx sa$
-% 		\end{itemize}
-%          } 
-% \only<3>{
-% 
-% Una strategia $\sigma$ è un insieme di partite di lunghezza pari tali che:
-% 	\begin{itemize}
-% 		\item $\sigma$ è prefix-closed
-% 		\item $sab , tac \in \sigma \Rightarrow b=c$
-% 		\item $sab\in \sigma, ta\in P_A \Rightarrow tab\in \sigma$
-% 	\end{itemize}
-% 	}
-% 	
-% \only<4>{
-% 	\[
-% 	f_\sigma(x)=
-% 	\begin{cases}
-% 	 d \text{  se } x=a\\
-% 	 / \text{  se } x=b\\
-% 	 h \text{  se } x=c\\
-% 	 d \text{  se } x=g
-% 	\end{cases}
-% 	\qquad
-% 	f_\tau(x)=
-% 	\begin{cases}
-% 	 d \text{  se } x=a\\
-% 	 e \text{  se } x=b\\
-% 	 h \text{  se } x=c\\
-% 	 d \text{  se } x=g
-% 	\end{cases}
-% 	\]
-% 	}
-% 	
-% \only<5>{	
-% Estendiamo la relazione $\approx$ alle strategie; poniamo:
-% 	\begin{itemize}
-% 	\item $\underline{ \sigma \preccurlyeq \tau }$ se per ogni $sab \in \sigma$ e $s' \in \tau$, se $sa\approx s'a'$ allora esiste $b'$ tale che $s'a'b' \in \tau$ e $sab\approx s'a'b'$
-% 	\item $\underline{ \sigma \approx \tau \ }; \text{iif} \; \sigma \preccurlyeq \tau \wedge \tau \preccurlyeq \sigma$
-% 	\end{itemize}
-% 	In questo caso, avremo $\sigma \preccurlyeq \tau, \sigma \not\approx \sigma, \tau \approx \tau $  
-% 	}
-% 	
-% \only<6>{
-% 	\begin{itemize}
-% 		\item $\preccurlyeq$ è un preordine sulle strategie; di conseguenza $\approx$ è una relazione di equivalenza parziale
-% 		\item Nel caso l'equivalenza $\approx$ del gioco sia l'identità, il game tree diventa un albero semplice, e l'ordine tra strategie si può vedere come inclusione di insiemi o tra le funzioni parziali
-% 	\end{itemize}
-% 	}
-% 	
-% 	
-% 	
-% 	
-% 	
-% 	
-% 	
-% 	
-% 	
- \end{frame}
-
-% tavolo e carte
+% esempi di strategie
 \begin{frame}
 
-% 	
-% 	Come rappresentiamo i giochi (il tavolo insomma)
-% 	
+\frametitle{Strategie}
 
-% 	\begin{tikzpicture}
-% 	 \node (inv) at (0,0) [minimum size=2pt] {};
-% 	 \node (inv2) at (6,-6) [minimum size=2pt, scale=1.5] {};
-% 	 \draw [fill=blue, opacity=.5] (7,-5) rectangle (3,-1);
-% 	 \node (A) at (5,-3) [minimum size=2pt, scale=4] {A};
-% 	 \node (P) at (3.5,-4.5) [minimum size=2pt, scale=2.5] {P};
-% 	 \node (O) at (3.5,-1.5) [minimum size=2pt, scale=2.5] {O};
-% 	 
-% 	 \only<2-> {\node (st_1) at (6,-0.5) [minimum size=2pt, scale=1.5] {$*_1$};}
-% 	 \only<3-> {\node (st_2) at (6,-5.5) [minimum size=2pt, scale=1.5] {$*_2$};}
-% 	 \only<4->{\node (ri_1) at (4.5,-0.5) [minimum size=2pt, scale=1.5] {$n_2$};}
-% 	 \only<5->{\node (ri_2) at (4.5,-5.5) [minimum size=2pt, scale=1.5] {$n_1$};}
-% 	 
-% 	  \only<3->{\draw[->] [out=280,in=80] (st_1) to (st_2);}
-% 	  \only<4->{\draw[->] [out=110,in=300] (st_2) to (ri_1);}
-% 	  \only<5->{\draw[->] [out=280,in=80] (ri_1) to (ri_2);}
-% 	\end{tikzpicture}
+	\begin{columns}
+	\begin{column}{0.45\textwidth}
+	Gioco $A=( M_A , \lambda_A , P_A , \approx_A )$
+		\begin{itemize}
+		         	\item $M_{A}=\{*_1,*_2,n_1,n_2\}$
+		           	\item $\lambda_{A}= \{ (*_1,OQ) ;$ $ (*_2,PQ) ; (n_1,PA) ; (n_2,OA) \}$
+					\item $P_{A}= \{ 
+					\epsilon ,$
+					$ *_1 ,
+					\; *_1n_1, $ 
+					$ *_1*_2,
+					\; *_1*_2n_2, 
+					\; *_1*_2n_2n_1 \}$
+					\item $\approx_{A} = id_{A}$        
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.4\textwidth}
+		\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+			 \draw [fill=blue, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (A) at (2,-2.5) [minimum size=2pt, scale=4] {A};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};
+			 
+			 \only<2>{
+			 \node (st_12) at (1,-.5) [minimum size=2pt, scale=1.5] {$*_1$};
+			 \node (ri_12) at (1,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};
+		
+			 
+			 \node (st_1) at (3,-.5) [minimum size=2pt, scale=1.5] {$*_1$};
+			 \node (st_2) at (3,-4.5) [minimum size=2pt, scale=1.5] {$*_2$};
+			 \node (ri_1) at (2,-.5) [minimum size=2pt, scale=1.5] {$n_2$};
+			 \node (ri_2) at (2,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};
+			 
+			  \draw[->] [out=280,in=80] (st_1) to (st_2);
+			  \draw[->] [out=110,in=300] (st_2) to (ri_1);
+			  \draw[->] [out=280,in=80] (ri_1) to (ri_2);
+			  \draw[->] [out=280,in=80] (st_12) to (ri_12);
+			}
+			\end{tikzpicture}
+		
+	\end{column}
+	\end{columns}
+	\centering
+	\onslide<2>
+	Esempi di strategie:
+	\begin{gather*}
+	\sigma=\{\epsilon, *_1n_1\}\leftrightarrow f_\sigma(*_1)=n_1  \\
+	\tau=\{\epsilon, \; *_1*_2, \; *_1*_2n_2n_1\}\leftrightarrow f_\tau(*_1)=*_2,\; f_\tau(n_2)=n_1
+	\end{gather*}
+	
+\end{frame}
 
+% ordine tra strategie
+\begin{frame}
+ \frametitle{Ordine fra strategie}
+ Estendiamo la relazione $\approx$ alle strategie, ponendo:
+ \pause
+	\begin{itemize}
+	\item $\underline{ \sigma \preccurlyeq_s \tau }$ se per ogni $sab \in \sigma$ e $s' \in \tau$ t.c. $sa\approx s'a'$, esiste $b'$ tale che $s'a'b' \in \tau$ e $sab\approx s'a'b'$
+	\item $\underline{ \sigma \approx_s \tau \ } \; \text{sse} \; \sigma \preccurlyeq_s \tau \wedge \tau \preccurlyeq_s \sigma$
+	\end{itemize}  
+	\pause
+In particolare, la definizione porta alcune conseguenze: 
+
+	\begin{itemize}
+		\item $\preccurlyeq_s$ è un preordine sulle strategie; di conseguenza $\approx_s$ è una relazione di equivalenza parziale
+		\item Nel caso l'equivalenza $\approx$ del gioco sia l'identità, l'ordine tra strategie si può vedere come inclusione di insiemi o tra le funzioni parziali. Intuitivamente, $\sigma \preccurlyeq_s \tau$ se $\tau$ può fare più mosse di $\sigma$
+	\end{itemize}
+	
+\end{frame}
+
+% esempio di ordine
+\begin{frame}
+\frametitle{Ordine fra strategie}
+	\begin{columns}
+	\begin{column}{0.45\textwidth}
+	Gioco $A=( M_A , \lambda_A , P_A , \approx_A )$
+		\begin{itemize}
+		         	\item $M_{A}=\{*_1,*_2,n_1,n_2\}$
+		           	\item $\lambda_{A}= \{ (*_1,OQ) ;$ $ (*_2,PQ) ; (n_1,PA) ; (n_2,OA) \}$
+					\item $P_{A}= \{ 
+					\epsilon ,$
+					$ *_1 ,
+					\; *_1n_1, $ 
+					$ *_1*_2,
+					\; *_1*_2n_2, 
+					\; *_1*_2n_2n_1 \}$
+					\item $\approx_{A} = id_{A}$        
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.4\textwidth}
+		\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (4,-5) [minimum size=2pt, scale=1.5] {};
+			 
+			 \draw [fill=blue, opacity=.5] (3.5,-4) rectangle (.5,-1);
+			 \node (A) at (2,-2.5) [minimum size=2pt, scale=4] {A};
+			 \node (P) at (1,-3.5) [minimum size=2pt, scale=2.5] {P};
+			 \node (O) at (1,-1.5) [minimum size=2pt, scale=2.5] {O};
+			 
+			 \node (st_12) at (1,-.5) [minimum size=2pt, scale=1.5] {$*_1$};
+			 \only<1-2>{\node (ri_12) at (1,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+	 		 \only<3-4>{\node (st_22) at (1,-4.5) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \node (st_1) at (3,-.5) [minimum size=2pt, scale=1.5] {$*_1$};
+			 \node (st_2) at (3,-4.5) [minimum size=2pt, scale=1.5] {$*_2$};
+			 \node (ri_1) at (2,-.5) [minimum size=2pt, scale=1.5] {$n_2$};
+			 \node (ri_2) at (2,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};
+			 
+			  \draw[->] [out=280,in=80] (st_1) to (st_2);
+			  \draw[->] [out=110,in=300] (st_2) to (ri_1);
+			  \draw[->] [out=280,in=80] (ri_1) to (ri_2);
+			  \only<1-2>{\draw[->] [out=280,in=80] (st_12) to (ri_12);}
+			  \only<3-4>{\draw[->] [out=280,in=80] (st_12) to (st_22);}
+			\end{tikzpicture}
+		
+	\end{column}
+	\end{columns}
+	\centering
+	\begin{gather*}
+	\only<1-2>{\sigma=\{\epsilon, *_1n_1\}\leftrightarrow f_\sigma(*_1)=n_1  \\}
+	\only<3-4>{\sigma=\{\only<4>{\textcolor{red}{\epsilon, \; *_1*_2}}\only<3>{\epsilon, \; *_1*_2}\}\leftrightarrow \only<4>{\textcolor{red}{f_\sigma(*_1)=*_2}}\only<3>{f_\sigma(*_1)=*_2}  \\}
+	\tau=\{\only<4>{\textcolor{red}{\epsilon, \; *_1*_2}}\only<1-3>{\epsilon, \; *_1*_2}, \; *_1*_2n_2n_1\}\leftrightarrow 
+	\only<4>{\textcolor{red}{f_\tau(*_1)=*_2}}\only<1-3>{f_\tau(*_1)=*_2},\; 
+	f_\tau(n_2)=n_1
+	\\
+	\only<2>{\sigma \not\preccurlyeq_s \tau, \; \sigma \not\preccurlyeq_s \tau}
+	\only<4>{\sigma \preccurlyeq_s \tau}
+	\end{gather*}
 \end{frame}
 
 \subsection{operazioni tra giochi}
@@ -720,82 +628,102 @@
 \begin{frame}
 	
 	\frametitle{Il gioco $A \otimes B$}
-	
+	Dati due giochi $A$ e $B$ definiamo il gioco $A\otimes B$ come:
 	\begin{itemize}
-		\item $M_{A\otimes B}=M_A \coprod M_B$
-		\item $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
-		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
-		%\begin{itemize}
-			
-		%	\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
-		%\end{itemize}
-		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
+		\item<2-> $M_{A\otimes B}=M_A \coprod M_B$
+		\item<3-> $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
+		\item<4-> $P_{A\otimes B}$ sono tutte le partite $s$ tali che $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+		\begin{itemize}
+			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
+		\end{itemize}
+		\item<5-> $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
 	
+	\onslide<6-9>{
 	\begin{block}{Proprietà}
 		\begin{itemize}
-			\item Il prodotto tensore è associativo
-			\item Esiste un elemento neutro $I$, ossia il gioco vuoto
-			\item Solamente il giocatore $O$ può cambiare componente di gioco
+			\item<7-> Il prodotto tensore è associativo
+			\item<8-> Esiste un elemento neutro $I$, ossia il gioco vuoto
+			\item<9-> \textcolor{red}{Solamente il giocatore $O$ può cambiare componente di gioco}
 		\end{itemize}
 		
 	\end{block}
-	
+	}
 	
 \end{frame}
 
-
+% esempio Prodotto Tensore
 \begin{frame}[t]
+\frametitle{Il gioco $A \otimes B$}
+
+\pause
+\begin{itemize}
+ \item $A$ con $P_A=\{
+ \only<3-7>{\textcolor{red}{\epsilon}} \only<1-2,8->{\epsilon},
+ \;  \only<8-9>{\textcolor{red}{*_O}} \only<1-7,10->{*_O}, 
+ \; \only<10->{\textcolor{red}{*_O\checkmark_P}} \only<1-9>{*_O\checkmark_P}, 
+ \;*_O\times_P 
+ \}$
+ \item $B$ con $P_B=\{
+ \only<3>{\textcolor{red}{\epsilon}} \only<1-2,4->{\epsilon},
+ \;  \only<4-5>{\textcolor{red}{*_O}} \only<1-3,6->{*_O}, 
+ \; *_O0_P,
+ \; *_O1_P,
+ \; \only<6->{\textcolor{red}{*_O2_P}} \only<1-5>{*_O2_P},
+ \; *_O3_P,
+ \; \dots \}$
+\end{itemize}
+\pause
+\centering Descriviamo $A \otimes B$ tramite il tavolo di gioco
+
+\begin{tikzpicture}
+ 
+	 \node (inv) at (0,0) [minimum size=2pt] {};
+ 	 \node (inv2) at (11,-4) [minimum size=2pt] {};
 	
-% 	\begin{tabular}{c c}
-% 		
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<4>{$\textcolor{red}{*^O_B}$}\only<5->{$*^O_B$}
-% 		\\
-% 		
-% 		\begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_b.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<3>{$\textcolor{red}{n^P_A}$}\only<4->{$n^P_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<5->{$\textcolor{red}{m^P_B}$}
-% 		
-% 		
-% 	\end{tabular}
-% 	
-% 	
-% 	{
-% 	\centering
-% 	\huge
-% 	
-% 	
-% 	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}}
-% 	\onslide<3->{\only<-3>{$\textcolor{red}{n^P_A}$}\only<4->{$n^P_A$}}
-% 	\onslide<4->{\only<-4>{$\textcolor{red}{*^O_B}$}\only<5->{$*^O_B$}}
-% 	\onslide<5->{\only<-5>{$\textcolor{red}{m^P_B}$}}
-% 
-% 	
-% 	
-% 	}
+	\draw [fill=blue, opacity=.5] (4.5,-4.3) rectangle (1,-.8);
+	\draw [fill=red, opacity=.5] (9.5,-4.3) rectangle (6,-.8);
+	 
+	 \node (tensor) at (5.25,-2.55)[minimum size=2pt, scale=3] {$\otimes$};
+	 
+	  \node (A) at (2.75,-2.55) [minimum size=2pt, scale=4] {A};
+ 	  \node (PA) at (1.5,-3.8) [minimum size=2pt, scale=3] {P};
+  	  \node (OA) at (1.5,-1.3) [minimum size=2pt, scale=3] {O};
+  
+	  \node (B) at (7.75,-2.55) [minimum size=2pt, scale=4] {B};
+ 	  \node (PB) at (6.5,-3.8) [minimum size=2pt, scale=3] {P};
+  	  \node (OB) at (6.5,-1.3) [minimum size=2pt, scale=3] {O};
+  
+	  \only<4-> {\node (st1) at (7.75,-.4) [minimum size=2pt, scale=2] {$*_O$};}
+	  \only<5> {\node (false1) at (2.75,-4.7) [minimum size=2pt, scale=2] {?};}
+	  \only<6-> {\node (ri1) at (7.75,-4.7) [minimum size=2pt, scale=2] {$2_P$};}
+	  \only<7> {\node (false2) at (6.5,-.4) [minimum size=2pt, scale=2] {?};}
+	  \only<8-> {\node (st2) at (2.75,-.4) [minimum size=2pt, scale=2] {$*_O$};}
+	  \only<9> {\node (false3) at (6.5,-4.7) [minimum size=2pt, scale=2] {?};}
+	  \only<10-> {\node (ri2) at (2.75,-4.7) [minimum size=2pt, scale=2] {$\checkmark_P$};}
+	 
+	 \only<5>{\draw[->] (st1) to (false1);}
+	 
+	 \only<6->{\draw[->] (st1) to (ri1);}
+	 
+	 \only<7>{\draw[->] (ri1) to (false2);}
+	 
+	 \only<8->{\draw[->] (ri1) to (st2);}
+	 
+	 \only<9>{\draw[->] (st2) to (false3);}
+	 
+	 \only<10->{\draw[->] (st2) to (ri2);}
+	
+	 
+ 
+\end{tikzpicture}
+
+
+
+
+
+
 	
 \end{frame}
 
@@ -804,157 +732,99 @@
 \begin{frame}
 	
 	\frametitle{Il gioco $A \limp B$}
-	
+	Dati due giochi $A$ e $B$ definiamo il gioco $A\limp B$ come:
 	\begin{itemize}
-		\item $M_{A\limp B}=M_A \coprod M_B$
-		\item $\lambda^{QA}_{A\limp B}=\lambda^{QA}_A \coprod \lambda^{QA}_B$
+		\item<2-> $M_{A\limp B}=M_A \coprod M_B$
+		\item<3-> $\lambda^{QA}_{A\limp B}=\lambda^{QA}_A \coprod \lambda^{QA}_B$
 		
-		$\lambda^{OP}_{A\limp B}=\overline{\lambda^{OP}_A} \coprod \lambda^{OP}_B$
-		\item $P_{A\otimes B}$ sono tutte le partite $s$ tali che:
+		$\lambda^{OP}_{A\limp B}=\textcolor{red}{\overline{\lambda^{OP}_A}} \coprod \lambda^{OP}_B$
+		\item<4-> $P_{A\otimes B}$ sono tutte le partite $s$ tali che:
 		\begin{itemize}
 			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
 			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
 		\end{itemize}
-		\item $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
+		\item<5-> $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
-	
+	\onslide<6>
 	\begin{block}{Proprietà}
 		
-		\begin{itemize}
-			\item Solamente il giocatore $P$ può cambiare componente di gioco
-		\end{itemize}
+		\textcolor{red}{Solamente il giocatore $P$ può cambiare componente di gioco}
+		
 	
 	\end{block}
 	
 \end{frame}
 
-
+% esempio implicazione lineare
 \begin{frame}[t]
-	
-% 	\begin{tabular}{c c}
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<3>{$\textcolor{red}{*^P_A}$}\only<4->{$*^P_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<2>{$\textcolor{red}{*^O_B}$}\only<3->{$*^O_B$}
-% 		\\
-% 		
-% 		\begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a_storto.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_b.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<4>{$\textcolor{red}{n^O_A}$}\only<5->{$n^O_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<5->{$\textcolor{red}{m^P_B}$}
-% 		
-% 		
-% 	\end{tabular}
-% 	
-% 	
-% 	{
-% 	\centering
-% 	\huge
-% 	
-% 	
-% 	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_B}$}\only<3->{$*^O_B$}}
-% 	\onslide<3->{\only<-3>{$\textcolor{red}{*^P_A}$}\only<4->{$*^P_A$}}
-% 	\onslide<4->{\only<-4>{$\textcolor{red}{n^O_A}$}\only<5->{$n^O_A$}}
-% 	\onslide<5->{\only<-5>{$\textcolor{red}{m^P_B}$}}
-% 	
-% 	
-% 	
-% 	}
-	
-	
-\end{frame}
+\frametitle{Il gioco $A \limp B$}
 
-% gioco unione
-\begin{frame}
+\pause
+\begin{itemize}
+ \item $A$ con $P_A=\{
+ \only<3-6>{\textcolor{red}{\epsilon}} \only<1-2,7->{\epsilon},
+ \;  \only<7-8>{\textcolor{red}{*_O}} \only<1-6,9->{*_O}, 
+ \; \only<9->{\textcolor{red}{*_O\checkmark_P}} \only<1-8>{*_O\checkmark_P}, 
+ \;*_O\times_P 
+ \}$
+ \item $B$ con $P_B=\{
+ \only<3-5>{\textcolor{red}{\epsilon}} \only<1-2,6->{\epsilon},
+ \;  \only<6-10>{\textcolor{red}{*_O}} \only<1-5,11->{*_O}, 
+ \; *_O0_P,
+ \; *_O1_P,
+ \; \only<11->{\textcolor{red}{*_O2_P}} \only<1-10>{*_O2_P},
+ \; *_O3_P,
+ \; \dots \}$
+\end{itemize}
+\pause
+\centering Descriviamo $A \limp B$ tramite il tavolo di gioco
+
+\begin{tikzpicture}
+ 
+	 \node (inv) at (0,0) [minimum size=2pt] {};
+ 	 \node (inv2) at (11,-4) [minimum size=2pt] {};
 	
-	\frametitle{Il gioco $A \& B$}
+	\draw [fill=blue, opacity=.5] (4.5,-4.3) rectangle (1,-.8);
+	\draw [fill=red, opacity=.5] (9.5,-4.3) rectangle (6,-.8);
+	\node (linear) at (5.25,-2.55) [minimum size=2pt, scale=3] {$\limp$};
+	 
+	  \node (A) at (2.75,-2.55) [minimum size=2pt, scale=4] {A};
+	  \only<3>{\node (Pfake) at (1.5,-3.8) [minimum size=2pt, scale=3] {\textcolor{red}{P}};}
+  	  \only<3>{\node (Ofake) at (1.5,-1.3) [minimum size=2pt, scale=3] {\textcolor{red}{O}};}
+ 	  \only<4->{\node (PA) at (2.4,-1.3) [minimum size=2pt, scale=2.7] {P=O$_A$};}
+  	  \only<4->{\node (OA) at (2.4,-3.8) [minimum size=2pt, scale=2.7] {O=P$_A$};}
+  
+	  \node (B) at (7.75,-2.55) [minimum size=2pt, scale=4] {B};
+ 	  \node (PB) at (6.5,-3.8) [minimum size=2pt, scale=3] {P};
+  	  \node (OB) at (6.5,-1.3) [minimum size=2pt, scale=3] {O};
+  
+          \only<5> {\node (false1) at (2.75,-4.7) [minimum size=2pt, scale=2] {?};}
+	  \only<6-> {\node (st1) at (7.75,-.4) [minimum size=2pt, scale=2] {$*_O$};}
+	  \only<7-> {\node (st2) at (2.75,-.4) [minimum size=2pt, scale=2] {$*_O$};}
+	  \only<8> {\node (false2) at (6.5,-.4) [minimum size=2pt, scale=2] {?};}
+	  \only<9-> {\node (ri2) at (2.75,-4.7) [minimum size=2pt, scale=2] {$\checkmark_P$};}
+	  \only<10> {\node (false3) at (1.5,-.4) [minimum size=2pt, scale=2] {?};}
+	  \only<11-> {\node (ri1) at (7.75,-4.7) [minimum size=2pt, scale=2] {$2_P$};}
+	  
+	  
+	 
+	 \only<7->{\draw[->][out=220, in=340] (st1) to (st2);}
+	 \only<8>{\draw[->] (st2) to (false2);}
+	 \only<9->{\draw[->] (st2) to (ri2);}
+	 \only<10>{\draw[->] (ri2) to (false3);}
+	 \only<11->{\draw[->] (ri2) to (ri1);}
+	 
+
 	
-	\begin{itemize}
-		\item $M_{A\& B}=M_A \coprod M_B$
-		\item $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
-		\item $P_{A\& B}=P_A \coprod P_B$
-		\item $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
-	\end{itemize}
-	
-	\begin{block}{Proprietà}
-		\begin{itemize}
-			\item Una partita di $A\& B$ è giocata su una sola delle due componenti
-			\item Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$
-		\end{itemize}
-		
-	\end{block}
-	
-\end{frame}
+	 
+ 
+\end{tikzpicture}
 
 
-\begin{frame}[t]
-	
-% 	\begin{tabular}{c c}
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		
-% 		
-% 		\\
-% 		
-% 		\begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_b.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		\only<3>{$\textcolor{red}{n^P_A}$}
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		
-% 		
-% 	\end{tabular}
-% 	
-% 	
-% 	{
-% 	\centering
-% 	\huge
-% 	
-% 
-% 	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_A}$}\only<3->{$*^O_A$}}
-% 	\onslide<3->{\only<-3>{$\textcolor{red}{n^P_A}$}}
-% 
-% 	
-% 	
-% 	}
-% 	
+
+
+
+
 	
 \end{frame}
 
@@ -981,149 +851,332 @@
 		\end{itemize}
 	\end{block}
 	
-	Nota: concettualmente il gioco $!A$ si comporta come se avessimo infinite copie di $A$ tensorizzate $A\otimes A\otimes A\otimes A\otimes \dots$
+	Nota: concettualmente il gioco $!A$ si comporta come se avessimo infinite copie di $A$ tensorizzate $A\otimes A\otimes A\otimes A\otimes \dots$ con la relazione $\approx_{!A}$
 	
 \end{frame}
 
+% roulette russa
+\begin{frame}
+\frametitle{Il gioco $A\Rightarrow B$}
 
-\begin{frame}[t]
+\only<2->{
+	\[
+	A \Rightarrow B \quad \equiv \quad !A \limp B
+	\]
+}
+
+\only<1-10>{
+\onslide<3->{
+\begin{itemize}
+ \item $Gun=A$ con $P_A=\{
+ \only<3-5>{\textcolor{red}{\epsilon}} \only<1-2,6->{\epsilon},
+ \;  \only<6,8>{\textcolor{red}{\underline{pull}}} \only<1-5,7,9->{\underline{pull}}, 
+ \; \only<7>{\textcolor{red}{\underline{pull}\:click}} \only<1-6,8->{\underline{pull}\:click}, 
+ \; \only<9->{\textcolor{red}{\underline{pull}\:bang}} \only<1-8>{\underline{pull}\:bang} 
+ \}$
+ \item $Life=B$ con $P_B=\{
+ \only<3-4>{\textcolor{red}{\epsilon}} \only<1-2,5->{\epsilon},
+ \;  \only<5-9>{\textcolor{red}{*_O}} \only<1-4,10->{*_O}, 
+ \; *_O\checkmark_P,
+ \; *_O1_P,
+ \; \only<10->{\textcolor{red}{*_O2_P}} \only<1-9>{*_O2_P},
+ \; *_O3_P,
+ \; \dots \}$
+ \item<4-> Strategia \textit{Roulette Russa}:
+ 
+ $\only<6>{\textcolor{red}{f(*_O)=\underline{pull}_1}} \only<4-5,7->{f(*_O)=\underline{pull}_1}$, 
+ $\quad \only<8>{\textcolor{red}{f(click_n)=\underline{pull}_{n+1}}} \only<4-7,9->{f(click_n)=\underline{pull}_{n+1}} \forall n$,  
+ $\quad \only<10>{\textcolor{red}{f(bang_n)=n_P}} \only<4-9>{f(bang_n)=n_P}$
+\end{itemize}
+}
+}
+
+
+\only<11->{
+
+\begin{itemize}
+ \item $Gun=A$ con $P_A=\{
+ \only<3-5>{\textcolor{red}{\epsilon}} \only<1-2,6->{\epsilon},
+ \;  \only<6,8>{\textcolor{red}{\underline{pull}}} \only<1-5,7,9->{\underline{pull}}, 
+ \; \only<7>{\textcolor{red}{\underline{pull}\:click}} \only<1-6,8->{\underline{pull}\:click}, 
+ \; \only<9->{\textcolor{red}{\underline{pull}\:bang}} \only<1-8>{\underline{pull}\:bang} 
+ \}$
+ \item $Life=B$ con $P_B=\{
+ \only<3-4>{\textcolor{red}{\epsilon}} \only<1-2,5->{\epsilon},
+ \;  \only<5-9>{\textcolor{red}{*_O}} \only<1-4,10->{*_O}, 
+ \; *_O\checkmark_P,
+ \; *_O1_P,
+ \; \only<10->{\textcolor{red}{*_O2_P}} \only<1-9>{*_O2_P},
+ \; *_O3_P,
+ \; \dots \}$
+ \item Strategia \textit{Roulette Russa}:
+ 
+ $\only<6>{\textcolor{red}{f(*_O)=\underline{pull}_2}} \only<4-5,7->{f(*_O)=\underline{pull}_2}$, 
+ $\quad \only<8>{\textcolor{red}{f(click_{2n})=\underline{pull}_{2n+2}}} \only<4-7,9->{f(click_{2n})=\underline{pull}_{2n+2}} \forall n$,  
+ $\quad \only<10->{\textcolor{red}{f(bang_{2n})=n_P}} \only<4-9>{f(bang_{2n})=n_P}$
+\end{itemize}
+
+}
+
+
+
+\only<2-10>{ 
+	\begin{tikzpicture}
+	 \node (inv) at (0,0) [minimum size=2pt] {};
+	 \node (inv2) at (11,-4) [minimum size=2pt] {};
+	 \foreach \x in {0,3,6} { 
+	  \draw [fill=blue, opacity=.5] (\x+2,-3) rectangle (\x,-1);
+	 % \node (A) at (\x+1,-2) [minimum size=2pt, scale=2] {A};
+	  \node (P) at (\x+0.3,-1.3) [minimum size=2pt, scale=1.5] {P};
+ 	  \node (O) at (\x+0.3,-2.7) [minimum size=2pt, scale=1.5] {O};
+	  }
+	  \node (A) at (7,-2) [minimum size=2pt, scale=2] {A$_1$};
+	  \node (A) at (4,-2) [minimum size=2pt, scale=2] {A$_2$};
+	  \node (A) at (1,-2) [minimum size=2pt, scale=2] {A$_3$};
+	 \draw [fill=red, opacity=.5] (11,-3) rectangle (9,-1);
+	 \node (B) at (10,-2) [minimum size=2pt, scale=2] {B};
+	 \node (P) at (9.3,-2.7) [minimum size=2pt, scale=1.5] {P};
+ 	 \node (O) at (9.3,-1.3) [minimum size=2pt, scale=1.5] {O};
+	 
+	 \node (linear) at (8.5,-2) [minimum size=2pt, scale=1.5] {$\limp$};
+	 \node (tensor1) at (5.5,-2) [minimum size=2pt, scale=1.5] {$\otimes$};
+	 \node (tensor2) at (2.5,-2) [minimum size=2pt, scale=1.5] {$\otimes$};
+	 
+	 \only<5->{\node (st1) at (10,-0.5) [minimum size=2pt, scale=1.5] {$*_O$};}
+ 	 \only<6->{\node (st2) at (7,-0.5) [minimum size=2pt, scale=1.5] {$\underline{pull}_1$};}
+	 \only<7->{\node (ri2) at (7,-3.5) [minimum size=2pt, scale=1.5] {$click_1$};}
+ 	 \only<8->{\node (st3) at (4,-0.5) [minimum size=2pt, scale=1.5] {$\underline{pull}_2$};}
+	 \only<9->{\node (ri3) at (4,-3.5) [minimum size=2pt, scale=1.5] {$bang_2$};}
+ 	 \only<10->{\node (ri1) at (10,-3.5) [minimum size=2pt, scale=1.5] {$2_P$};}
+ 	 
+	  \only<6->{\draw[->] [out=250,in=280] (st1) to (st2);}
+	  \only<7->{\draw[->] [out=250,in=30] (st2) to (ri2);}
+	  \only<8->{\draw[->] [out=80,in=280] (ri2) to (st3);}
+	  \only<9->{\draw[->] [out=250,in=110] (st3) to (ri3);}
+	  \only<10->{\draw[->] [out=30,in=150] (ri3) to (ri1);}
+	  \end{tikzpicture}
+
+	}
+
 	
-% 	\begin{tabular}{c c c c}
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<8>{$\textcolor{red}{*^O_3}$}\only<9->{$*^O_3$}
-% 		&
-% 		%%%%%%% TAVOLO 3
-% 		\only<4>{$\textcolor{red}{*^O_2}$}\only<5->{$*^O_2$}
-% 		&
-% 		%%%%%%% TAVOLO 4
-% 		\only<2>{$\textcolor{red}{*^O_1}$}\only<3->{$*^O_1$}\onslide<6->{\only<-6>{$\textcolor{red}{*^O_1}$}\only<7->{$*^O_1$}}
-% 		
-% 		\\
-% 		
-% 		\begin{minipage}{0.22\textwidth}
-% 			\begin{figure}[t]
-% 				\large
-% 				\centering
-% 				\def\svgwidth{0.8\textwidth}
-% 				\input{immagini/tavolo_a_4.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.22\textwidth}
-% 			\begin{figure}[t]
-% 				\large
-% 				\centering
-% 				\def\svgwidth{0.8\textwidth}
-% 				\input{immagini/tavolo_a_3.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} & \begin{minipage}{0.22\textwidth}
-% 			\begin{figure}[t]
-% 				\large
-% 				\centering
-% 				\def\svgwidth{0.8\textwidth}
-% 				\input{immagini/tavolo_a_2.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} & \begin{minipage}{0.22\textwidth}
-% 			\begin{figure}[t]
-% 				\large
-% 				\centering
-% 				\def\svgwidth{0.8\textwidth}
-% 				\input{immagini/tavolo_a_1.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		\only<9>{$\textcolor{red}{n^P_3}$}
-% 		&
-% 		%%%%%%% TAVOLO 3
-% 		\only<5>{$\textcolor{red}{n^P_2}$}\only<6->{$n^P_2$}
-% 		&
-% 		%%%%%%% TAVOLO 4
-% 		\only<3>{$\textcolor{red}{n^P_1}$}\only<4->{$n^P_1$}\onslide<7->{\only<-7>{$\textcolor{red}{n^P_1}$}\only<8->{$n^P_1$}}
-% 		
-% 	\end{tabular}
-% 	
-% 	
-% 	{
-% 	\centering
-% 	\huge
-% 	
-% 	\onslide<2->{\only<-2>{$\textcolor{red}{*^O_1}$}\only<3->{$*^O_1$}}
-% 	\onslide<3->{\only<-3>{$\textcolor{red}{n^P_1}$}\only<4->{$n^P_1$}}
-% 	\onslide<4->{\only<-4>{$\textcolor{red}{*^O_2}$}\only<5->{$*^O_2$}}
-% 	\onslide<5->{\only<-5>{$\textcolor{red}{n^P_2}$}\only<6->{$n^P_2$}}
-% 	\onslide<6->{\only<-6>{$\textcolor{red}{*^O_1}$}\only<7->{$*^O_1$}}
-% 	\onslide<7->{\only<-7>{$\textcolor{red}{n^P_1}$}\only<8->{$n^P_1$}}
-% 	\onslide<8->{\only<-8>{$\textcolor{red}{*^O_3}$}\only<9->{$*^O_3$}}
-% 	\onslide<9->{\only<-9>{$\textcolor{red}{n^P_3}$}}
-% 	
-% 	}
-	
+\only<11->{ 
+	\begin{tikzpicture}
+	 \node (inv) at (0,0) [minimum size=2pt] {};
+	 \node (inv2) at (11,-4) [minimum size=2pt] {};
+	 \foreach \x in {0,3,6} { 
+	  \draw [fill=blue, opacity=.5] (\x+2,-3) rectangle (\x,-1);
+	 % \node (A) at (\x+1,-2) [minimum size=2pt, scale=2] {A};
+	  \node (P) at (\x+0.3,-1.3) [minimum size=2pt, scale=1.5] {P};
+ 	  \node (O) at (\x+0.3,-2.7) [minimum size=2pt, scale=1.5] {O};
+	  }
+	  \node (A) at (7,-2) [minimum size=2pt, scale=2] {A$_2$};
+	  \node (A) at (4,-2) [minimum size=2pt, scale=2] {A$_4$};
+	  \node (A) at (1,-2) [minimum size=2pt, scale=2] {A$_6$};
+	 \draw [fill=red, opacity=.5] (11,-3) rectangle (9,-1);
+	 \node (B) at (10,-2) [minimum size=2pt, scale=2] {B};
+	 \node (P) at (9.3,-2.7) [minimum size=2pt, scale=1.5] {P};
+ 	 \node (O) at (9.3,-1.3) [minimum size=2pt, scale=1.5] {O};
+	 
+	 \node (linear) at (8.5,-2) [minimum size=2pt, scale=1.5] {$\limp$};
+	 \node (tensor1) at (5.5,-2) [minimum size=2pt, scale=1.5] {$\otimes$};
+	 \node (tensor2) at (2.5,-2) [minimum size=2pt, scale=1.5] {$\otimes$};
+	 
+	 \only<5->{\node (st1) at (10,-0.5) [minimum size=2pt, scale=1.5] {$*_O$};}
+ 	 \only<6->{\node (st2) at (7,-0.5) [minimum size=2pt, scale=1.5] {$\underline{pull}_2$};}
+	 \only<7->{\node (ri2) at (7,-3.5) [minimum size=2pt, scale=1.5] {$click_2$};}
+ 	 \only<8->{\node (st3) at (4,-0.5) [minimum size=2pt, scale=1.5] {$\underline{pull}_4$};}
+	 \only<9->{\node (ri3) at (4,-3.5) [minimum size=2pt, scale=1.5] {$bang_4$};}
+ 	 \only<10->{\node (ri1) at (10,-3.5) [minimum size=2pt, scale=1.5] {$2_P$};}
+ 	 
+	  \only<6->{\draw[->] [out=250,in=280] (st1) to (st2);}
+	  \only<7->{\draw[->] [out=250,in=30] (st2) to (ri2);}
+	  \only<8->{\draw[->] [out=80,in=280] (ri2) to (st3);}
+	  \only<9->{\draw[->] [out=250,in=110] (st3) to (ri3);}
+	  \only<10->{\draw[->] [out=30,in=150] (ri3) to (ri1);}
+	  \end{tikzpicture}
+
+	}
 	
 \end{frame}
+
 
 \subsection{strategie importanti}
 
-% esempi di strategie
+% strategia composizione con esempio
 \begin{frame}
 
-	\frametitle{Alcune strategie}
-	
-	DOBBIAMO DECIDERE COME SPIEGARE LE STRATEGIE; QUESTE ANDREBBERO DETTE:
-	\begin{itemize}
-		\item $\sigma ; \tau$ [NO]
-		\item $id_{A\limp A}$ (la copy-cat) [SI]
-		\item $App:(A \Rightarrow B)\& A \Rightarrow B$ [SI]
-	\end{itemize}
+	\frametitle{La strategia $\sigma ; \tau$}
+Date $\sigma$ strategia di $A\limp B$ e $\tau$ di $B\limp C$, allora
 
+\begin{itemize}
+ \item<2-> $\sigma ; \tau =\{s|_{A,C} : s \in (M_A \coprod M_B \coprod M_C)^*, \; s|_{A,B} \in \sigma, \; s|_{B,C} \in \tau \}$
+ \item<3-> $\sigma ; \tau$ è una strategia di $A\limp C$
+\end{itemize}
+
+\onslide<4->{Si può dare una costruzione di $\sigma ; \tau$ algoritmica:}
+
+\only<-13>{
+\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (11,-5) [minimum size=2pt, scale=1.5] {};
+			
+			\only<5->{
+			 \draw [fill=blue, opacity=.5] (1.9,-3.5) rectangle (-.1,-1.5);
+			 \draw [fill=red, opacity=.5] (4.9,-3.5) rectangle (2.9,-1.5);
+			 \draw [fill=red, opacity=.5] (7.4,-3.5) rectangle (5.4,-1.5);
+			 \draw [fill=green, opacity=.5] (10.4,-3.5) rectangle (8.4,-1.5);
+			 			 
+			 \node (A) at (.9,-2.5) [minimum size=2pt, scale=2] {A};
+			 \node (B) at (3.9,-2.5) [minimum size=2pt, scale=2] {B};
+			 \node (B) at (6.4,-2.5) [minimum size=2pt, scale=2] {B};
+			 \node (C) at (9.4,-2.5) [minimum size=2pt, scale=2] {C};
+			 
+			 \node (P) at (.2,-1.8) [minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (3.2,-3.2) [minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (5.7,-1.8) [minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (8.7,-3.2) [minimum size=2pt, scale=1.5] {P};
+			 
+			 \node (O) at (.2,-3.2) [minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (3.2,-1.8) [minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (5.7,-3.2) [minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (8.7,-1.8) [minimum size=2pt, scale=1.5] {O};
+			 
+			 \node (linear1) at (2.4,-2.5) [minimum size=2pt, scale=1.5] {$\limp$};
+			 \node (linear2) at (7.9,-2.5) [minimum size=2pt, scale=1.5] {$\limp$};
+			
+			 
+			 \node (sigma) at (2.3,-.3) [minimum size=2pt, scale=2] {\only<8,10,12>{\textcolor{red}{$\sigma$}} \only<1-7,9,11,13>{$\sigma$}};
+			 \node (tau) at (7.9,-.3) [minimum size=2pt, scale=2] {\only<7,9,13>{\textcolor{red}{$\tau$}} \only<1-6,8,10-12>{$\tau$}};
+			\draw[dashed] (5.15, -4.5) -- (5.15, -.5);
+			}
+			
+			
+			\only<6->{ \node (st_1) at (9.4,-1) [minimum size=2pt, scale=1.5] {$*_1$};}
+			\only<7->{\node (st_2) at (6.9,-1) [minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<7->{\node (st_2b) at (4.4,-1) [minimum size=2pt, scale=1.5] {$*_2$};}
+			\only<8->{  \node (ri_2) at (6.9,-4) [minimum size=2pt, scale=1.5] {$n_2$};}
+			 \only<8->{ \node (ri_2b) at (4.4,-4) [minimum size=2pt, scale=1.5] {$n_2$};}
+			 \only<9->{\node (st_3) at (5.9,-1) [minimum size=2pt, scale=1.5] {$*_3$};}
+			\only<9->{ \node (st_3b) at (3.4,-1) [minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<10->{\node (st_4) at (.9,-1) [minimum size=2pt, scale=1.5] {$*_4$};}
+			 \only<11->{\node (ri_4) at (.9,-4) [minimum size=2pt, scale=1.5] {$n_4$};}
+			 \only<12->{\node (ri_3b) at (3.4,-4) [minimum size=2pt, scale=1.5] {$n_3$};}
+			\only<12->{ \node (ri_3) at (5.9,-4) [minimum size=2pt, scale=1.5] {$n_3$};}
+			\only<13->{ \node (ri_1) at (9.4,-4) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 
+			 %\node (ri_2) at (2,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};
+			 
+			 \only<7->{ \draw[->] (st_1) to (st_2);}
+			  \only<8->{\draw[dashed,->] (st_2) to (ri_2);}
+			  \only<8->{\draw[->] (st_2b) to (ri_2b);}
+			  \only<9->{\draw[->] (ri_2) to (st_3);}
+			 \only<9->{ \draw[dashed,->] (ri_2b) to (st_3b);}
+			\only<10->{  \draw[->] (st_3b) to (st_4);}
+			 \only<11->{ \draw[->] (st_4) to (ri_4);}
+			 \only<12->{ \draw[dashed,->] (st_3) to (ri_3);}
+			 \only<12->{ \draw[->] (ri_4) to (ri_3b);}
+			 \only<13->{ \draw[->] [in=150, out=30] (ri_3) to (ri_1);}
+			  
+			  %\draw[->] [out=180,in=300] (st_2) to (ri_1);
+			  %\draw[->] [out=280,in=0] (ri_1) to (ri_2);
+			
+			\end{tikzpicture}
+}
+
+\only<14->{
+\begin{tikzpicture}
+			 \node (inv) at (0,0) [minimum size=2pt] {};
+			 \node (inv2) at (11,-5) [minimum size=2pt, scale=1.5] {};
+			
+			\only<5->{
+			 \draw [fill=blue, opacity=.5] (1.9,-3.5) rectangle (-.1,-1.5);
+			 \draw [fill=red, opacity=.1] (4.9,-3.5) rectangle (2.9,-1.5);
+			 \draw [fill=red, opacity=.1] (7.4,-3.5) rectangle (5.4,-1.5);
+			 \draw [fill=green, opacity=.5] (10.4,-3.5) rectangle (8.4,-1.5);
+			 			 
+			 \node (A) at (.9,-2.5) [minimum size=2pt, scale=2] {A};
+			 \node (B) at (3.9,-2.5) [opacity=.1, minimum size=2pt, scale=2] {B};
+			 \node (B) at (6.4,-2.5) [opacity=.1, minimum size=2pt, scale=2] {B};
+			 \node (C) at (9.4,-2.5) [minimum size=2pt, scale=2] {C};
+			 
+			 \node (P) at (.2,-1.8) [minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (3.2,-3.2) [opacity=.1, minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (5.7,-1.8) [opacity=.1, minimum size=2pt, scale=1.5] {P};
+			 \node (P) at (8.7,-3.2) [minimum size=2pt, scale=1.5] {P};
+			 
+			 \node (O) at (.2,-3.2) [minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (3.2,-1.8) [opacity=.1, minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (5.7,-3.2) [opacity=.1, minimum size=2pt, scale=1.5] {O};
+			 \node (O) at (8.7,-1.8) [minimum size=2pt, scale=1.5] {O};
+			 
+			  \node (linear1) at (2.4,-2.5) [opacity=.1, minimum size=2pt, scale=1.5] {$\limp$};
+			 \node (linear2) at (7.9,-2.5) [opacity=.1, minimum size=2pt, scale=1.5] {$\limp$};
+			  \node (linear3) at (5.15,-2.5) [, minimum size=2pt, scale=2] {$\limp$};
+			 			 
+			 \node (sigma) at (2.3,-.3) [minimum size=2pt, scale=2] {\only<8,10,12>{\textcolor{red}{$\sigma$}} \only<1-7,9,11,13>{$\sigma$}};
+			 \node (tau) at (7.9,-.3) [minimum size=2pt, scale=2] {\only<7,9,13>{\textcolor{red}{$\tau$}} \only<1-6,8,10-12>{$\tau$}};
+			\draw[opacity=.1, dashed] (5.15, -4.5) -- (5.15, -.5);
+			}
+			
+			\node (st) at (5.15, -.3)[minimum size=2pt, scale=2] {$\sigma ; \tau$};
+			
+			
+			\only<6->{ \node (st_1) at (9.4,-1) [minimum size=2pt, scale=1.5] {$*_1$};}
+			\only<7->{\node (st_2) at (6.9,-1) [opacity=.1, minimum size=2pt, scale=1.5] {$*_2$};}
+			 \only<7->{\node (st_2b) at (4.4,-1) [opacity=.1, minimum size=2pt, scale=1.5] {$*_2$};}
+			\only<8->{  \node (ri_2) at (6.9,-4) [opacity=.1, minimum size=2pt, scale=1.5] {$n_2$};}
+			 \only<8->{ \node (ri_2b) at (4.4,-4) [opacity=.1, minimum size=2pt, scale=1.5] {$n_2$};}
+			 \only<9->{\node (st_3) at (5.9,-1) [opacity=.1, minimum size=2pt, scale=1.5] {$*_3$};}
+			\only<9->{ \node (st_3b) at (3.4,-1) [opacity=.1, minimum size=2pt, scale=1.5] {$*_3$};}
+			 \only<10->{\node (st_4) at (.9,-1) [minimum size=2pt, scale=1.5] {$*_4$};}
+			 \only<11->{\node (ri_4) at (.9,-4) [minimum size=2pt, scale=1.5] {$n_4$};}
+			 \only<12->{\node (ri_3b) at (3.4,-4) [opacity=.1, minimum size=2pt, scale=1.5] {$n_3$};}
+			\only<12->{ \node (ri_3) at (5.9,-4) [opacity=.1, minimum size=2pt, scale=1.5] {$n_3$};}
+			\only<13->{ \node (ri_1) at (9.4,-4) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 
+			 %\node (ri_2) at (2,-4.5) [minimum size=2pt, scale=1.5] {$n_1$};
+			 
+			 \only<7->{ \draw[opacity=.1, ->] (st_1) to (st_2);}
+			  \only<8->{\draw[opacity=.1, dashed,->] (st_2) to (ri_2);}
+			  \only<8->{\draw[opacity=.1, ->] (st_2b) to (ri_2b);}
+			  \only<9->{\draw[opacity=.1, ->] (ri_2) to (st_3);}
+			 \only<9->{ \draw[opacity=.1, dashed,->] (ri_2b) to (st_3b);}
+			\only<10->{  \draw[opacity=.1, ->] (st_3b) to (st_4);}
+			 \only<11->{ \draw[->] (st_4) to (ri_4);}
+			 \only<12->{ \draw[opacity=.1, dashed,->] (st_3) to (ri_3);}
+			 \only<12->{ \draw[opacity=.1, ->] (ri_4) to (ri_3b);}
+			 \only<13->{ \draw[opacity=.1, ->] [in=150, out=30] (ri_3) to (ri_1);}
+			 
+			 \draw[->] [in=360, out=200] (st_1) to (st_4);
+			 \draw[->] [in=160, out=20] (ri_4) to (ri_1);
+			  
+			  %\draw[->] [out=180,in=300] (st_2) to (ri_1);
+			  %\draw[->] [out=280,in=0] (ri_1) to (ri_2);
+			
+			\end{tikzpicture}
+	}		
+			
 \end{frame}
 
 
-\begin{frame}[t]
-	
-% 	\frametitle{La strategia copycat}
-% 	
-% 	\begin{tabular}{c c}
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		
-% 		\\
-% 		
-% 		\begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a_storto.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} &  \begin{minipage}{0.48\textwidth}
-% 			\begin{figure}[t]
-% 				\Large
-% 				\centering
-% 				\def\svgwidth{0.6\textwidth}
-% 				\input{immagini/tavolo_a.pdf_tex}
-% 			\end{figure}
-% 		\end{minipage} \\
-% 		
-% 		%%%%%%% TAVOLO 1
-% 		
-% 		&
-% 		%%%%%%% TAVOLO 2
-% 		
-% 		
-% 	\end{tabular}
-	
+% strategia copycat
+\begin{frame}
 
-	
+	\frametitle{La strategia \emph{copycat} su $A\limp A$}
+Dato $A$, è sempre possibile costruire la strategia \emph{copycat} su $A\limp A$:
+
+\begin{itemize}
+ \item<2-> $id_A=\{s \in P_{A\limp A} : s|_1=s|_2 \}$ 
+ \item<3-> la strategia consiste nel copiare le mosse di $O$ sull'altra componente, quindi la funzione parziale associata a questa strategia è
+ \[
+ f(x_1)=x_2, \quad f(x_2)=x_1 \quad \forall x \in M_A
+ \]
+ \item<4-> Data $\sigma$ strategia di $A\limp B$, avremo che $id_A;\sigma=\sigma$
+\end{itemize}
+
+
 \end{frame}
+
 
 \subsection{esistenza del modello}
 
@@ -1134,38 +1187,116 @@
  	
  	Definiamo $\mathcal{G}$ la categoria tale che:
  	\begin{itemize}
- 		\item $\mathcal{G}_0$ sono i giochi
- 		\item dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B | \sigma \approx \sigma \} / \approx$
- 		\item Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
+ 		\item<2-> $\mathcal{G}_0$ sono i giochi
+ 		\item<3-> dati due giochi $A$ e $B$, i morfismi $A\rightarrow B$ sono $\{ \sigma \text{ strategia di } A\limp B \;|\; \sigma \approx_s \sigma \} / \approx_s$
+ 		\item<4-> Date $[\sigma] : A\rightarrow B$ e $[\tau] : B \rightarrow C$, $[\tau] \circ [\sigma] = [\sigma ; \tau]$
+		\item<5-> Il morfismo identico è dato dalla strategia $id_A$
  	\end{itemize}
  	
- 	In particolare $\mathcal{G}$ è dotata di:
+ 	\onslide<6->{In particolare abbiamo che $\mathcal{G}$:}
  	\begin{itemize}
- 		\item un oggetto finale ($1$)
- 		\item è una categoria monoidale (è definito $\otimes$ bifuntore associativo e con elemento neutro)
- 		\item è una categoria autonoma (per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
- 		\item NON è una categoria cartesiana chiusa (mancano i prodotti)
+ 		\item<7-> è dotata di un oggetto finale ($1$)
+ 		\item<8-> è una categoria monoidale 
+ 		
+ 		($\otimes$ è un bifuntore associativo con elemento neutro)
+ 		\item<9-> è una categoria autonoma 
+ 		
+ 		(per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
+ 		\item<10-> NON è una categoria cartesiana chiusa (mancano i prodotti)
  	\end{itemize}
  	
  \end{frame}
 
+ % gioco unione
+\begin{frame}
+	
+	\frametitle{Il gioco $A \& B$}
+	Dati due giochi $A$ e $B$ definiamo il gioco $A\& B$ come:
+	\begin{itemize}
+		\item<2-> $M_{A\& B}=M_A \coprod M_B$
+		\item<2-> $\lambda_{A\& B}=\lambda_A \coprod \lambda_B$
+		\item<2-> $P_{A\& B}=P_A \coprod P_B$
+		\item<2-> $\approx_{A\& B} \; = \; \approx_A \coprod \approx_B$ 
+	\end{itemize}
+	
+	\onslide<3->{
+	\begin{block}{Proprietà}
+		\begin{itemize}
+			\item<4-> Una partita di $A\& B$ è giocata su una sola delle due componenti
+			\item<5-> Ogni strategia di $A\& B$ è unione di una strategia di $A$ e di una strategia di $B$ (anche vuota)
+		\end{itemize}	
+	\end{block}
+	}
+\end{frame}
+
+% dag e der
+\begin{frame}
+\frametitle{strategie $der$ e $\dag$}
+
+Dato un gioco $A$, definiamo la strategia $der$ su $!A\limp A$:
+\begin{itemize}
+ \item<2-> Se $A_i$ è l'$i$-esima componente di $!A$, allora $der_A^i$ si comporta come la strategia copycat su $A_i\limp A \;\cong\; A\limp A$, e non agisce sulle altre componenti 
+ \item<3-> Dato che le componenti di $!A$ sono equivalenti, avremo che $der_A^i\approx_s der_A^j \: \forall i,j$ , quindi lo indicheremo semplicemente con $der_A$  
+\end{itemize}
+
+\onslide<4->{
+Data una strategia $\sigma$ su $!A\limp B$, definiamo la strategia $\sigma^{\dag}$ su $!A\limp !B$:
+}
+
+\onslide<5->{
+\begin{tikzpicture}
+ 
+ \node (inv) at (0,0) [minimum size=2pt] {};
+	 \node (inv2) at (11,-4) [minimum size=2pt] {};
+	 
+	 \foreach \y in {0,-1.2,-2.4} {
+  \foreach \x in {0,2,4} { 
+	  \draw [fill=blue, opacity=.5] (\x+1,\y-1.2) rectangle (\x,\y-.2);
+	  \node (A\x) at (\x+.5,\y-.7) [minimum size=2pt, scale=1.5] {A};
+	  }
+	  \draw [<->] (A0) -- (A2)  node [above,midway] {P} ;
+	  \draw [<->] (A2) -- (A4)  node [above,midway] {P} ;
+
+ \draw [fill=red, opacity=.5] (8,\y-1.2) rectangle (7,\y-.2);
+	 \node (B) at (7.5,\y-.7) [minimum size=2pt, scale=1.5] {B};
+	 \node (s) at (10,\y-.7) [minimum size=2pt, scale=2] {$\sigma$};
+	 \draw [<->] (A4) -- (B)  node [above,midway] {P} ;
+
+ }
+ 
+ \draw [<->] [out=0,in=0] (8,-1.9) to (8,-3.1) ;
+ \draw [<->] [out=0,in=0] (8,-1.9) to (8,-.7) ;
+ \node (O) at (8.6,-2.5) [minimum size=2pt, scale=1.1] {O};
+ \node (O) at (8.6,-1.3) [minimum size=2pt, scale=1.1] {O};
+ \draw[opacity=.5, dashed] (-.5, -1.3) -- (10.5, -1.3);
+ \draw[opacity=.5, dashed] (-.5, -2.5) -- (10.5, -2.5);
+ \end{tikzpicture}
+}
+
+\end{frame}
+
 % categoria di co-Kleisli
 \begin{frame}
+\frametitle{categoria di co-Kleisli}
+\onslide<2->{
+Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ rispetto a $!$
 
-Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ rispetto a $!$; in particolare:
-	
+In particolare:
+	}
 	\begin{itemize}
-		\item $K_!(\mathcal{G})_0 = \mathcal{G}_0$
-		\item Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
-		\item Date due strategie $\sigma$ e $\tau$, $\tau \circ \sigma = \sigma \fatsemi \tau = \sigma ^\dag ; \tau$
-		\item Dato un gioco $A$, il morfismo identico è $der_A$
+		\item<3-> $K_!(\mathcal{G})_0 = \mathcal{G}_0$
+		\item<4-> Dati due giochi $A,B$, $Mor_{K_!(\mathcal{G})}(A,B) = Mor_{\mathcal{G}}(!A,B)$
+		\item<5-> Date due strategie $\sigma$ e $\tau$, $\tau \circ \sigma = \sigma \fatsemi \tau := \sigma ^\dag ; \tau$
+		\item<6-> Dato un gioco $A$, il morfismo identico è $der_A$
 	\end{itemize}
 
-	In particolare $K_!(\mathcal{G})$ è una \emph{categoria cartesiana chiusa}, cioè:
+	\onslide<7->{In particolare $K_!(\mathcal{G})$ è una \emph{categoria cartesiana chiusa}, cioè:}
 	\begin{itemize}
-		\item Dati due oggetti esiste il \emph{prodotto} ($A\& B$)
-		\item Esiste un oggetto \emph{finale} ($1$)
-		\item Dati due oggetti, esiste l'oggetto esponente ($A \Rightarrow B$ definito come $!A \limp B$; cioé $Mor(A\& B,C) \cong Mor(A,B\Rightarrow C)$)
+		\item<8-> Dati due oggetti esiste il \emph{prodotto} ($A\& B$)
+		\item<9-> Esiste un oggetto \emph{finale} ($1$)
+		\item<10-> Dati due oggetti, esiste l'oggetto esponente 
+		
+		(``$\Rightarrow$'' è tale che $Mor_{K_!(\mathcal{G})}(A\& B,C) \cong Mor_{K_!(\mathcal{G})}(A,B\Rightarrow C)$)
 	\end{itemize}
 
 \end{frame}
@@ -1173,23 +1304,25 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 % ppo e ccc razionale
 \begin{frame}
 	
-	\frametitle{order enrichement}
-	
-	Definiamo un \emph{pointed poset} come un poset con un minimo (generalmente indicato con $\perp$)
-	
-	Definiamo una categoria cartesiana chiusa $C$ \emph{pointed poset enriched} se:
+	\frametitle{order enrichement e razionalità}
+	\onslide<2->{
+	Definiamo un \emph{pointed poset (ppo)} come un poset con un minimo (generalmente indicato con $\perp$)
+	}
+	\onslide<3->{
+	Definiamo una categoria cartesiana chiusa $C$ \emph{pointed poset enriched} se:}
 	\begin{itemize}
-		\item Dati due oggetti $A,B$, $(Mor(A,B),\sqsubseteq _{A,B},\perp _{A,B})$ è un pointed poset
-		\item Composizione, prodotto e currying sono monotoni
-		\item Per ogni $f: A\rightarrow B$, per ogni gioco $C$, $\perp_{B,C} \circ f = \perp _{A,B}$
+		\item<4-> Dati due oggetti $A,B$, $(Mor(A,B),\sqsubseteq _{A,B},\perp _{A,B})$ è un pointed poset
+		\item<5-> Composizione, prodotto e currying sono monotoni
+		\item<6-> Per ogni $f: A\rightarrow B$, per ogni gioco $C$, $\perp_{B,C} \circ f = \perp _{A,B}$
 	\end{itemize}
-	
+	\onslide<7->{
 	Definiamo una categoria cartesiana chiusa $C$ \emph{razionale} se:
+	}
 	\begin{itemize}
-		\item è ppo-enriched
-		\item per ogni $f: A\times B \rightarrow B$ si ha:
+		\item<8-> è ppo-enriched
+		\item<9-> per ogni $f: A\times B \rightarrow B$ si ha:
 		\begin{itemize}
-			\item La catena $(f^{(k)} | k\in \omega)$ definita da $f^{(0)}=\perp _{A,B}$ e $f^{k+1} = f \circ <id_A , f^{(k)}>$ ammette \emph{lub} $f^{\triangledown}$
+			\item La catena $(f^{(k)} | k\in \omega)$ definita da $f^{(0)}=\perp _{A,B}$ e $f^{k+1} = f \circ <id_A , f^{(k)}>$ ammette \emph{least upper bound} $f^{\triangledown}$
 			\item Dati $g:C\rightarrow A$ e $h:B\rightarrow D$, $g\circ f^\triangledown \circ h = \bigsqcup_{k\in \omega} g \circ f^{(k)} \circ h$
 		\end{itemize}
 
@@ -1199,14 +1332,17 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 
 % I giochi sono un modello di PCF
 \begin{frame}
-	
+	\frametitle{Denotazione di PCF}
+	\onslide<2->{
 	Dato $A$ gioco, date $[\sigma],[\tau]$ classi di strategie di $A$, definiamo
-	$[\sigma] \sqsubseteq_A [\tau] \Leftrightarrow \sigma \preccurlyeq_A \tau$ \\
-% 	NOTA: con l'equinvalenza banale, non c'è bisogno di parlare di classi
+	\[[\sigma] \sqsubseteq [\tau] \Leftrightarrow \sigma \preccurlyeq_s \tau\]
+	}
+	\onslide<3->{
 	\begin{block}{Teorema}
 		$K_! (\mathcal{G})$ con l'ordine $\sqsubseteq$ è razionale
 	\end{block}
-	
+	}
+	\onslide<4->{
 	\begin{block}{Teorema}
 		Sia $C$ una categoria cartesiana chiusa razionale. Si ha che:
 		\begin{itemize}
@@ -1216,9 +1352,8 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 		allora la denotazione può essere estesa a tutti i termini di PCF
 		
 	\end{block}
-	
+	}
 \end{frame}
-
 
 
 \section{Il modello di Abramsky}
@@ -1251,7 +1386,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 \end{frame}
 
 
-
+% interpretazione di termini semplici
 \begin{frame}
 	
 	\frametitle{Interpretazione dei termini}
@@ -1275,7 +1410,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
+% interpretazione di termini complessi
 \begin{frame}
 	
 	\begin{block}{Termini}
@@ -1300,7 +1435,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
+% Bool e Nat
 \begin{frame}
 	
 	\begin{columns}
@@ -1362,10 +1497,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
-
+% coppia di termini
 \begin{frame}
 	
 	\frametitle{$\llbracket <s,t> \rrbracket$}
@@ -1417,12 +1549,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
-
-
-
+% addizione
 \begin{frame}
 			
 			
@@ -1495,7 +1622,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 \end{frame}
 
 
-
+% applicazione ad addizione
 \begin{frame}
 
 
@@ -1598,10 +1725,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
-
+% applicazione a Eq?
 \begin{frame}
 	
 			\frametitle{$\llbracket Eq? m n \rrbracket$}			
@@ -1699,11 +1823,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
-
-
+% ambiente
 \begin{frame}
 	
 	Per parlare di variabili occorre introdurre il concetto di \emph{ambiente}
@@ -1723,10 +1843,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
-
+% termini con variabili
 \begin{frame}
 	
 	\begin{block}{Termini}
@@ -1742,15 +1859,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
-
-
-
-
-
-
+% variabile
 \begin{frame}
 			
 			
@@ -1821,8 +1930,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
+% currying
 \begin{frame}
 			
 			
@@ -1887,9 +1995,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
+% if then else
 \begin{frame}
 	
 			
@@ -1949,11 +2055,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
-
-
+% soundness senza ricursore
 \begin{frame}
 	
 	\begin{block}{Teorema}
@@ -1969,14 +2071,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
-
-
-
-
-
+% punto fisso
 \begin{frame}
 	
 	\begin{block}{Ricursore}
@@ -2003,10 +2098,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 \end{frame}
 
-
-
-
-
+% esempio semplice punto fisso
 \begin{frame}
 
 \begin{block}{Esempio}
@@ -2029,9 +2121,7 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 
 \end{frame}
 
-
-
-
+% esempio complicato punto fisso
 \begin{frame}
 
 
@@ -2060,11 +2150,6 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 \end{frame}
 
 
-
-
-
-
-
 \subsection{Proprietà del modello intensionale}
 
 % intensional fully abstract
@@ -2089,8 +2174,6 @@ Definiamo $K_!(\mathcal{G})$ la categoria di \emph{co-Kleisli} di $\mathcal{G}$ 
 	
 	
 \end{frame}
-
-
 
 
 \subsection{Il modello estensionale e proprietà}
