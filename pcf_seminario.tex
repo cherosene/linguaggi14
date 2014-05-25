@@ -44,8 +44,7 @@
 \small
 
 
-\section{Il linguaggio PCF}
-\subsection{La sintassi}
+
 
 %titolo
 \begin{frame}
@@ -54,6 +53,14 @@
 	
 \end{frame}
 
+\begin{frame}
+	%\frametitle{Il linguaggio PCF}
+	\tableofcontents
+	
+\end{frame}
+
+\section{Il linguaggio PCF}
+\subsection{La sintassi}
 
 % tipi di PCF
 \begin{frame}
@@ -631,21 +638,21 @@ In particolare, la definizione porta alcune conseguenze:
 	Dati due giochi $A$ e $B$ definiamo il gioco $A\otimes B$ come:
 	\begin{itemize}
 		\item<2-> $M_{A\otimes B}=M_A \coprod M_B$
-		\item<3-> $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
-		\item<4-> $P_{A\otimes B}$ sono tutte le partite $s$ tali che $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
+		\item<2-> $\lambda_{A\otimes B}=\lambda_A \coprod \lambda_B$
+		\item<3-> $P_{A\otimes B}$ sono tutte le partite $s$ tali che
 		\begin{itemize}
 			\item $s|_{M_A} \in P_A \wedge s|_{M_B} \in P_B$
 			\item Per ogni domanda in $A$, la risposta deve essere in $A$; lo stesso con $B$
 		\end{itemize}
-		\item<5-> $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
+		\item<4-> $s\approx_{A\otimes B} t \Leftrightarrow s|_A \approx_A t|_A \wedge s|_B \approx_B t|_B \wedge fst(s)=fst(t)$ 
 	\end{itemize}
 	
-	\onslide<6-9>{
+	\onslide<5->{
 	\begin{block}{Proprietà}
 		\begin{itemize}
-			\item<7-> Il prodotto tensore è associativo
-			\item<8-> Esiste un elemento neutro $I$, ossia il gioco vuoto
-			\item<9-> \textcolor{red}{Solamente il giocatore $O$ può cambiare componente di gioco}
+			\item<6-> Il prodotto tensore è associativo
+			\item<7-> Esiste un elemento neutro $I$, ossia il gioco vuoto
+			\item<8-> \textcolor{red}{Solamente il giocatore $O$ può cambiare componente di gioco}
 		\end{itemize}
 		
 	\end{block}
@@ -1199,10 +1206,7 @@ Dato $A$, è sempre possibile costruire la strategia \emph{copycat} su $A\limp A
  		\item<8-> è una categoria monoidale 
  		
  		($\otimes$ è un bifuntore associativo con elemento neutro)
- 		\item<9-> è una categoria autonoma 
- 		
- 		(per ogni gioco $A$ esiste il suo gioco duale $1 \limp A$)
- 		\item<10-> NON è una categoria cartesiana chiusa (mancano i prodotti)
+ 		\item<9-> NON è una categoria cartesiana chiusa (mancano i prodotti)
  	\end{itemize}
  	
  \end{frame}
@@ -1294,7 +1298,7 @@ In particolare:
 	\begin{itemize}
 		\item<8-> Dati due oggetti esiste il \emph{prodotto} ($A\& B$)
 		\item<9-> Esiste un oggetto \emph{finale} ($1$)
-		\item<10-> Dati due oggetti, esiste l'oggetto esponente 
+		\item<10-> Dati due oggetti, esiste l'esponente 
 		
 		(``$\Rightarrow$'' è tale che $Mor_{K_!(\mathcal{G})}(A\& B,C) \cong Mor_{K_!(\mathcal{G})}(A,B\Rightarrow C)$)
 	\end{itemize}
@@ -1308,12 +1312,13 @@ In particolare:
 	\onslide<2->{
 	Definiamo un \emph{pointed poset (ppo)} come un poset con un minimo (generalmente indicato con $\perp$)
 	}
+	
 	\onslide<3->{
 	Definiamo una categoria cartesiana chiusa $C$ \emph{pointed poset enriched} se:}
 	\begin{itemize}
 		\item<4-> Dati due oggetti $A,B$, $(Mor(A,B),\sqsubseteq _{A,B},\perp _{A,B})$ è un pointed poset
 		\item<5-> Composizione, prodotto e currying sono monotoni
-		\item<6-> Per ogni $f: A\rightarrow B$, per ogni gioco $C$, $\perp_{B,C} \circ f = \perp _{A,B}$
+		\item<6-> Per ogni $f: A\rightarrow B$, per ogni gioco $C$, $\perp_{B,C} \circ f = \perp _{A,C}$
 	\end{itemize}
 	\onslide<7->{
 	Definiamo una categoria cartesiana chiusa $C$ \emph{razionale} se:
@@ -1890,8 +1895,8 @@ In particolare:
 			
 			 
 			 \only<2-> {\node (mv_1) at (8,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
-			 \only<3-> {\node (mv_2) at (4.5,-3.5) [minimum size=2pt, scale=1.5] {$*_1$};}
-			 \only<4-> {\node (mv_3) at (4.5,-.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 \only<3-> {\node (mv_2) at (4.5,-.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<4-> {\node (mv_3) at (4.5,-3.5) [minimum size=2pt, scale=1.5] {$n_1$};}
 			 \only<5-> {\node (mv_4) at (8,-3.5) [minimum size=2pt, scale=1.5] {$n_2$};}
 			 
 
@@ -1961,8 +1966,8 @@ In particolare:
 			
 			 
 			 \only<2-> {\node (mv_1) at (8,-.5) [minimum size=2pt, scale=1.5] {$*_2$};}
-			 \only<3-> {\node (mv_2) at (4.5,-3.5) [minimum size=2pt, scale=1.5] {$*_1$};}
-			 \only<4-> {\node (mv_3) at (4.5,-.5) [minimum size=2pt, scale=1.5] {$n_1$};}
+			 \only<3-> {\node (mv_2) at (4.5,-.5) [minimum size=2pt, scale=1.5] {$*_1$};}
+			 \only<4-> {\node (mv_3) at (4.5,-3.5) [minimum size=2pt, scale=1.5] {$n_1$};}
 			 \only<5-> {\node (mv_4) at (8,-3.5) [minimum size=2pt, scale=1.5] {$n_2$};}
 			 
 
@@ -2189,7 +2194,7 @@ In particolare:
 		\item $P_\Sigma = \{ \epsilon , q , qa \}$ e $\approx_\Sigma = id_{P_\Sigma}$
 	\end{itemize}
 	
-	Definiamo il preordine $\lesssim_A$ sulle strategie del gioco $A$: $x \lesssim_A y \; \Leftrightarrow \; \forall \alpha \rightarrow \Sigma . x;\alpha \preccurlyeq_\Sigma y;\alpha$
+	Definiamo il preordine $\lesssim_A$ sulle strategie del gioco $A$: $x \lesssim_A y \; \Leftrightarrow \; \forall \alpha: A\rightarrow \Sigma \; x;\alpha \preccurlyeq_\Sigma y;\alpha$
 	
 	Definiamo $\mathcal{E} = K_!(\mathcal{G}) / \lesssim$, cioè la categoria tale che:
 	\begin{itemize}
@@ -2257,11 +2262,6 @@ In particolare:
 	\end{block}
 
 \end{frame}
-
-
-
-
-
 
 
 
